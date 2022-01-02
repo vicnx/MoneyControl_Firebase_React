@@ -1,0 +1,18 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.imageLogin {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.pageContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.googleButton {
+  padding: 10px;
+}
