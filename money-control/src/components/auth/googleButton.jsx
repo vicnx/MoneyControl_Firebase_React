@@ -9,7 +9,7 @@ export default function GoogleButton() {
   return (
     <IonButton size="large" shape="round" color="danger" onClick={GoogleSignIn}>
       <IonIcon slot="start" icon={logoGoogle} />
-      Google
+      Login
     </IonButton>
   );
 }

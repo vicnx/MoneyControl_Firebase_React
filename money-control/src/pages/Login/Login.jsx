@@ -3,15 +3,17 @@ import {
   IonHeader,
   IonPage,
   IonTitle,
+  IonLabel,
   IonToolbar,
   IonImg,
 } from "@ionic/react";
-import GoogleButton from "../components/auth/googleButton";
+import GoogleButton from "../../components/auth/googleButton";
 import LogoutButton from "components/auth/logout";
 import "./Login.css";
 import people from "assets/images/people_SVG.svg";
 import useUser from "hooks/useUser";
 import MCloading from "components/MCloading/MCloading";
+import { Redirect } from "react-router-dom";
 
 const LoginPage = () => {
   const {
@@ -23,23 +25,27 @@ const LoginPage = () => {
     success,
     auth,
   } = useUser();
-  console.log(auth);
   return (
     <IonPage>
       <IonContent fullscreen>
         {loadingUser ? (
           <MCloading loading={true} />
         ) : auth.currentUser ? (
-          <LogoutButton />
+          <Redirect to={"/profile"} />
         ) : (
           <div className="page">
             <div className="pageContent">
               <IonImg src={people} className="imageLogin" />
+              <IonLabel color="primary" className="welcomeText">
+                Welcome to Money Control
+              </IonLabel>
+              <small>The application to control your financial income</small>
+              <br />
+
               <GoogleButton className="googleButton" />
             </div>
           </div>
         )}
-        {/* <MCloading loading={isLogginLoading} /> */}
       </IonContent>
     </IonPage>
   );

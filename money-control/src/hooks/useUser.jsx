@@ -15,11 +15,13 @@ export default function useUser() {
   // const user = useUserFirebase();
 
   const [profile, setProfile] = useState();
+  const [isLogged, setIsLogged] = useState(false);
   // const [user, setUser] = useState(null);
   const [state, setState] = useState({
     loading: false,
     error: false,
     loadingUser: true,
+    isLogged: false,
   });
   const [error, setError] = useState({ status: false, msg: "" });
   const [success, setSuccess] = useState({ status: false, msg: "" });
@@ -28,15 +30,30 @@ export default function useUser() {
   const auth = getAuth(app);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, () => {
       if (auth.currentUser) {
-        console.log(auth.currentUser);
-        setState({ loading: false, error: false, loadingUser: false });
+        setState({
+          loading: false,
+          error: false,
+          loadingUser: false,
+          isLogged: true,
+        });
+
         // getProfile(user.data.uid)
       } else {
-        setState({ loading: false, error: false, loadingUser: true });
+        setState({
+          loading: false,
+          error: false,
+          loadingUser: true,
+          isLogged: false,
+        });
         setTimeout(() => {
-          setState({ loading: false, error: false, loadingUser: false });
+          setState({
+            loading: false,
+            error: false,
+            loadingUser: false,
+            isLogged: false,
+          });
         }, 500);
       }
     });
@@ -83,5 +100,6 @@ export default function useUser() {
     error: error,
     success: success,
     auth,
+    isLogged: state.isLogged,
   };
 }

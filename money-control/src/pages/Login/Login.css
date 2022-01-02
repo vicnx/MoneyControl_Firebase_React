@@ -1,9 +1,12 @@
 .page {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
 .imageLogin {
+  width: 90%;
   margin-top: 100px;
   margin-bottom: 100px;
 }
@@ -12,7 +15,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 10px;
 }
 .googleButton {
+  box-sizing: border-box;
   padding: 10px;
+}
+.welcomeText {
+  font-size: x-large;
 }
