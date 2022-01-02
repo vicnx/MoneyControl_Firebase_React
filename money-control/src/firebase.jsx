@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-
+import { getFirestore } from "firebase/firestore";
 import {
   FIREBASE_API_KEY,
   FIREBASE_messagingSenderId,
@@ -21,4 +21,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const googleAuthProvider = new GoogleAuthProvider();
-export { app, googleAuthProvider };
+
+const db = getFirestore();
+export { app, googleAuthProvider, db };
