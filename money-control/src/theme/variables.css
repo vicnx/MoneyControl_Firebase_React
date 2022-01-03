@@ -233,3 +233,27 @@ http://ionicframework.com/docs/theming/ */
     --ion-card-background: #1e1e1e;
   }
 }
+
+ion-menu {
+  --ion-background-color: linear-gradient(
+    4deg,
+    rgba(0, 56, 131, 1) 0%,
+    rgba(20, 94, 191, 1) 35%,
+    rgba(71, 150, 255, 1) 100%
+  );
+}
+
+ion-menu ion-toolbar {
+  --background: transparent;
+}
+
+ion-menu ion-list {
+  background: transparent;
+}
+ion-menu ion-item {
+  color: rgb(255, 255, 255);
+  --background: transparent;
+}
+ion-menu ion-content {
+  --background: transparent;
+}

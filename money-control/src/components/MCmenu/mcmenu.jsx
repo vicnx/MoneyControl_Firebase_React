@@ -32,27 +32,36 @@ export default function MCmenu() {
   const { auth } = useUser();
   const Profile = React.lazy(() => import("../../pages/Profile/Profile"));
   const Login = React.lazy(() => import("../../pages/Login/Login"));
+
   const userImage = {
     backgroundImage: 'url("' + auth.currentUser.photoURL + '")',
   };
-
-  console.log(auth);
   return (
     <>
-      <IonMenu side="start" menuId="first" contentId="menuContent">
-        <IonHeader>
+      <IonMenu
+        side="start"
+        menuId="first"
+        contentId="menuContent"
+        className="menu-sidebar"
+      >
+        {/* <IonHeader>
           <IonToolbar color="primary">
             <IonTitle>Start Menu</IonTitle>
           </IonToolbar>
-        </IonHeader>
+        </IonHeader> */}
         <IonContent>
-          <IonList>
-            <IonItem>Menu Item</IonItem>
-            <IonItem>Menu Item</IonItem>
-            <IonItem>Menu Item</IonItem>
-            <IonItem>Menu Item</IonItem>
-            <IonItem>Menu Item</IonItem>
-          </IonList>
+          <div className="sidebar">
+            <div className="sidebar-top">
+              <div className="image-circle" style={userImage}></div>
+            </div>
+            <div className="sidebar-bottom">
+              <IonItem>Menu Item</IonItem>
+              <IonItem>Menu Item</IonItem>
+              <IonItem>Menu Item</IonItem>
+              <IonItem>Menu Item</IonItem>
+              <IonItem>Menu Item</IonItem>
+            </div>
+          </div>
         </IonContent>
       </IonMenu>
     </>
