@@ -4,6 +4,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@dicebear/avatars": "^4.10.2",
+    "@dicebear/avatars-identicon-sprites": "^4.10.2",
     "@ionic/react": "^6.0.0",
     "@ionic/react-router": "^6.0.0",
     "@testing-library/jest-dom": "^5.11.9",

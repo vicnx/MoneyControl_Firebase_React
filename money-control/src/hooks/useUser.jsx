@@ -22,6 +22,7 @@ import {
 
 export default function useUser() {
   const [profile, setProfile] = useState({});
+  const [loadingprofile, setLoadingProfile] = useState(false);
   const [state, setState] = useState({
     loading: false,
     error: false,
@@ -36,6 +37,7 @@ export default function useUser() {
 
   useEffect(() => {
     onAuthStateChanged(auth, () => {
+      setLoadingProfile(true);
       if (auth.currentUser) {
         setState({
           loading: false,
@@ -115,6 +117,7 @@ export default function useUser() {
                 email: auth.currentUser.email,
               })
             );
+            setLoadingProfile(false);
           }
         });
       })
@@ -135,6 +138,7 @@ export default function useUser() {
             email: auth.currentUser.email,
           })
         );
+        setLoadingProfile(false);
       }
     });
   });
@@ -151,5 +155,6 @@ export default function useUser() {
     auth,
     isLogged: state.isLogged,
     profile,
+    loadingprofile,
   };
 }

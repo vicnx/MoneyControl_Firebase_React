@@ -71,7 +71,7 @@ export default function MCmenu() {
           <div className="sidebar">
             <div className="sidebar-header">
               <div className="back_logo">
-                <img src={logo} alt="" srcset="" />
+                <img src={logo} alt="" />
               </div>
             </div>
             {/* <hr className="menu-divider" /> */}

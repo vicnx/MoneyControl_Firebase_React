@@ -93,3 +93,19 @@
   background: #00aeff;
   color: #fff;
 }
+
+.buttons-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.imageCanvas {
+  box-shadow: var(--best_shadow);
+  border-radius: 15px;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
