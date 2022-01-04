@@ -30,6 +30,8 @@ import "./theme/variables.css";
 import useUser from "hooks/useUser";
 import MCloading from "components/MCloading/MCloading";
 import MCtabbar from "components/MCtabbar/mctabbar";
+import MCmenu from "components/MCmenu/mcmenu";
+import MCrouter from "router";
 
 setupIonicReact();
 
@@ -49,7 +51,7 @@ function App() {
     <UserContextProvider>
       <Suspense fallback={<MCloading loading={true} />}>
         <IonApp>
-          <IonReactRouter>{isLogged ? <MCtabbar /> : <Login />}</IonReactRouter>
+          <IonReactRouter>{isLogged ? <MCrouter /> : <Login />}</IonReactRouter>
         </IonApp>
       </Suspense>
     </UserContextProvider>

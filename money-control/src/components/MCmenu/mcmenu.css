@@ -97,3 +97,6 @@
 .link-component {
   text-decoration: none;
 }
+ion-menu-button ion-icon {
+  color: white;
+}

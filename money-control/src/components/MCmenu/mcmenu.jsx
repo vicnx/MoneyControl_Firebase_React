@@ -16,11 +16,21 @@ import {
   IonButton,
   IonIcon,
   IonMenuToggle,
+  IonRouterOutlet,
+  IonFab,
+  IonFabButton,
+  IonMenuButton,
 } from "@ionic/react";
 import logo from "assets/logo/logorounded.png";
+import MCrouter from "router";
 
 import "./mcmenu.css";
-import { ellipse, homeOutline, personOutline } from "ionicons/icons";
+import {
+  ellipse,
+  homeOutline,
+  personOutline,
+  gridOutline,
+} from "ionicons/icons";
 import { menuController } from "@ionic/core";
 
 export default function MCmenu() {
@@ -40,8 +50,16 @@ export default function MCmenu() {
     setSelected(location.pathname);
     console.log(location);
   }, [location]);
+
   return (
     <>
+      <IonFab vertical="top" horizontal="start" slot="fixed">
+        <IonFabButton>
+          <IonMenuButton autoHide={true}>
+            <IonIcon icon={gridOutline} />
+          </IonMenuButton>
+        </IonFabButton>
+      </IonFab>
       <IonMenu
         side="start"
         menuId="first"
