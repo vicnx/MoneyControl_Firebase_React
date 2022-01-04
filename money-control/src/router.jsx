@@ -30,6 +30,7 @@ export default function MCrouter() {
   const { auth } = useUser();
   const Profile = React.lazy(() => import("pages/Profile/Profile"));
   const Login = React.lazy(() => import("pages/Login/Login"));
+  const Home = React.lazy(() => import("pages/Home/Home"));
   const userImage = {
     backgroundImage: 'url("' + auth.currentUser.photoURL + '")',
   };
@@ -42,7 +43,7 @@ export default function MCrouter() {
           <Profile />
         </Route>
         <Route exact path="/home">
-          <Login />
+          <Home />
         </Route>
         {/* <Route exact path="/">
           <Redirect to="/home" />

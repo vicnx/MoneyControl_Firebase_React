@@ -1,0 +1,73 @@
+.cuentas-list {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--ion-color-primary-tint);
+  border-radius: 15px;
+  margin: 0 15px 0 15px;
+  padding: 5px 0px 5px 0px;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.cuenta {
+  margin: 8px;
+  padding: 13px;
+  min-width: 110px;
+  max-width: 110px;
+  min-height: 90px;
+  max-height: 90px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+.cuenta-name {
+  width: 100%;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: var(--color_small);
+  margin-left: 5px;
+}
+.cuenta-top {
+  align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+.cuenta-bottom {
+  align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: 17px;
+  flex-direction: column;
+  text-align: center;
+}
+.cuenta-balance {
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 3px;
+}
+
+.separador-cuentas {
+  width: 100%;
+  height: 5px;
+  background-color: var(--ion-color-primary);
+  border-radius: 5px;
+}
+.title {
+  margin: 10px;
+  margin-left: 20px;
+  font-size: 20px;
+  color: var(--color_title);
+}

@@ -27,25 +27,15 @@ import "@ionic/react/css/display.css";
 
 /* Theme variables */
 import "./theme/variables.css";
+
 import useUser from "hooks/useUser";
 import MCloading from "components/MCloading/MCloading";
-import MCtabbar from "components/MCtabbar/mctabbar";
-import MCmenu from "components/MCmenu/mcmenu";
 import MCrouter from "router";
 
 setupIonicReact();
 
 function App() {
-  const {
-    isLogginLoading,
-    hasLoginError,
-    errors,
-    loadingUser,
-    error,
-    success,
-    auth,
-    isLogged,
-  } = useUser();
+  const { isLogged } = useUser();
 
   return (
     <UserContextProvider>

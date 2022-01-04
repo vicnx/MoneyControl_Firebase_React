@@ -53,7 +53,7 @@ export default function MCmenu() {
 
   return (
     <>
-      <IonFab vertical="top" horizontal="start" slot="fixed">
+      <IonFab vertical="bottom" horizontal="end" slot="fixed">
         <IonFabButton>
           <IonMenuButton autoHide={true}>
             <IonIcon icon={gridOutline} />
