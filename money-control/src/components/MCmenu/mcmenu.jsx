@@ -3,6 +3,7 @@ import { Redirect, Route } from "react-router-dom";
 
 import useUser from "hooks/useUser";
 import { IonMenu, IonContent, IonItem, IonLabel } from "@ionic/react";
+import logo from "assets/logo/money_control_small.png";
 
 import "./mcmenu.css";
 // import {
@@ -23,6 +24,7 @@ export default function MCmenu() {
   const userImage = {
     backgroundImage: 'url("' + profile.image + '")',
   };
+
   return (
     <>
       <IonMenu
@@ -33,6 +35,11 @@ export default function MCmenu() {
       >
         <IonContent>
           <div className="sidebar">
+            <div className="sidebar-header">
+              <div className="back_logo">
+                <img src={logo} alt="" srcset="" />
+              </div>
+            </div>
             <div className="sidebar-top">
               <div className="image">
                 <div className="image-circle" style={userImage}></div>
