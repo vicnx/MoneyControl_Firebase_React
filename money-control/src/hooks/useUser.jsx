@@ -24,7 +24,7 @@ export default function useUser() {
   // const firebase = useFirebaseApp();
   // const user = useUserFirebase();
 
-  const [profile, setProfile] = useState();
+  const [profile, setProfile] = useState({});
   const [isLogged, setIsLogged] = useState(false);
   // const [user, setUser] = useState(null);
   const [state, setState] = useState({
@@ -36,8 +36,8 @@ export default function useUser() {
   const [error, setError] = useState({ status: false, msg: "" });
   const [success, setSuccess] = useState({ status: false, msg: "" });
   const [errorMSG, setErrorMSG] = useState("");
-
   const auth = getAuth(app);
+  let isSubscribed = true;
 
   useEffect(() => {
     onAuthStateChanged(auth, () => {
@@ -48,10 +48,7 @@ export default function useUser() {
           loadingUser: false,
           isLogged: true,
         });
-        console.log(auth);
         getProfile(auth.currentUser.uid);
-
-        // getProfile(user.data.uid)
       } else {
         setState({
           loading: false,
@@ -69,13 +66,13 @@ export default function useUser() {
         }, 500);
       }
     });
+    return () => (isSubscribed = false);
   }, [auth]);
 
   const GoogleSignIn = () => {
     setState({ loading: true, error: false, loadingUser: true });
     signInWithPopup(auth, googleAuthProvider)
       .then((result) => {
-        console.log(result);
         const additionalUserInfo = getAdditionalUserInfo(result);
         if (additionalUserInfo.isNewUser) {
           createProfile(result.user);
@@ -106,11 +103,19 @@ export default function useUser() {
   };
 
   const createProfile = useCallback((user) => {
+    isSubscribed = true;
     const colRef = collection(db, "profiles");
-    addDoc(colRef, { uid: user.uid, admin: false, email: user.email })
+    addDoc(colRef, {
+      uid: user.uid,
+      admin: false,
+      email: user.email,
+      image: user.photoURL,
+    })
       .then((res) => {
         getDoc(res).then((snapshot) => {
-          setProfile(snapshot.data());
+          if (isSubscribed) {
+            setProfile(snapshot.data());
+          }
         });
       })
       .catch((error) => {
@@ -123,7 +128,9 @@ export default function useUser() {
     const pRef = await query(colRef, where("uid", "==", uid));
     const querySnapshot = await getDocs(pRef);
     querySnapshot.forEach((doc) => {
-      setProfile(doc.data());
+      if (isSubscribed) {
+        setProfile(doc.data());
+      }
     });
   });
 
@@ -138,5 +145,6 @@ export default function useUser() {
     success: success,
     auth,
     isLogged: state.isLogged,
+    profile,
   };
 }

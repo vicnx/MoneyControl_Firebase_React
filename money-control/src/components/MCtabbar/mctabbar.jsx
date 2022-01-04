@@ -54,11 +54,9 @@ export default function MCtabbar() {
         <IonTabBar slot="bottom">
           <IonTabButton tab="profile" href="/profile" layout="icon-top">
             <IonIcon icon={personOutline} />
-            <IonLabel>Profile</IonLabel>
           </IonTabButton>
           <IonTabButton tab="home" href="/home" layout="icon-top">
             <IonIcon icon={homeOutline} />
-            <IonLabel>Home</IonLabel>
           </IonTabButton>
           <IonTabButton>
             <IonMenuButton />

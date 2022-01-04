@@ -4,23 +4,23 @@ import { IonContent, IonPage } from "@ionic/react";
 import "./mcprofile.css";
 import LogoutButton from "components/auth/logout";
 export default function MCprofile() {
-  const { auth } = useUser();
-
+  const { auth, profile } = useUser();
   const userImage = {
-    backgroundImage: 'url("' + auth.currentUser.photoURL + '")',
+    backgroundImage: 'url("' + profile.image + '")',
   };
 
-  console.log(auth);
   return (
     <IonPage>
       <IonContent fullscreen>
-        <div class="profile-div">
-          <div class="up">
-            <div class="up__bkg-photo"></div>
-            <div class="up__face-photo" style={userImage}></div>
-            <div class="up__text">
-              <h3 class="up__text-header">{auth.currentUser.displayName}</h3>
-              <p class="up__text-para">{auth.currentUser.email}</p>
+        <div className="profile-div">
+          <div className="up">
+            <div className="up__bkg-photo"></div>
+            <div className="up__face-photo" style={userImage}></div>
+            <div className="up__text">
+              <h3 className="up__text-header">
+                {auth.currentUser.displayName}
+              </h3>
+              <p className="up__text-para">{auth.currentUser.email}</p>
               <LogoutButton />
             </div>
           </div>
