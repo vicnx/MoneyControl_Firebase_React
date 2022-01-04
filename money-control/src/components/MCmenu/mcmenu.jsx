@@ -15,6 +15,7 @@ import {
   IonLabel,
   IonButton,
   IonIcon,
+  IonMenuToggle,
 } from "@ionic/react";
 import logo from "assets/logo/logorounded.png";
 
@@ -65,75 +66,46 @@ export default function MCmenu() {
             </div>
             <hr className="menu-divider" />
             <div className="sidebar-bottom">
-              <Link
-                to="/home"
-                className="link-component"
-                onClick={() => menuController.close()}
-              >
-                <IonItem
-                  className={
-                    selected == "/home"
-                      ? "menu-item selected-item"
-                      : "menu-item"
-                  }
-                  href="/home"
+              <IonMenuToggle>
+                <Link
+                  to="/home"
+                  className="link-component"
+                  onClick={() => menuController.close()}
                 >
-                  <IonIcon
-                    className="menu-item-icon"
-                    icon={homeOutline}
-                  ></IonIcon>
-                  <span>Home</span>
-                </IonItem>
-              </Link>
-              <Link to="/profile" className="link-component">
-                <IonItem
-                  className={
-                    selected == "/profile"
-                      ? "menu-item selected-item"
-                      : "menu-item"
-                  }
-                  href="/profile"
-                >
-                  <IonIcon
-                    className="menu-item-icon"
-                    icon={personOutline}
-                  ></IonIcon>
-                  <span>Profile</span>
-                </IonItem>
-              </Link>
-
-              <IonItem
-                className={
-                  selected == "/home" ? "menu-item selected-item" : "menu-item"
-                }
-              >
-                <IonIcon className="menu-item-icon" icon={ellipse}></IonIcon>
-                <span>Menu Item</span>
-              </IonItem>
-              <IonItem
-                className={
-                  selected == "/home" ? "menu-item selected-item" : "menu-item"
-                }
-              >
-                <IonIcon className="menu-item-icon" icon={ellipse}></IonIcon>
-                <span>Menu Item</span>
-              </IonItem>
-              <IonItem
-                className={
-                  selected == "/home" ? "menu-item selected-item" : "menu-item"
-                }
-              >
-                <IonIcon className="menu-item-icon" icon={ellipse}></IonIcon>
-                <span>Menu Item</span>
-              </IonItem>
-              <IonItem
-                className={
-                  selected == "/home" ? "menu-item selected-item" : "menu-item"
-                }
-              >
-                <IonIcon className="menu-item-icon" icon={ellipse}></IonIcon>
-                <span>Menu Item</span>
-              </IonItem>
+                  <IonItem
+                    className={
+                      selected == "/home"
+                        ? "menu-item selected-item"
+                        : "menu-item"
+                    }
+                    href="/home"
+                  >
+                    <IonIcon
+                      className="menu-item-icon"
+                      icon={homeOutline}
+                    ></IonIcon>
+                    <span>Home</span>
+                  </IonItem>
+                </Link>
+              </IonMenuToggle>
+              <IonMenuToggle>
+                <Link to="/profile" className="link-component">
+                  <IonItem
+                    className={
+                      selected == "/profile"
+                        ? "menu-item selected-item"
+                        : "menu-item"
+                    }
+                    href="/profile"
+                  >
+                    <IonIcon
+                      className="menu-item-icon"
+                      icon={personOutline}
+                    ></IonIcon>
+                    <span>Profile</span>
+                  </IonItem>
+                </Link>
+              </IonMenuToggle>
             </div>
           </div>
         </IonContent>
