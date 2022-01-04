@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 import useUser from "hooks/useUser";
 import {
@@ -13,6 +13,7 @@ import {
   IonContent,
   IonFab,
   IonFabButton,
+  IonSplitPane,
 } from "@ionic/react";
 import "./mctabbar.css";
 import {
@@ -36,19 +37,18 @@ export default function MCtabbar() {
 
   return (
     <>
+      <MCmenu />
+
       <IonTabs>
         <IonRouterOutlet id="menuContent">
           <Route exact path="/profile">
             <Profile />
           </Route>
-          <Route exact path="/tab2">
-            <Profile />
-          </Route>
-          <Route path="/tab3">
+          <Route exact path="/home">
             <Login />
           </Route>
           <Route exact path="/">
-            <Redirect to="/profile" />
+            <Redirect to="/home" />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
@@ -59,11 +59,10 @@ export default function MCtabbar() {
             <IonIcon icon={homeOutline} />
           </IonTabButton>
           <IonTabButton>
-            <IonMenuButton />
+            <IonMenuButton autoHide={true} />
           </IonTabButton>
         </IonTabBar>
       </IonTabs>
-      <MCmenu />
     </>
   );
 }

@@ -31,7 +31,8 @@ const LoginPage = () => {
         {loadingUser ? (
           <MCloading loading={true} />
         ) : auth.currentUser ? (
-          <Redirect to={"/profile"} />
+          // <Redirect to={"/profile"} />
+          "hola"
         ) : (
           <div className="page">
             <div className="pageContent">
