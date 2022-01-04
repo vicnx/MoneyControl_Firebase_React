@@ -18,6 +18,7 @@ import React, { useEffect, useState } from "react";
 import * as Icons from "ionicons/icons";
 import "./Home.css";
 import MCcuentas from "components/MCcuentas/mccuentas";
+import MCgrupos from "components/MCgrupos/mcgrupos";
 
 const HomePage = () => {
   const { profile } = useUser();
@@ -63,6 +64,9 @@ const HomePage = () => {
           <div className="home-page-bottom">
             <div className="seccion">
               <MCcuentas />
+            </div>
+            <div className="seccion">
+              <MCgrupos />
             </div>
           </div>
         </div>
