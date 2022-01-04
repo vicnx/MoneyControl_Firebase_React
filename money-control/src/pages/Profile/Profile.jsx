@@ -10,9 +10,7 @@ const Profile = () => {
 
   return (
     <IonPage>
-      <IonContent fullscreen>
-        {loadingprofile ? <MCloading /> : <MCprofile />}
-      </IonContent>
+      <MCprofile />
     </IonPage>
   );
 };

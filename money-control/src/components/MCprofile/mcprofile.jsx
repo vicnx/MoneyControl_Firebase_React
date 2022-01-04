@@ -47,7 +47,7 @@ export default function MCprofile() {
   };
 
   return (
-    <IonPage>
+    <>
       <IonModal
         isOpen={showModal}
         initialBreakpoint={0.5}
@@ -125,6 +125,6 @@ export default function MCprofile() {
           </div>
         </div>
       </IonContent>
-    </IonPage>
+    </>
   );
 }

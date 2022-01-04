@@ -19,7 +19,7 @@ import * as Icons from "ionicons/icons";
 import "./mcgrupos.css";
 
 const MCgrupos = () => {
-  const { profile } = useUser();
+  // const { profile } = useUser();
   const [grupoSelected, setgrupoSelected] = useState("grupo1");
 
   return (
@@ -37,7 +37,6 @@ const MCgrupos = () => {
             <img
               src="https://filesedc.com/uploads/333/img/2020/08/1200/existen-8-tipos-distintos-de-familias-5f312cc934b72.webp"
               alt=""
-              srcset=""
             />
           </SwiperSlide>
           <SwiperSlide className="grupo">
@@ -50,7 +49,6 @@ const MCgrupos = () => {
             <img
               src="https://static.guiainfantil.com/media/17060/c/mi-familia-poemas-cortos-para-ninos-md.jpg"
               alt=""
-              srcset=""
             />
           </SwiperSlide>
           <SwiperSlide className="grupo">
@@ -63,7 +61,6 @@ const MCgrupos = () => {
             <img
               src="https://static.guiainfantil.com/media/17060/c/mi-familia-poemas-cortos-para-ninos-md.jpg"
               alt=""
-              srcset=""
             />
           </SwiperSlide>
           <SwiperSlide className="grupo">
@@ -76,7 +73,6 @@ const MCgrupos = () => {
             <img
               src="https://static.guiainfantil.com/media/17060/c/mi-familia-poemas-cortos-para-ninos-md.jpg"
               alt=""
-              srcset=""
             />
           </SwiperSlide>
         </Swiper>

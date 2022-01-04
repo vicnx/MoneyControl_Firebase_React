@@ -10,10 +10,8 @@ import {
   IonSelectOption,
   IonIcon,
 } from "@ionic/react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import useUser from "hooks/useUser";
 import React, { useEffect, useState } from "react";
 import * as Icons from "ionicons/icons";
 import "./Home.css";
@@ -21,7 +19,7 @@ import MCcuentas from "components/MCcuentas/mccuentas";
 import MCgrupos from "components/MCgrupos/mcgrupos";
 
 const HomePage = () => {
-  const { profile } = useUser();
+  // const { profile } = useUser();
   const [cuentaSelected, setCuentaSelected] = useState("cuenta1");
 
   return (

@@ -19,7 +19,7 @@ import * as Icons from "ionicons/icons";
 import "./mccuentas.css";
 
 const MCcuenta = () => {
-  const { profile } = useUser();
+  // const { profile } = useUser();
   const [cuentaSelected, setCuentaSelected] = useState("cuenta1");
 
   return (

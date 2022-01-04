@@ -48,7 +48,6 @@ export default function MCmenu() {
   };
   useEffect(() => {
     setSelected(location.pathname);
-    console.log(location);
   }, [location]);
 
   return (
@@ -85,11 +84,7 @@ export default function MCmenu() {
             <hr className="menu-divider" />
             <div className="sidebar-bottom">
               <IonMenuToggle>
-                <Link
-                  to="/home"
-                  className="link-component"
-                  onClick={() => menuController.close()}
-                >
+                <Link to="/home" className="link-component">
                   <IonItem
                     className={
                       selected == "/home"
