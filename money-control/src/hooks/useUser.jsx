@@ -21,12 +21,7 @@ import {
 } from "firebase/firestore";
 
 export default function useUser() {
-  // const firebase = useFirebaseApp();
-  // const user = useUserFirebase();
-
   const [profile, setProfile] = useState({});
-  const [isLogged, setIsLogged] = useState(false);
-  // const [user, setUser] = useState(null);
   const [state, setState] = useState({
     loading: false,
     error: false,
@@ -114,7 +109,12 @@ export default function useUser() {
       .then((res) => {
         getDoc(res).then((snapshot) => {
           if (isSubscribed) {
-            setProfile(snapshot.data());
+            setProfile(
+              Object.assign(snapshot.data(), {
+                name: auth.currentUser.displayName,
+                email: auth.currentUser.email,
+              })
+            );
           }
         });
       })
@@ -129,7 +129,12 @@ export default function useUser() {
     const querySnapshot = await getDocs(pRef);
     querySnapshot.forEach((doc) => {
       if (isSubscribed) {
-        setProfile(doc.data());
+        setProfile(
+          Object.assign(doc.data(), {
+            name: auth.currentUser.displayName,
+            email: auth.currentUser.email,
+          })
+        );
       }
     });
   });

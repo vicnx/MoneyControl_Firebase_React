@@ -3,8 +3,11 @@ http://ionicframework.com/docs/theming/ */
 
 /** Ionic CSS Variables **/
 :root {
+  --ion-font-family: -apple-system, Roboto, BlinkMacSystemFont, "Segoe UI",
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #7895ff;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -74,6 +77,9 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+  --color_text: #48596b;
+  --color_title: #16192c;
+  --color_small: #768390;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -235,12 +241,7 @@ http://ionicframework.com/docs/theming/ */
 }
 
 ion-menu {
-  --ion-background-color: linear-gradient(
-    4deg,
-    rgba(0, 56, 131, 1) 0%,
-    rgba(20, 94, 191, 1) 35%,
-    rgba(71, 150, 255, 1) 100%
-  );
+  --ion-background-color: white;
 }
 
 ion-menu ion-toolbar {
