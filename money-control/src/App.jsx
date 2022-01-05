@@ -1,7 +1,6 @@
 import { Redirect, Route } from "react-router-dom";
 import React, { Suspense, useEffect } from "react";
 import { IonApp, setupIonicReact } from "@ionic/react";
-import { UserContextProvider } from "context/UserContext";
 
 import { IonReactRouter, IonReactHashRouter } from "@ionic/react-router";
 // import Tab1 from "./pages/Tab1";
@@ -35,21 +34,16 @@ import MCrouter from "router";
 setupIonicReact();
 
 function App() {
-  const { isLogged, profile } = useUser();
-  useEffect(() => {
-    console.log("ha cambiado profile APP");
-  }, [profile]);
+  const { isLogged } = useUser();
 
   return (
-    <UserContextProvider>
-      <Suspense fallback={<MCloading loading={true} />}>
-        <IonApp>
-          <IonReactHashRouter>
-            {isLogged ? <MCrouter /> : <Login />}
-          </IonReactHashRouter>
-        </IonApp>
-      </Suspense>
-    </UserContextProvider>
+    <Suspense fallback={<MCloading loading={true} />}>
+      <IonApp>
+        <IonReactHashRouter>
+          {isLogged ? <MCrouter /> : <Login />}
+        </IonReactHashRouter>
+      </IonApp>
+    </Suspense>
   );
 }
 

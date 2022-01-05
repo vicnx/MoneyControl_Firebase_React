@@ -13,15 +13,14 @@ import {
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import useUser from "hooks/useUser";
+import useCuentas from "hooks/useCuentas";
 import React, { useEffect, useState } from "react";
 import "./mccuentas.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import CountUp from "react-countup";
 
 const MCcuenta = (props) => {
-  const { cuentas, loadingcuentas } = useUser();
-  console.log(props);
+  const { cuentas, loadingcuentas } = useCuentas();
   return (
     <>
       {loadingcuentas ? (
@@ -52,7 +51,7 @@ const MCcuenta = (props) => {
                     >
                       <div className="cuenta-top">
                         {/* <IonIcon icon={c.icono}></IonIcon> */}
-                        <ion-icon name={c.icono}></ion-icon>
+                        <ion-icon name={c.icono} ios={c.icono}></ion-icon>
                         <IonLabel className="cuenta-name">{c.name}</IonLabel>
                       </div>
                       <div className="cuenta-bottom">

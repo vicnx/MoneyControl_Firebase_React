@@ -20,9 +20,11 @@ import {
   getDocs,
   updateDoc,
 } from "firebase/firestore";
+import useCuentas from "./useCuentas";
 
 export default function useUser() {
   const { profile, setProfile } = useContext(UserContext);
+  const { createDefaultCuenta } = useCuentas();
   const [refresh, setRefresh] = useState({});
   const [cuentas, setCuentas] = useState();
   const [loadingprofile, setLoadingProfile] = useState(false);
@@ -42,7 +44,6 @@ export default function useUser() {
   useEffect(() => {
     onAuthStateChanged(auth, () => {
       setLoadingProfile(true);
-      setLoadingCuentas(true);
       if (auth.currentUser) {
         setState({
           loading: false,
@@ -51,7 +52,6 @@ export default function useUser() {
           isLogged: true,
         });
         getProfile(auth.currentUser.uid);
-        getCuentas(auth.currentUser.uid);
       } else {
         setState({
           loading: false,
@@ -95,14 +95,12 @@ export default function useUser() {
     signOut(auth)
       .then(() => {
         setState({ loading: false, error: false, loadingUser: false });
-        setProfile(null);
+        setProfile({});
 
         window.location.reload();
       })
       .catch((error) => {
-        setProfile(null);
-
-        console.log(error);
+        setProfile({});
       });
   };
 
@@ -114,36 +112,15 @@ export default function useUser() {
       admin: false,
       email: user.email,
       image: user.photoURL,
+      name: user.displayName,
     })
       .then((res) => {
         getDoc(res).then((snapshot) => {
           if (isSubscribed) {
-            setProfile(
-              Object.assign(snapshot.data(), {
-                name: auth.currentUser.displayName,
-                email: auth.currentUser.email,
-              })
-            );
+            setProfile(snapshot.data());
             setLoadingProfile(false);
           }
         });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  });
-
-  const createDefaultCuenta = useCallback((user) => {
-    const colRef = collection(db, "cuentas");
-    addDoc(colRef, {
-      uid: user.uid,
-      icono: "Icons.cashOutline",
-      color: "#7895ff",
-      cantidad: 0,
-      name: "Default",
-    })
-      .then((res) => {
-        console.log(res);
       })
       .catch((error) => {
         console.log(error);
@@ -162,20 +139,6 @@ export default function useUser() {
         setLoadingProfile(false);
       }
     });
-  });
-
-  const getCuentas = useCallback(async (uid) => {
-    const colRef = collection(db, "cuentas");
-    const pRef = await query(colRef, where("uid", "==", uid));
-    const querySnapshot = await getDocs(pRef);
-    let cuentasTotal = [];
-    querySnapshot.forEach((doc) => {
-      cuentasTotal.push(doc.data());
-    });
-    if (isSubscribed) {
-      setCuentas(cuentasTotal);
-      setLoadingCuentas(false);
-    }
   });
 
   const updateProfile = async (newdata) => {
@@ -203,9 +166,6 @@ export default function useUser() {
     isLogged: state.isLogged,
     profile,
     loadingprofile,
-    loadingcuentas,
-    cuentas,
     updateProfile,
-    refresh,
   };
 }

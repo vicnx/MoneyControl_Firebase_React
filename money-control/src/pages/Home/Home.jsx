@@ -17,16 +17,15 @@ import * as Icons from "ionicons/icons";
 import "./Home.css";
 import MCcuentas from "components/MCcuentas/mccuentas";
 import MCgrupos from "components/MCgrupos/mcgrupos";
-import useUser from "hooks/useUser";
+import useCuentas from "hooks/useCuentas";
 import ClipLoader from "react-spinners/ClipLoader";
 import CountUp from "react-countup";
 
 const HomePage = () => {
-  const { cuentas, loadingcuentas } = useUser();
+  const { cuentas, loadingcuentas } = useCuentas();
   const [cuentaSelected, setCuentaSelected] = useState({});
   useEffect(() => {
-    if (cuentas) {
-      console.log("hay cuentas");
+    if (cuentas.length > 0) {
       setCuentaSelected(cuentas[0]);
     }
   }, [cuentas]);
@@ -54,7 +53,10 @@ const HomePage = () => {
               <>
                 <div className="info-select-cuenta">
                   <IonLabel className="cuenta-selected">
-                    <ion-icon name={cuentaSelected.icono}></ion-icon>
+                    <ion-icon
+                      name={cuentaSelected.icono}
+                      ios={cuentaSelected.icono}
+                    ></ion-icon>
                     {cuentaSelected.name}
                   </IonLabel>
                 </div>

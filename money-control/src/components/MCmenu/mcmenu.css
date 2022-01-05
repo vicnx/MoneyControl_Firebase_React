@@ -29,6 +29,7 @@
   background-size: cover;
   overflow: hidden;
   margin-bottom: 35px;
+  background-color: var(--ion-color-primary-tint);
 }
 .label {
   color: var(--color_title);

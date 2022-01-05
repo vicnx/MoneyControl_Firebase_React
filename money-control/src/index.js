@@ -3,11 +3,16 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { HashRouter } from "react-router-dom";
+import { CuentasContextProvider } from "context/CuentasContext";
+import { UserContextProvider } from "context/UserContext";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <UserContextProvider>
+    <CuentasContextProvider>
+      <App />
+    </CuentasContextProvider>
+  </UserContextProvider>,
+
   document.getElementById("root")
 );
 
