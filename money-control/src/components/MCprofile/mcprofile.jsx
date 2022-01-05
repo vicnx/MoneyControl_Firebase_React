@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import useUser from "hooks/useUser";
 import {
   IonContent,
-  IonPage,
   IonModal,
   IonToolbar,
   IonButtons,
@@ -18,7 +17,7 @@ import * as Icons from "ionicons/icons";
 import LogoutButton from "components/auth/logout";
 import randomString from "global/functions";
 export default function MCprofile() {
-  const { auth, profile, updateProfile } = useUser();
+  const { profile, updateProfile } = useUser();
   const [showModal, setShowModal] = useState(false);
   const [imageURL, setImageURL] = useState(profile.image);
   const userImage = {

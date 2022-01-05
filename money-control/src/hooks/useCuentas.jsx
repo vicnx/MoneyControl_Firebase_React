@@ -1,14 +1,8 @@
 import { useCallback, useContext, useState, useEffect } from "react"; //evita que se vuelva a ejecutar una funcion
 import CuentasContext from "context/CuentasContext";
 //Firebase
-import { app, googleAuthProvider, db } from "firebase.jsx";
-import {
-  signInWithPopup,
-  getAdditionalUserInfo,
-  signOut,
-  getAuth,
-  onAuthStateChanged,
-} from "firebase/auth";
+import { app, db } from "firebase.jsx";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import {
   addDoc,

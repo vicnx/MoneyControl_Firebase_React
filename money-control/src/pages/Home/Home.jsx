@@ -1,15 +1,4 @@
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonLabel,
-  IonToolbar,
-  IonImg,
-  IonSelect,
-  IonSelectOption,
-  IonIcon,
-} from "@ionic/react";
+import { IonContent, IonPage, IonLabel, IonIcon } from "@ionic/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import React, { useEffect, useState } from "react";

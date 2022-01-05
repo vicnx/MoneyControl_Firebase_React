@@ -25,10 +25,7 @@ import useCuentas from "./useCuentas";
 export default function useUser() {
   const { profile, setProfile } = useContext(UserContext);
   const { createDefaultCuenta } = useCuentas();
-  const [refresh, setRefresh] = useState({});
-  const [cuentas, setCuentas] = useState();
   const [loadingprofile, setLoadingProfile] = useState(false);
-  const [loadingcuentas, setLoadingCuentas] = useState(false);
   const [state, setState] = useState({
     loading: false,
     error: false,

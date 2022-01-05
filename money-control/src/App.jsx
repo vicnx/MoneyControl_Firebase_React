@@ -1,8 +1,7 @@
-import { Redirect, Route } from "react-router-dom";
 import React, { Suspense, useEffect } from "react";
 import { IonApp, setupIonicReact } from "@ionic/react";
 
-import { IonReactRouter, IonReactHashRouter } from "@ionic/react-router";
+import { IonReactHashRouter } from "@ionic/react-router";
 // import Tab1 from "./pages/Tab1";
 // import Tab2 from "./pages/Tab2";
 // import Tab3 from "./pages/Tab3";
