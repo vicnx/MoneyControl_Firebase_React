@@ -39,16 +39,10 @@ export default function MCrouter() {
     <>
       <MCmenu />
       <IonRouterOutlet id="menuContent">
-        <Route path="/home">
-          <Home />
-        </Route>
-        <Route path="/profile">
-          <Profile />
-        </Route>
+        <Route path="/home" component={Home}></Route>
+        <Route path="/profile" component={Profile}></Route>
 
-        {/* <Route exact path="/">
-          <Redirect to="/home" />
-        </Route> */}
+        <Route exact path="/" render={() => <Redirect to="/home" />}></Route>
       </IonRouterOutlet>
     </>
   );

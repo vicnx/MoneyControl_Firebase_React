@@ -84,40 +84,38 @@ export default function MCmenu() {
             <hr className="menu-divider" />
             <div className="sidebar-bottom">
               <IonMenuToggle>
-                <Link to="/home" className="link-component">
-                  <IonItem
-                    className={
-                      selected == "/home"
-                        ? "menu-item selected-item"
-                        : "menu-item"
-                    }
-                    href="/home"
-                  >
-                    <IonIcon
-                      className="menu-item-icon"
-                      icon={homeOutline}
-                    ></IonIcon>
-                    <span>Home</span>
-                  </IonItem>
-                </Link>
+                <IonItem
+                  className={
+                    selected == "/home"
+                      ? "menu-item selected-item"
+                      : "menu-item"
+                  }
+                  routerLink={"/home"}
+                  routerDirection="none"
+                >
+                  <IonIcon
+                    className="menu-item-icon"
+                    icon={homeOutline}
+                  ></IonIcon>
+                  <span>Home</span>
+                </IonItem>
               </IonMenuToggle>
               <IonMenuToggle>
-                <Link to="/profile" className="link-component">
-                  <IonItem
-                    className={
-                      selected == "/profile"
-                        ? "menu-item selected-item"
-                        : "menu-item"
-                    }
-                    href="/profile"
-                  >
-                    <IonIcon
-                      className="menu-item-icon"
-                      icon={personOutline}
-                    ></IonIcon>
-                    <span>Profile</span>
-                  </IonItem>
-                </Link>
+                <IonItem
+                  className={
+                    selected == "/profile"
+                      ? "menu-item selected-item"
+                      : "menu-item"
+                  }
+                  routerLink={"/profile"}
+                  routerDirection="none"
+                >
+                  <IonIcon
+                    className="menu-item-icon"
+                    icon={personOutline}
+                  ></IonIcon>
+                  <span>Profile</span>
+                </IonItem>
               </IonMenuToggle>
             </div>
           </div>
