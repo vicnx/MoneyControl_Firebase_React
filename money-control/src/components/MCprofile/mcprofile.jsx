@@ -106,6 +106,16 @@ export default function MCprofile() {
       <IonContent fullscreen>
         <div className="profile-div">
           <div className="up">
+            <IonLabel
+              className="icon-edit-photo"
+              onClick={() => {
+                setShowModal(true);
+              }}
+            >
+              <IonIcon icon={Icons.createOutline} slot="start"></IonIcon>
+              Edit
+            </IonLabel>
+
             <div className="up__bkg-photo"></div>
             <div
               className="up__face-photo"
@@ -115,6 +125,7 @@ export default function MCprofile() {
               }}
               id="trigger-button"
             ></div>
+
             <div className="up__text">
               <h3 className="up__text-header">
                 {auth.currentUser.displayName}

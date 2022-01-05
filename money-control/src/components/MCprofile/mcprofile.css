@@ -109,3 +109,16 @@
   margin: 0 auto;
   margin-top: 20px;
 }
+.icon-edit-photo {
+  position: absolute;
+  top: 44%;
+  right: 30%;
+  padding: 8px;
+  background-color: white;
+  border-radius: 5px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.8;
+}
