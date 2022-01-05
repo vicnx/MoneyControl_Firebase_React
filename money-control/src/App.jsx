@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 import { IonApp, setupIonicReact } from "@ionic/react";
 import { UserContextProvider } from "context/UserContext";
 
-import { IonReactRouter } from "@ionic/react-router";
+import { IonReactRouter, IonReactHashRouter } from "@ionic/react-router";
 // import Tab1 from "./pages/Tab1";
 // import Tab2 from "./pages/Tab2";
 // import Tab3 from "./pages/Tab3";
@@ -41,7 +41,9 @@ function App() {
     <UserContextProvider>
       <Suspense fallback={<MCloading loading={true} />}>
         <IonApp>
-          <IonReactRouter>{isLogged ? <MCrouter /> : <Login />}</IonReactRouter>
+          <IonReactHashRouter>
+            {isLogged ? <MCrouter /> : <Login />}
+          </IonReactHashRouter>
         </IonApp>
       </Suspense>
     </UserContextProvider>

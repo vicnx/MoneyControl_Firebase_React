@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch, HashRouter } from "react-router-dom";
 
 import useUser from "hooks/useUser";
 import {
@@ -25,6 +25,7 @@ import {
 
 import MCfabmenu from "components/MCfabmenu/mcfabmenu";
 import MCmenu from "components/MCmenu/mcmenu";
+import { IonReactHashRouter } from "@ionic/react-router";
 
 export default function MCrouter() {
   const { auth } = useUser();
@@ -39,10 +40,12 @@ export default function MCrouter() {
     <>
       <MCmenu />
       <IonRouterOutlet id="menuContent">
-        <Route path="/home" component={Home}></Route>
-        <Route path="/profile" component={Profile}></Route>
+        <Switch>
+          <Route path="/home" component={Home}></Route>
+          <Route path="/profile" component={Profile}></Route>
 
-        <Route exact path="/" render={() => <Redirect to="/home" />}></Route>
+          <Route exact path="/" render={() => <Redirect to="/home" />}></Route>
+        </Switch>
       </IonRouterOutlet>
     </>
   );
