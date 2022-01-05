@@ -1,5 +1,5 @@
 import { Redirect, Route } from "react-router-dom";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { IonApp, setupIonicReact } from "@ionic/react";
 import { UserContextProvider } from "context/UserContext";
 
@@ -35,7 +35,10 @@ import MCrouter from "router";
 setupIonicReact();
 
 function App() {
-  const { isLogged } = useUser();
+  const { isLogged, profile } = useUser();
+  useEffect(() => {
+    console.log("ha cambiado profile APP");
+  }, [profile]);
 
   return (
     <UserContextProvider>

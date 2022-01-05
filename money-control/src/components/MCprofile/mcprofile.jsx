@@ -18,7 +18,7 @@ import * as Icons from "ionicons/icons";
 import LogoutButton from "components/auth/logout";
 import randomString from "global/functions";
 export default function MCprofile() {
-  const { auth, profile } = useUser();
+  const { auth, profile, updateProfile } = useUser();
   const [showModal, setShowModal] = useState(false);
   const [imageURL, setImageURL] = useState(profile.image);
   const userImage = {
@@ -32,6 +32,7 @@ export default function MCprofile() {
   ];
 
   useEffect(() => {
+    console.log("ha cambiado profile");
     setImageURL(profile.image);
   }, [profile]);
 
@@ -81,6 +82,7 @@ export default function MCprofile() {
           <div className="buttons-div">
             <IonButton
               onClick={() => {
+                updateProfile({ imageURL });
                 setShowModal(false);
               }}
               color="success"
@@ -127,10 +129,8 @@ export default function MCprofile() {
             ></div>
 
             <div className="up__text">
-              <h3 className="up__text-header">
-                {auth.currentUser.displayName}
-              </h3>
-              <p className="up__text-para">{auth.currentUser.email}</p>
+              <h3 className="up__text-header">{profile.name}</h3>
+              <p className="up__text-para">{profile.email}</p>
               <LogoutButton />
             </div>
           </div>

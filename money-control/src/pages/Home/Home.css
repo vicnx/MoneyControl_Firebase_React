@@ -1,5 +1,5 @@
 .header-home {
-  margin-top: 30px;
+  margin-top: 10px;
   height: 40px;
   display: flex;
 }
@@ -19,7 +19,7 @@
   height: auto;
 }
 .dinero-cuenta {
-  font-size: 40px;
+  font-size: 45px;
 }
 .info-select-cuenta {
   display: flex;
@@ -46,7 +46,7 @@
   color: var(--color_title);
 }
 .gastos-beneficios {
-  margin-top: 30px;
+  margin-top: 33px;
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -65,7 +65,7 @@
   align-items: center;
 }
 .gastos-beneficios {
-  font-size: small;
+  font-size: 15px;
   color: var(--color_small);
 }
 .gastos-cuenta {
@@ -76,9 +76,6 @@
   margin-right: 5px;
 }
 
-.home-page-bottom {
-  margin-top: 20px;
-}
 .seccion {
   width: 100%;
   display: flex;
@@ -89,10 +86,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 25px;
+  font-size: 35px;
   text-transform: capitalize;
 }
 .cuenta-selected ion-icon {
-  font-size: 30px;
+  font-size: 40px;
   margin-right: 5px;
 }

@@ -1,12 +1,4 @@
-.floatingmenu-button {
-  width: 140px;
-  display: flex;
-  align-items: flex-start;
+.options-fab {
+  margin-bottom: 10px;
+  margin-left: 10px;
 }
-.floatingmenu-button .button-inner {
-  justify-content: start;
-}
-
-/* .floatingmenu-button {
-  transform: scale(110%);
-} */

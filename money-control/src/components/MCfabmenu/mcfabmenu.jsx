@@ -25,7 +25,12 @@ export default function MCfabmenu() {
   console.log(auth);
   return (
     <>
-      <IonFab vertical="bottom" horizontal="start" slot="fixed">
+      <IonFab
+        vertical="bottom"
+        horizontal="start"
+        slot="fixed"
+        className="options-fab"
+      >
         <IonFabButton color="secondary">
           <IonIcon icon={arrowUp} />
         </IonFabButton>

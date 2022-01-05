@@ -18,10 +18,12 @@ import {
   query,
   where,
   getDocs,
+  updateDoc,
 } from "firebase/firestore";
 
 export default function useUser() {
-  const [profile, setProfile] = useState({});
+  const { profile, setProfile } = useContext(UserContext);
+  const [refresh, setRefresh] = useState({});
   const [cuentas, setCuentas] = useState();
   const [loadingprofile, setLoadingProfile] = useState(false);
   const [loadingcuentas, setLoadingCuentas] = useState(false);
@@ -154,12 +156,9 @@ export default function useUser() {
     const querySnapshot = await getDocs(pRef);
     querySnapshot.forEach((doc) => {
       if (isSubscribed) {
-        setProfile(
-          Object.assign(doc.data(), {
-            name: auth.currentUser.displayName,
-            email: auth.currentUser.email,
-          })
-        );
+        let profileTemp = doc.data();
+        console.log(profileTemp);
+        setProfile({ ...profileTemp, docid: doc.id });
         setLoadingProfile(false);
       }
     });
@@ -179,6 +178,18 @@ export default function useUser() {
     }
   });
 
+  const updateProfile = async (newdata) => {
+    console.log("uiipdate");
+    const docRef = doc(db, "profiles", profile.docid);
+    console.log(profile.docid);
+    updateDoc(docRef, {
+      image: newdata.imageURL,
+    }).then((res) => {
+      getProfile(auth.currentUser.uid);
+      setRefresh(true);
+    });
+  };
+
   return {
     GoogleSignIn,
     SignOut,
@@ -194,5 +205,7 @@ export default function useUser() {
     loadingprofile,
     loadingcuentas,
     cuentas,
+    updateProfile,
+    refresh,
   };
 }

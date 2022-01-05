@@ -38,7 +38,6 @@ export default function MCmenu() {
   const [selected, setSelected] = useState("");
   const [closed, setClosed] = useState("");
 
-  console.log(profile);
   const location = useLocation();
   // const Profile = React.lazy(() => import("../../pages/Profile/Profile"));
   // const Login = React.lazy(() => import("../../pages/Login/Login"));
@@ -48,11 +47,17 @@ export default function MCmenu() {
   };
   useEffect(() => {
     setSelected(location.pathname);
+    console.log(profile);
   }, [location]);
 
   return (
     <>
-      <IonFab vertical="bottom" horizontal="end" slot="fixed">
+      <IonFab
+        vertical="bottom"
+        horizontal="end"
+        slot="fixed"
+        className="menu-fab"
+      >
         <IonFabButton>
           <IonMenuButton autoHide={true}>
             <IonIcon icon={gridOutline} />
