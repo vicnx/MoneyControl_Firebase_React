@@ -146,7 +146,6 @@ export default function useUser() {
       image: newdata.imageURL,
     }).then((res) => {
       getProfile(auth.currentUser.uid);
-      setRefresh(true);
     });
   };
 
