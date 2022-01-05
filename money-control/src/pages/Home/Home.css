@@ -85,3 +85,14 @@
   flex-direction: column;
   margin-bottom: 15px;
 }
+.cuenta-selected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  text-transform: capitalize;
+}
+.cuenta-selected ion-icon {
+  font-size: 30px;
+  margin-right: 5px;
+}

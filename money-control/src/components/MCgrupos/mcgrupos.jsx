@@ -24,7 +24,7 @@ const MCgrupos = () => {
 
   return (
     <>
-      <IonLabel className="title">Grupos</IonLabel>
+      <IonLabel className="title">Grupos de gastos</IonLabel>
       <div className="grupos-list">
         <Swiper slidesPerView={2} loop={false} className="mySwiper">
           <SwiperSlide className="grupo">
