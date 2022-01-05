@@ -12,14 +12,7 @@ import {
 } from "@ionic/react";
 
 import "./mcfabmenu.css";
-import {
-  add,
-  settings,
-  logoInstagram,
-  cardOutline,
-  cartOutline,
-  peopleOutline,
-} from "ionicons/icons";
+import { add, remove, arrowUp } from "ionicons/icons";
 
 export default function MCfabmenu() {
   const { auth } = useUser();
@@ -32,38 +25,17 @@ export default function MCfabmenu() {
   console.log(auth);
   return (
     <>
-      <IonFab vertical="top" horizontal="start" slot="fixed">
-        <IonFabButton>
-          <IonIcon icon={add} />
+      <IonFab vertical="bottom" horizontal="start" slot="fixed">
+        <IonFabButton color="secondary">
+          <IonIcon icon={arrowUp} />
         </IonFabButton>
-        <IonFabList>
-          <IonButton
-            color="secondary"
-            shape="round"
-            size="small"
-            className="floatingmenu-button"
-          >
-            <IonIcon icon={cardOutline} slot="start" />
-            <IonLabel>CUENTAS</IonLabel>
-          </IonButton>
-          <IonButton
-            color="tertiary"
-            shape="round"
-            size="small"
-            className="floatingmenu-button"
-          >
-            <IonIcon icon={cartOutline} slot="start" />
-            <IonLabel>GASTOS</IonLabel>
-          </IonButton>
-          <IonButton
-            color="secondary"
-            shape="round"
-            size="small"
-            className="floatingmenu-button"
-          >
-            <IonIcon icon={peopleOutline} slot="start" />
-            <IonLabel>GRUPOS</IonLabel>
-          </IonButton>
+        <IonFabList side="top">
+          <IonFabButton color="success">
+            <IonIcon icon={add} />
+          </IonFabButton>
+          <IonFabButton color="danger">
+            <IonIcon icon={remove} />
+          </IonFabButton>
         </IonFabList>
       </IonFab>
     </>

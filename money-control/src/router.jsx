@@ -39,6 +39,7 @@ export default function MCrouter() {
   return (
     <>
       <MCmenu />
+      <MCfabmenu />
       <IonRouterOutlet id="menuContent">
         <Switch>
           <Route path="/home" component={Home}></Route>
