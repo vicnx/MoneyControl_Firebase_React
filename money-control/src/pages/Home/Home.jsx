@@ -9,6 +9,7 @@ import MCgrupos from "components/MCgrupos/mcgrupos";
 import useCuentas from "hooks/useCuentas";
 import ClipLoader from "react-spinners/ClipLoader";
 import CountUp from "react-countup";
+import DynamicFaIcon from "components/DynamicIcons/DynamicIcons";
 
 const HomePage = () => {
   const { cuentas, loadingcuentas } = useCuentas();
@@ -42,10 +43,7 @@ const HomePage = () => {
               <>
                 <div className="info-select-cuenta">
                   <IonLabel className="cuenta-selected">
-                    <ion-icon
-                      name={cuentaSelected.icono}
-                      ios={cuentaSelected.icono}
-                    ></ion-icon>
+                    <DynamicFaIcon name={cuentaSelected.icono} />
                     {cuentaSelected.name}
                   </IonLabel>
                 </div>

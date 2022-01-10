@@ -18,6 +18,7 @@ import React, { useEffect, useState } from "react";
 import "./mccuentas.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import CountUp from "react-countup";
+import DynamicFaIcon from "components/DynamicIcons/DynamicIcons";
 
 const MCcuenta = (props) => {
   const { cuentas, loadingcuentas } = useCuentas();
@@ -51,7 +52,7 @@ const MCcuenta = (props) => {
                     >
                       <div className="cuenta-top">
                         {/* <IonIcon icon={c.icono}></IonIcon> */}
-                        <ion-icon name={c.icono} ios={c.icono}></ion-icon>
+                        <DynamicFaIcon name={c.icono} />
                         <IonLabel className="cuenta-name">{c.name}</IonLabel>
                       </div>
                       <div className="cuenta-bottom">
