@@ -25,16 +25,12 @@ import {
 
 import MCfabmenu from "components/MCfabmenu/mcfabmenu";
 import MCmenu from "components/MCmenu/mcmenu";
-import { IonReactHashRouter } from "@ionic/react-router";
 
 export default function MCrouter() {
   const { auth } = useUser();
   const Profile = React.lazy(() => import("pages/Profile/Profile"));
-  const Login = React.lazy(() => import("pages/Login/Login"));
   const Home = React.lazy(() => import("pages/Home/Home"));
-  const userImage = {
-    backgroundImage: 'url("' + auth.currentUser.photoURL + '")',
-  };
+  const Cuentas = React.lazy(() => import("pages/Cuentas/Cuentas"));
 
   return (
     <>
@@ -44,7 +40,7 @@ export default function MCrouter() {
         <Switch>
           <Route path="/home" component={Home}></Route>
           <Route path="/profile" component={Profile}></Route>
-
+          <Route path="/cuentas" component={Cuentas}></Route>
           <Route exact path="/" render={() => <Redirect to="/home" />}></Route>
         </Switch>
       </IonRouterOutlet>

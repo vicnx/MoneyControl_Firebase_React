@@ -1,0 +1,15 @@
+.header-cuentas {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #768390;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.header-cuentas ion-icon {
+  background-color: var(--ion-color-primary-tint);
+  padding: 8px;
+  border-radius: 10px;
+  box-shadow: var(--best_shadow);
+  font-size: 20px;
+}

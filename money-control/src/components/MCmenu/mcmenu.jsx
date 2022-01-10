@@ -26,10 +26,10 @@ import MCrouter from "router";
 
 import "./mcmenu.css";
 import {
-  ellipse,
   homeOutline,
   personOutline,
   gridOutline,
+  barChartOutline,
 } from "ionicons/icons";
 import { menuController } from "@ionic/core";
 
@@ -120,6 +120,23 @@ export default function MCmenu() {
                     icon={personOutline}
                   ></IonIcon>
                   <span>Profile</span>
+                </IonItem>
+              </IonMenuToggle>
+              <IonMenuToggle>
+                <IonItem
+                  className={
+                    selected == "/cuentas"
+                      ? "menu-item selected-item"
+                      : "menu-item"
+                  }
+                  routerLink={"/cuentas"}
+                  routerDirection="none"
+                >
+                  <IonIcon
+                    className="menu-item-icon"
+                    icon={barChartOutline}
+                  ></IonIcon>
+                  <span>Cuentas</span>
                 </IonItem>
               </IonMenuToggle>
             </div>
