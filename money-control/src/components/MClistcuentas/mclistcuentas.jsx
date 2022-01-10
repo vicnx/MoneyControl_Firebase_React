@@ -35,8 +35,8 @@ const MClistcuentas = (props) => {
                 className="contador-money"
               />
 
-              <div className="options" slot="end">
-                <DynamicFaIcon name="trashOutline" />
+              <div className="cuenta-options" slot="end">
+                <DynamicFaIcon name="trash" />
               </div>
             </IonItem>
           ))}

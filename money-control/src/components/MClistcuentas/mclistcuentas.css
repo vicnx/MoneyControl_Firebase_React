@@ -1,3 +1,6 @@
+.cuenta-item {
+  color: var(--color_text);
+}
 .cuenta-name-info {
   display: flex;
   justify-content: center;
@@ -12,4 +15,8 @@
 .cuenta-content {
   display: flex;
   justify-content: space-around;
+}
+.cuenta-options {
+  font-size: 23px;
+  color: var(--ion-color-danger-tint);
 }
