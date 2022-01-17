@@ -32,7 +32,7 @@ const CuentasPage = () => {
             routerDirection="none"
             className="boton-add"
           >
-            <DynamicFaIcon name="addCircle" />
+            <DynamicFaIcon name="addCircle" color="var(--ion-color-primary" />
           </IonRouterLink>
         </IonHeader>
         <IonContent className="list-cuentas">

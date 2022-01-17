@@ -14,7 +14,7 @@ import {
 } from "@ionic/react";
 
 /* Your icon name from database data can now be passed as prop */
-const DynamicFaIcon = ({ name }) => {
+const DynamicFaIcon = ({ name, color, slot }) => {
   const IconComponent = Icons[name];
 
   if (!IconComponent) {
@@ -23,7 +23,15 @@ const DynamicFaIcon = ({ name }) => {
     return <IonIcon icon={Icons.imageOutline} />;
   }
 
-  return <IonIcon icon={IconComponent} />;
+  return slot ? (
+    <IonIcon
+      style={{ color: color ? color : "black" }}
+      icon={IconComponent}
+      slot={slot ? slot : null}
+    />
+  ) : (
+    <IonIcon style={{ color: color ? color : "black" }} icon={IconComponent} />
+  );
 };
 
 export default DynamicFaIcon;

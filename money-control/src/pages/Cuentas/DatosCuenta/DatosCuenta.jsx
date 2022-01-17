@@ -22,13 +22,13 @@ const DatosCuentaPage = () => {
 
   return (
     <IonPage>
-      <IonContent fullscreen>
+      <IonContent fullscreen scrollX="false" scrollY="false">
         <IonHeader fixed className="header-cuentas-datos">
           <IonLabel className="title">
             {type == "add" ? "Nueva cuenta" : "Editar cuenta"}
           </IonLabel>
         </IonHeader>
-        <IonContent>
+        <IonContent scrollX="false" scrollY="true">
           <MCdatoscuenta type={type} />
         </IonContent>
       </IonContent>

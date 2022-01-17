@@ -1,15 +1,15 @@
-.color-component {
+.icono-component {
   margin-top: 20px;
   font-size: 18px;
   display: flex;
   flex-direction: column;
 }
-.color-component .info {
+.icono-component .info {
   margin-top: 10px;
   padding: 5px;
   align-self: center;
 }
-.color {
+.icono {
   margin: 3px;
   padding: 13px;
   min-width: 75px;
@@ -26,8 +26,9 @@
   justify-content: center;
   transition: 0.4s;
   border: 3px solid white;
+  font-size: 30px;
 }
-.color-list {
+.icono-list {
   margin-top: 5px;
   display: flex;
   flex-direction: row;
@@ -53,7 +54,7 @@
   transform: scale(105%);
 }
 
-.separador-color {
+.separador-icono {
   width: 80%;
   height: 5px;
   border-radius: 5px;

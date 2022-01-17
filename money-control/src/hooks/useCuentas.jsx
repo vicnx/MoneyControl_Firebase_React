@@ -3,6 +3,7 @@ import CuentasContext from "context/CuentasContext";
 //Firebase
 import { app, db } from "firebase.jsx";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useHistory } from "react-router-dom";
 
 import {
   addDoc,
@@ -26,10 +27,12 @@ export default function useCuentas() {
   const [success, setSuccess] = useState({ status: false, msg: "" });
   const [errorMSG, setErrorMSG] = useState("");
   const auth = getAuth(app);
+  const history = useHistory();
   let isSubscribed = true;
 
   useEffect(() => {
     onAuthStateChanged(auth, () => {
+      setSuccess({ status: false, msg: "" });
       setLoadingCuentas(true);
       if (auth.currentUser) {
         setState({
@@ -76,12 +79,26 @@ export default function useCuentas() {
     const querySnapshot = await getDocs(pRef);
     let cuentasTotal = [];
     querySnapshot.forEach((doc) => {
-      cuentasTotal.push(doc.data());
+      cuentasTotal.push({ ...doc.data(), docid: doc.id });
     });
     if (isSubscribed) {
       setCuentas(cuentasTotal);
       setLoadingCuentas(false);
     }
+  });
+
+  const createNewCuenta = useCallback((cuenta) => {
+    const colRef = collection(db, "cuentas");
+    addDoc(colRef, cuenta)
+      .then((res) => {
+        setSuccess({ status: true, msg: "Cuenta creada con exito!" });
+        setTimeout(() => {
+          history.push("/cuentas");
+        }, 2000);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   });
 
   return {
@@ -91,5 +108,8 @@ export default function useCuentas() {
     loadingcuentas,
     cuentas,
     createDefaultCuenta,
+    createNewCuenta,
+    success,
+    setSuccess,
   };
 }

@@ -40,7 +40,7 @@ const MCcuenta = (props) => {
                 ? cuentas.map((c, index) => (
                     <SwiperSlide
                       className={
-                        props.cuentaSelected.name == c.name
+                        props.cuentaSelected.docid == c.docid
                           ? "cuenta selected"
                           : "cuenta"
                       }

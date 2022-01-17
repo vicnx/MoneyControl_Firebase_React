@@ -261,6 +261,7 @@ ion-menu ion-content {
   --background: transparent;
 }
 
-.no-scroll .scroll-content {
-  overflow: hidden;
+.required {
+  color: red;
+  font-size: 18px;
 }
