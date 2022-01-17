@@ -12,6 +12,7 @@ import MCcolores from "components/MCcolores/mccolores";
 import MCiconos from "components/MCiconos/mciconos";
 import useUser from "hooks/useUser";
 import { informationCircle } from "ionicons/icons";
+import CurrencyInput from "react-currency-input-field";
 
 const MCdatoscuenta = (props) => {
   const { profile, updateProfile, loadingprofile } = useUser();
@@ -55,18 +56,7 @@ const MCdatoscuenta = (props) => {
       cantidad: cantidad ? cantidad : 0,
       name: name,
     };
-    console.log(NewCuenta);
     createNewCuenta(NewCuenta);
-
-    if (success.status) {
-      setToast({
-        isOpen: true,
-        content: "Cuenta creada con exito!",
-        color: "success",
-      });
-
-      setTimeout(() => {}, 2000);
-    }
   }
 
   return (
@@ -94,16 +84,60 @@ const MCdatoscuenta = (props) => {
               onIonChange={(e) => setName(e.detail.value)}
             ></IonInput>
           </IonItem>
-          <IonItem className="mc-input">
-            <IonLabel position="floating">Valor inicial (EUR)</IonLabel>
+          <div className="mc-input value">
+            <span>Valor inicial (EUR)</span>
+            <div className="input-currency">
+              <button
+                id="decrement"
+                className="button-decrement"
+                onClick={(e) => {
+                  if (!(cantidad < 1)) {
+                    setCantidad(cantidad - 1);
+                  }
+                }}
+              >
+                <DynamicFaIcon
+                  name={"removeCircleOutline"}
+                  slot="end"
+                  color="white"
+                />
+              </button>
+              <CurrencyInput
+                className="valueInput"
+                id="input-example"
+                name="input-name"
+                placeholder="Valor inicial de la cuenta"
+                defaultValue={0}
+                value={cantidad}
+                decimalsLimit={2}
+                onValueChange={(value) => setCantidad(value)}
+                suffix=" €"
+              />
+              <button
+                id="increment"
+                className="button-increment"
+                onClick={(e) => {
+                  setCantidad(cantidad + 1);
+                }}
+              >
+                <DynamicFaIcon
+                  name={"addCircleOutline"}
+                  slot="end"
+                  color="white"
+                />
+              </button>
+            </div>
+
+            {/* <IonLabel position="floating">Valor inicial (EUR)</IonLabel>
             <IonInput
               disabled={success.status}
               value={cantidad}
               type="number"
+              maxlength="8"
               placeholder="Valor inicial de la cuenta en euros"
               onIonChange={(e) => setCantidad(e.detail.value)}
-            ></IonInput>
-          </IonItem>
+            ></IonInput> */}
+          </div>
           <MCcolores onChange={changeColor} colorSelected={color} />
           <MCiconos
             onChange={changeIcono}

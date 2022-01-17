@@ -53,6 +53,9 @@ const HomePage = () => {
                       end={cuentaSelected.cantidad}
                       suffix=" €"
                       duration={1}
+                      separator=" "
+                      decimal=","
+                      decimals={2}
                     />
                   </IonLabel>
                   <div className="gastos-beneficios">

@@ -21,7 +21,7 @@ import { Link } from "react-router-dom";
 
 const CuentasPage = () => {
   const { cuentas, loadingcuentas } = useCuentas();
-
+  console.log(cuentas);
   return (
     <IonPage>
       <IonContent fullscreen>
