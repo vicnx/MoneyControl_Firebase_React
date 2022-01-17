@@ -31,6 +31,9 @@ export default function MCrouter() {
   const Profile = React.lazy(() => import("pages/Profile/Profile"));
   const Home = React.lazy(() => import("pages/Home/Home"));
   const Cuentas = React.lazy(() => import("pages/Cuentas/Cuentas"));
+  const DatosCuenta = React.lazy(() =>
+    import("pages/Cuentas/DatosCuenta/DatosCuenta")
+  );
 
   return (
     <>
@@ -38,9 +41,10 @@ export default function MCrouter() {
       <MCfabmenu />
       <IonRouterOutlet id="menuContent">
         <Switch>
-          <Route path="/home" component={Home}></Route>
-          <Route path="/profile" component={Profile}></Route>
-          <Route path="/cuentas" component={Cuentas}></Route>
+          <Route exact path="/home" component={Home}></Route>
+          <Route exact path="/profile" component={Profile}></Route>
+          <Route exact path="/cuentas" component={Cuentas}></Route>
+          <Route exact path="/cuentas/add" component={DatosCuenta}></Route>
           <Route exact path="/" render={() => <Redirect to="/home" />}></Route>
         </Switch>
       </IonRouterOutlet>

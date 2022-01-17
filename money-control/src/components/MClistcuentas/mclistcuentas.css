@@ -1,4 +1,6 @@
 .cuenta-item {
+  padding-left: 10px;
+  padding-right: 10px;
   color: var(--color_text);
 }
 .cuenta-name-info {

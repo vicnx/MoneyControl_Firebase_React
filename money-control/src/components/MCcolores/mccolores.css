@@ -1,0 +1,48 @@
+.color-component {
+  margin-top: 20px;
+  font-size: 18px;
+}
+.color {
+  margin: 3px;
+  padding: 13px;
+  min-width: 75px;
+  max-width: 75px;
+  min-height: 75px;
+  width: 75px !important;
+  max-height: 75px;
+  box-shadow: var(--best_shadow);
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s;
+  border: 3px solid white;
+}
+.color-list {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--ion-color-primary-tint);
+  border-radius: 15px;
+  padding: 10px 5px 10px 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: var(--best_shadow);
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+.circle {
+  box-shadow: var(--best_shadow);
+  width: 100%;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.selected {
+  transform: scale(105%);
+}
