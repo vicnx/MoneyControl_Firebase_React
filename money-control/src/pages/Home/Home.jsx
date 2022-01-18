@@ -45,8 +45,14 @@ const HomePage = () => {
                 <div className="info-select-cuenta">
                   <div className="cuenta-selected">
                     <div className="text-icon">
-                      <DynamicFaIcon name={cuentaSelected.icono} />
-                      <IonLabel className="cuenta-selected-name">
+                      <DynamicFaIcon
+                        name={cuentaSelected.icono}
+                        color={cuentaSelected.color}
+                      />
+                      <IonLabel
+                        className="cuenta-selected-name"
+                        // style={{ color: cuentaSelected.color }}
+                      >
                         {cuentaSelected.name}
                       </IonLabel>
                     </div>

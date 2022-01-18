@@ -52,8 +52,25 @@ const MCcuenta = (props) => {
                     >
                       <div className="cuenta-top">
                         {/* <IonIcon icon={c.icono}></IonIcon> */}
-                        <DynamicFaIcon name={c.icono} />
-                        <IonLabel className="cuenta-name">{c.name}</IonLabel>
+                        <DynamicFaIcon
+                          name={c.icono}
+                          color={
+                            props.cuentaSelected.docid == c.docid
+                              ? c.color
+                              : "var(--color_small)"
+                          }
+                        />
+                        <IonLabel
+                          className="cuenta-name"
+                          style={{
+                            color:
+                              props.cuentaSelected.docid == c.docid
+                                ? c.color
+                                : "var(--color_small)",
+                          }}
+                        >
+                          {c.name}
+                        </IonLabel>
                       </div>
                       <div className="cuenta-bottom">
                         <IonLabel className="cuenta-balance">
@@ -66,7 +83,15 @@ const MCcuenta = (props) => {
                             decimals={2}
                           />
                         </IonLabel>
-                        <hr className="separador-cuentas" />
+                        <hr
+                          className="separador-cuentas"
+                          style={{
+                            backgroundColor:
+                              props.cuentaSelected.docid == c.docid
+                                ? c.color
+                                : "var(--color_small)",
+                          }}
+                        />
                       </div>
                     </SwiperSlide>
                   ))
