@@ -65,8 +65,6 @@ export default function useUser() {
             loadingUser: false,
             isLogged: false,
           });
-          SignOut();
-          history.push("/login");
         }, 500);
       }
     });
