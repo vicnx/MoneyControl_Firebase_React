@@ -60,6 +60,7 @@ const HomePage = () => {
                 </div>
                 <div className="info-cuenta">
                   <IonLabel className="dinero-cuenta">
+                    <small>Balance actual:</small>
                     <CountUp
                       end={cuentaSelected.cantidad}
                       suffix=" €"
