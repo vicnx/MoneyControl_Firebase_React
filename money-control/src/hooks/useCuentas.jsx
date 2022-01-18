@@ -1,9 +1,9 @@
 import { useCallback, useContext, useState, useEffect } from "react"; //evita que se vuelva a ejecutar una funcion
 import CuentasContext from "context/CuentasContext";
+import { useHistory } from "react-router-dom";
 //Firebase
 import { app, db } from "firebase.jsx";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useHistory } from "react-router-dom";
 
 import {
   addDoc,
@@ -14,6 +14,7 @@ import {
   where,
   getDocs,
   updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 
 export default function useCuentas() {
@@ -100,10 +101,22 @@ export default function useCuentas() {
         console.log(error);
       });
   });
+  const deleteCuenta = useCallback(async (cuenta) => {
+    console.log("cuentas length", cuentas.length);
+    if (cuentas.length <= 1) {
+      setError({ status: true, msg: "No puedes eliminar tu ultima cuenta!" });
+    } else {
+      deleteDoc(doc(db, "cuentas", cuenta.docid)).then((res) => {
+        setSuccess({ status: true, msg: "Cuenta eliminada con exito!" });
+        getCuentas(auth.currentUser.uid);
+      });
+    }
+  });
 
   return {
     errors: errorMSG,
     error: error,
+    setError,
     success: success,
     loadingcuentas,
     cuentas,
@@ -111,5 +124,6 @@ export default function useCuentas() {
     createNewCuenta,
     success,
     setSuccess,
+    deleteCuenta,
   };
 }

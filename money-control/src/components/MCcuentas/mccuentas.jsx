@@ -61,6 +61,9 @@ const MCcuenta = (props) => {
                             end={c.cantidad}
                             suffix=" €"
                             duration={1.5}
+                            separator=" "
+                            decimal=","
+                            decimals={2}
                           />
                         </IonLabel>
                         <hr className="separador-cuentas" />

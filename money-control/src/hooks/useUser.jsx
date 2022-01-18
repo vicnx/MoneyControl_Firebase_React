@@ -21,6 +21,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import useCuentas from "./useCuentas";
+import { useHistory } from "react-router-dom";
 
 export default function useUser() {
   const { profile, setProfile } = useContext(UserContext);
@@ -37,6 +38,7 @@ export default function useUser() {
   const [errorMSG, setErrorMSG] = useState("");
   const auth = getAuth(app);
   let isSubscribed = true;
+  const history = useHistory();
 
   useEffect(() => {
     onAuthStateChanged(auth, () => {
@@ -63,6 +65,8 @@ export default function useUser() {
             loadingUser: false,
             isLogged: false,
           });
+          SignOut();
+          history.push("/login");
         }, 500);
       }
     });

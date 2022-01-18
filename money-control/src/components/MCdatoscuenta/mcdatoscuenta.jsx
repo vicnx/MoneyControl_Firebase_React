@@ -53,9 +53,10 @@ const MCdatoscuenta = (props) => {
       uid: profile.uid,
       icono: icono ? icono : "cashOutline",
       color: color ? color : "#5499C7",
-      cantidad: cantidad ? cantidad : 0,
+      cantidad: cantidad ? cantidad.replace(/,/g, ".") : 0,
       name: name,
     };
+    console.log("NewCuenta", NewCuenta);
     createNewCuenta(NewCuenta);
   }
 
@@ -110,7 +111,9 @@ const MCdatoscuenta = (props) => {
                 defaultValue={0}
                 value={cantidad}
                 decimalsLimit={2}
-                onValueChange={(value) => setCantidad(value)}
+                onValueChange={(value) => {
+                  setCantidad(value);
+                }}
                 suffix=" €"
               />
               <button

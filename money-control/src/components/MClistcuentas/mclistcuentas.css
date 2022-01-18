@@ -1,16 +1,23 @@
 .cuenta-item {
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 10px;
   color: var(--color_text);
+  display: flex;
 }
 .cuenta-name-info {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   margin-right: 10%;
+  width: 60%;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .cuenta-name-info ion-icon {
-  font-size: 30px;
+  font-size: 28px;
   margin-right: 10px;
 }
 
@@ -21,4 +28,7 @@
 .cuenta-options {
   font-size: 23px;
   color: var(--ion-color-danger-tint);
+}
+.cuenta-name-info .cuenta-name {
+  font-size: 16px;
 }

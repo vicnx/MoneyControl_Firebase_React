@@ -22,6 +22,7 @@ const HomePage = () => {
 
   function changeCuenta(newValue) {
     setCuentaSelected(newValue);
+    console.log(cuentaSelected.cantidad);
   }
 
   return (
@@ -42,10 +43,14 @@ const HomePage = () => {
             ) : (
               <>
                 <div className="info-select-cuenta">
-                  <IonLabel className="cuenta-selected">
-                    <DynamicFaIcon name={cuentaSelected.icono} />
-                    {cuentaSelected.name}
-                  </IonLabel>
+                  <div className="cuenta-selected">
+                    <div className="text-icon">
+                      <DynamicFaIcon name={cuentaSelected.icono} />
+                      <IonLabel className="cuenta-selected-name">
+                        {cuentaSelected.name}
+                      </IonLabel>
+                    </div>
+                  </div>
                 </div>
                 <div className="info-cuenta">
                   <IonLabel className="dinero-cuenta">
