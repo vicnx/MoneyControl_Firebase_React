@@ -19,6 +19,7 @@
   height: auto;
 }
 .dinero-cuenta {
+  margin-left: 20px;
   font-size: 45px;
 }
 .info-select-cuenta {
@@ -28,6 +29,7 @@
   margin-bottom: 6px;
   display: flex;
   justify-content: center;
+  margin-bottom: 25px;
 }
 .info-select-cuenta ion-label ion-icon {
   padding-right: 2px;
