@@ -119,7 +119,7 @@ export default function MCmenu() {
                     className="menu-item-icon"
                     icon={personOutline}
                   ></IonIcon>
-                  <span>Profile</span>
+                  <span>Perfil</span>
                 </IonItem>
               </IonMenuToggle>
               <IonMenuToggle>

@@ -28,9 +28,9 @@ const HomePage = () => {
   return (
     <IonPage>
       <IonContent fullscreen>
-        <div className="header-home">
-          <IonLabel className="title">Overview</IonLabel>
-        </div>
+        {/* <div className="header-home">
+          <IonLabel className="title">Resumen</IonLabel>
+        </div> */}
         <div className="home-page">
           <div className="home-page-top">
             {loadingcuentas ? (
