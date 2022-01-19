@@ -33,7 +33,7 @@ import {
 } from "ionicons/icons";
 import { menuController } from "@ionic/core";
 
-export default function MCmenu() {
+export default function MCmenu(props) {
   const { auth, profile } = useUser();
   const [selected, setSelected] = useState("");
   const [closed, setClosed] = useState("");
@@ -52,18 +52,23 @@ export default function MCmenu() {
 
   return (
     <>
-      <IonFab
-        vertical="bottom"
-        horizontal="end"
-        slot="fixed"
-        className="menu-fab"
-      >
-        <IonFabButton>
-          <IonMenuButton autoHide={true}>
-            <IonIcon icon={gridOutline} />
-          </IonMenuButton>
-        </IonFabButton>
-      </IonFab>
+      {props.fabhidden ? (
+        ""
+      ) : (
+        <IonFab
+          vertical="bottom"
+          horizontal="end"
+          slot="fixed"
+          className="menu-fab"
+        >
+          <IonFabButton>
+            <IonMenuButton autoHide={true}>
+              <IonIcon icon={gridOutline} />
+            </IonMenuButton>
+          </IonFabButton>
+        </IonFab>
+      )}
+
       <IonMenu
         side="start"
         menuId="first"

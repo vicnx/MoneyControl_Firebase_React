@@ -25,6 +25,7 @@ import {
 
 import MCfabmenu from "components/MCfabmenu/mcfabmenu";
 import MCmenu from "components/MCmenu/mcmenu";
+import MCheader from "components/MCheader/mcheader";
 
 export default function MCrouter() {
   const { auth } = useUser();
@@ -37,8 +38,9 @@ export default function MCrouter() {
 
   return (
     <>
-      <MCmenu />
+      <MCmenu fabhidden={true} />
       <MCfabmenu />
+      <MCheader />
       <IonRouterOutlet id="menuContent">
         <Switch>
           <Route exact path="/home" component={Home}></Route>

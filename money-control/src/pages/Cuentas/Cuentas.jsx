@@ -24,8 +24,17 @@ const CuentasPage = () => {
   console.log(cuentas);
   return (
     <IonPage>
-      <IonContent fullscreen>
-        <IonHeader fixed className="header-cuentas">
+      <IonContent fullscreen className="cuentasPage">
+        <div className="boton_add_parent">
+          <IonRouterLink
+            routerLink={"/cuentas/add"}
+            routerDirection="none"
+            className="boton-add"
+          >
+            <DynamicFaIcon name="addCircle" color="var(--ion-color-primary" />
+          </IonRouterLink>
+        </div>
+        {/* <IonHeader fixed className="header-cuentas">
           <IonLabel className="title">Gestión de cuentas</IonLabel>
           <IonRouterLink
             routerLink={"/cuentas/add"}
@@ -34,7 +43,8 @@ const CuentasPage = () => {
           >
             <DynamicFaIcon name="addCircle" color="var(--ion-color-primary" />
           </IonRouterLink>
-        </IonHeader>
+        </IonHeader> */}
+
         <IonContent className="list-cuentas">
           <MClistcuentas />
         </IonContent>

@@ -79,6 +79,7 @@ const MCdatoscuenta = (props) => {
               Nombre de la cuenta <span className="required">*</span>
             </IonLabel>
             <IonInput
+              maxlength="20"
               disabled={success.status}
               value={name}
               placeholder="Nombre de la cuenta"

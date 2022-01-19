@@ -265,3 +265,7 @@ ion-menu ion-content {
   color: red;
   font-size: 18px;
 }
+
+div.ion-page {
+  margin-top: 60px;
+}

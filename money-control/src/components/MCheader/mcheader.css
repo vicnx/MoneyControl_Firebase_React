@@ -1,0 +1,10 @@
+.header-avatar {
+  padding: 4px;
+  margin-top: 3px;
+  margin-right: 5px;
+}
+.header-avatar img {
+  width: 100%;
+  box-shadow: var(--best_shadow);
+  /* border: solid 2.5px var(--ion-color-primary); */
+}
