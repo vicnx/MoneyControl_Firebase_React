@@ -71,21 +71,6 @@ const MCdatoscuenta = (props) => {
         />
       ) : (
         <>
-          <IonItem className="mc-input">
-            <IonLabel
-              position="floating"
-              style={error && !name ? { color: "red" } : { color: "black" }}
-            >
-              Nombre de la cuenta <span className="required">*</span>
-            </IonLabel>
-            <IonInput
-              maxlength="20"
-              disabled={success.status}
-              value={name}
-              placeholder="Nombre de la cuenta"
-              onIonChange={(e) => setName(e.detail.value)}
-            ></IonInput>
-          </IonItem>
           <div className="mc-input value">
             <span>Valor inicial (EUR)</span>
             <div className="input-currency">
@@ -142,6 +127,21 @@ const MCdatoscuenta = (props) => {
               onIonChange={(e) => setCantidad(e.detail.value)}
             ></IonInput> */}
           </div>
+          <IonItem className="mc-input">
+            <IonLabel
+              position="floating"
+              style={error && !name ? { color: "red" } : { color: "black" }}
+            >
+              Nombre de la cuenta <span className="required">*</span>
+            </IonLabel>
+            <IonInput
+              maxlength="20"
+              disabled={success.status}
+              value={name}
+              placeholder="Nombre de la cuenta"
+              onIonChange={(e) => setName(e.detail.value)}
+            ></IonInput>
+          </IonItem>
           <MCcolores onChange={changeColor} colorSelected={color} />
           <MCiconos
             onChange={changeIcono}

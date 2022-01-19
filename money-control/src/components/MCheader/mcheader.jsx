@@ -8,6 +8,7 @@ import {
   IonToolbar,
   IonAvatar,
   IonMenuButton,
+  IonRouterLink,
 } from "@ionic/react";
 import { gridOutline } from "ionicons/icons";
 import "./mcheader.css";
@@ -38,7 +39,6 @@ export default function MCheader() {
     }
   }, [location]);
 
-  console.log(auth);
   return (
     <>
       <IonHeader className="ion-no-border" color="white" fixed>
@@ -50,9 +50,15 @@ export default function MCheader() {
             />
           </IonMenuButton>
           <IonTitle>{page}</IonTitle>
-          <IonAvatar slot="end" className="header-avatar">
-            <img src={profile.image} />
-          </IonAvatar>
+          <IonRouterLink
+            routerLink={"/profile"}
+            routerDirection="none"
+            slot="end"
+          >
+            <IonAvatar className="header-avatar">
+              <img src={profile.image} />
+            </IonAvatar>
+          </IonRouterLink>
         </IonToolbar>
       </IonHeader>
     </>

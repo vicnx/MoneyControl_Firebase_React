@@ -24,14 +24,19 @@ const CuentasPage = () => {
   console.log(cuentas);
   return (
     <IonPage>
-      <IonContent fullscreen className="cuentasPage">
+      <IonContent
+        fullscreen
+        className="cuentasPage"
+        scrollX="false"
+        scrollY="false"
+      >
         <div className="boton_add_parent">
           <IonRouterLink
             routerLink={"/cuentas/add"}
             routerDirection="none"
             className="boton-add"
           >
-            <DynamicFaIcon name="addCircle" color="var(--ion-color-primary" />
+            <DynamicFaIcon name="addCircle" color="var(--ion-color-primary)" />
           </IonRouterLink>
         </div>
         {/* <IonHeader fixed className="header-cuentas">
