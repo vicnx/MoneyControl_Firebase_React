@@ -21,11 +21,13 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import useCuentas from "./useCuentas";
+import useGrupos from "./useGrupos";
 import { useHistory } from "react-router-dom";
 
 export default function useUser() {
   const { profile, setProfile } = useContext(UserContext);
   const { createDefaultCuenta } = useCuentas();
+  const { createDefaultGrupo } = useGrupos();
   const [loadingprofile, setLoadingProfile] = useState(false);
   const [state, setState] = useState({
     loading: false,
@@ -79,6 +81,7 @@ export default function useUser() {
         if (additionalUserInfo.isNewUser) {
           createProfile(result.user);
           createDefaultCuenta(result.user);
+          createDefaultGrupo(result.user);
           setState({ loading: false, error: false, loadingUser: false });
         } else {
           console.log("ESTE USUARIO YA EXISITIA");

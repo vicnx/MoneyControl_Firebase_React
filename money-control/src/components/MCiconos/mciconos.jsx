@@ -29,6 +29,13 @@ const MCiconos = (props) => {
     "contrastOutline",
     "earthOutline",
     "serverOutline",
+    "happyOutline",
+    "flashOutline",
+    "flaskOutline",
+    "globeOutline",
+    "heartOutline",
+    "flowerOutline",
+    "rocketOutline",
   ];
   return (
     <div className="icono-component">

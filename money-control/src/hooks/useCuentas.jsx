@@ -61,7 +61,7 @@ export default function useCuentas() {
     const colRef = collection(db, "cuentas");
     addDoc(colRef, {
       uid: user.uid,
-      icono: "cash-outline",
+      icono: "cashOutline",
       color: "#7895ff",
       cantidad: 0,
       name: "Default",

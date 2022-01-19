@@ -3,14 +3,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import useCuentas from "hooks/useCuentas";
+import useGrupos from "hooks/useGrupos";
 import React, { useEffect, useState } from "react";
-import "./mclistcuentas.css";
+import "./mclistgrupos.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import CountUp from "react-countup";
 import DynamicFaIcon from "components/DynamicIcons/DynamicIcons";
 import { informationCircle } from "ionicons/icons";
 
-const MClistcuentas = (props) => {
+const MClistgrupos = (props) => {
   const {
     cuentas,
     loadingcuentas,
@@ -20,55 +21,41 @@ const MClistcuentas = (props) => {
     error,
     setError,
   } = useCuentas();
+  const { grupos, loadinggrupos } = useGrupos();
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [selected, setSelected] = useState({});
 
   return (
     <>
-      {loadingcuentas ? (
-        <ClipLoader
-          color={"blue"}
-          loading={true}
-          css={"display: block;margin: 0 auto"}
-          size={150}
-        />
-      ) : cuentas ? (
-        <IonList>
-          {cuentas.map((c, index) => (
-            <IonItem className="cuenta-item" key={index}>
-              <div className="cuenta-name-info">
-                <DynamicFaIcon name={c.icono} color={c.color} />
-                <IonLabel className="cuenta-name">{c.name}</IonLabel>
-              </div>
-              <CountUp
-                end={c.cantidad}
-                suffix=" €"
-                duration={1.5}
-                separator=" "
-                decimal=","
-                decimals={2}
-                className="contador-money"
-              />
+      {grupos ? (
+        <div>
+          {grupos.map((c, index) => (
+            <span key={index}>{c.name} wdad</span>
+            // <IonItem className="grupo-item" key={index}>
+            //   <div className="grupo-name-info">
+            //     {/* <DynamicFaIcon name={c.icono} color={c.color} /> */}
+            //     <IonLabel className="grupo-name">{c.name}</IonLabel>
+            //   </div>
 
-              <div className="cuenta-options" slot="end">
-                <div
-                  className="delete"
-                  onClick={() => {
-                    setSelected(c);
-                    setIsConfirmOpen(true);
-                  }}
-                >
-                  <DynamicFaIcon
-                    name="trash"
-                    color="var(--ion-color-danger-tint)"
-                  />
-                </div>
-              </div>
-            </IonItem>
+            //   <div className="grupo-options" slot="end">
+            //     <div
+            //       className="delete"
+            //       onClick={() => {
+            //         setSelected(c);
+            //         setIsConfirmOpen(true);
+            //       }}
+            //     >
+            //       <DynamicFaIcon
+            //         name="trash"
+            //         color="var(--ion-color-danger-tint)"
+            //       />
+            //     </div>
+            //   </div>
+            // </IonItem>
           ))}
-        </IonList>
+        </div>
       ) : (
-        "Sin cuentas"
+        "Sin grupos"
       )}
       <IonToast
         isOpen={success.status}
@@ -118,4 +105,4 @@ const MClistcuentas = (props) => {
   );
 };
 
-export default MClistcuentas;
+export default MClistgrupos;

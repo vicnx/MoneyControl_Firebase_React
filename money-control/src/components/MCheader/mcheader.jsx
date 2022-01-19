@@ -33,6 +33,9 @@ export default function MCheader() {
       case "/cuentas/add":
         setPage("Nueva cuenta");
         break;
+      case "/grupos":
+        setPage("Gestión de grupos");
+        break;
       default:
         setPage("");
         break;

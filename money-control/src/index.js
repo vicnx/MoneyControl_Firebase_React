@@ -4,12 +4,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { CuentasContextProvider } from "context/CuentasContext";
 import { UserContextProvider } from "context/UserContext";
+import { GruposContextProvider } from "context/GruposContext";
 
 ReactDOM.render(
   <UserContextProvider>
-    <CuentasContextProvider>
-      <App />
-    </CuentasContextProvider>
+    <GruposContextProvider>
+      <CuentasContextProvider>
+        <App />
+      </CuentasContextProvider>
+    </GruposContextProvider>
   </UserContextProvider>,
 
   document.getElementById("root")
