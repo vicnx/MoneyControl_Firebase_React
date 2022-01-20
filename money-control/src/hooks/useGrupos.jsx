@@ -15,8 +15,10 @@ import {
   where,
   getDocs,
   updateDoc,
+  limit,
   deleteDoc,
 } from "firebase/firestore";
+import randomString from "global/functions";
 
 export default function useGrupos() {
   const { grupos, setGrupos } = useContext(GruposContext);
@@ -59,6 +61,50 @@ export default function useGrupos() {
     });
     return () => (isSubscribed = false);
   }, [auth]);
+  const createNewGrupo = useCallback(async (grupo) => {
+    isSubscribed = true;
+    const colRef = collection(db, "grupos");
+    const colRefGrupoUser = collection(db, "grupouser");
+    let codigoInv = await checkCodInv(colRef);
+    addDoc(colRef, { ...grupo, codinv: codigoInv })
+      .then((res) => {
+        getDoc(res).then((snapshot) => {
+          if (isSubscribed) {
+            addDoc(colRefGrupoUser, {
+              admin: true,
+              uidgrupo: snapshot.id,
+              uiduser: grupo.createdby,
+            })
+              .then((res) => {
+                setSuccess({ status: true, msg: "Grupo creado con exito!" });
+                setTimeout(() => {
+                  history.push("/groups");
+                }, 2000);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
+  const checkCodInv = async (colRef) => {
+    let ok = false;
+    let codinv = "";
+    while (!ok) {
+      codinv = randomString(8);
+      const checkifinvexits = query(colRef, where("codinv", "==", codinv));
+      const querySnapshot = await getDocs(checkifinvexits);
+      if (querySnapshot.empty) {
+        ok = true;
+      }
+    }
+    return codinv;
+  };
 
   const createDefaultGrupo = useCallback((user) => {
     isSubscribed = true;
@@ -146,5 +192,6 @@ export default function useGrupos() {
     setSuccess,
     createDefaultGrupo,
     getGrupos,
+    createNewGrupo,
   };
 }

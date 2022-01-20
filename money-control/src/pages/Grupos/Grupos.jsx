@@ -27,7 +27,7 @@ const GruposPage = () => {
       <IonContent fullscreen scrollX="false" scrollY="false">
         <div className="boton_group">
           <IonRouterLink
-            routerLink={"/grupos/add"}
+            routerLink={"/groups/add"}
             routerDirection="none"
             className="boton-add"
           >

@@ -44,6 +44,9 @@ const MClistgrupos = (props) => {
                   {c.name}
                 </IonLabel>
               </div>
+              <div className="gastos_totales">
+                <span>-1000 €</span>
+              </div>
 
               <div className="grupo-options">
                 <div

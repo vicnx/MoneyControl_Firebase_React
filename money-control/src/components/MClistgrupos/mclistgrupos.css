@@ -18,9 +18,17 @@
   width: 50%;
 }
 .grupo-name-info ion-icon {
-  font-size: 22px;
+  font-size: 30px;
   margin-right: 10px;
 }
 .grupo-options {
   font-size: 25px;
+}
+.grupo-options .delete {
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+}
+.gastos_totales {
+  color: var(--ion-color-danger-shade);
 }

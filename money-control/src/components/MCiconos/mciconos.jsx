@@ -21,7 +21,7 @@ import CountUp from "react-countup";
 import DynamicFaIcon from "components/DynamicIcons/DynamicIcons";
 
 const MCiconos = (props) => {
-  const iconos = [
+  const iconosCuentas = [
     "walletOutline",
     "cardOutline",
     "logoPaypal",
@@ -37,6 +37,24 @@ const MCiconos = (props) => {
     "flowerOutline",
     "rocketOutline",
   ];
+
+  const iconosGrupos = [
+    "happyOutline",
+    "flashOutline",
+    "flaskOutline",
+    "globeOutline",
+    "heartOutline",
+    "flowerOutline",
+    "rocketOutline",
+    "accessibilityOutline",
+    "airplaneOutline",
+    "alarmOutline",
+    "beerOutline",
+    "boatOutline",
+    "barbellOutline",
+    "bedOutline",
+    "chatbubblesOutline",
+  ];
   return (
     <div className="icono-component">
       <span className="info">
@@ -44,8 +62,33 @@ const MCiconos = (props) => {
       </span>
       <div className="icono-list">
         <Swiper slidesPerView={5} loop={true} className="mySwiper">
-          {iconos
-            ? iconos.map((i, index) => (
+          {props.type != "group"
+            ? iconosCuentas
+              ? iconosCuentas.map((i, index) => (
+                  <SwiperSlide
+                    className={
+                      props.iconoSelected == i ? "icono selected" : "icono"
+                    }
+                    style={
+                      props.iconoSelected == i
+                        ? {
+                            borderColor: props.colorSelected,
+                            borderWidth: "3px",
+                            borderStyle: "solid",
+                          }
+                        : {}
+                    }
+                    key={index}
+                    onClick={() => {
+                      props.onChange(i);
+                    }}
+                  >
+                    <DynamicFaIcon name={i} color={props.colorSelected} />
+                  </SwiperSlide>
+                ))
+              : "No hay iconos disponibles"
+            : iconosGrupos
+            ? iconosGrupos.map((i, index) => (
                 <SwiperSlide
                   className={
                     props.iconoSelected == i ? "icono selected" : "icono"

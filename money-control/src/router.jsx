@@ -36,6 +36,9 @@ export default function MCrouter() {
     import("pages/Cuentas/DatosCuenta/DatosCuenta")
   );
   const Grupos = React.lazy(() => import("pages/Grupos/Grupos"));
+  const DatosGrupo = React.lazy(() =>
+    import("pages/Grupos/DatosGrupo/DatosGrupo")
+  );
 
   return (
     <>
@@ -49,6 +52,7 @@ export default function MCrouter() {
           <Route exact path="/cuentas" component={Cuentas}></Route>
           <Route exact path="/cuentas/add" component={DatosCuenta}></Route>
           <Route exact path="/groups" component={Grupos}></Route>
+          <Route exact path="/groups/add" component={DatosGrupo}></Route>
 
           <Route exact path="/" render={() => <Redirect to="/home" />}></Route>
         </Switch>

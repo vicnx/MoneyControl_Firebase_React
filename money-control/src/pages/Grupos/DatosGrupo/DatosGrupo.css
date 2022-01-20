@@ -1,0 +1,10 @@
+.header-cuentas-datos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #768390;
+  padding: 10px;
+  margin-bottom: -5px;
+  height: 66px;
+  font-size: 20px;
+}
