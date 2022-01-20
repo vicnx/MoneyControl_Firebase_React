@@ -14,8 +14,21 @@
 }
 .grupo-name-info {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   width: 50%;
+}
+.grupo-name-info-top {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+.grupo-name-info-bottom {
+  font-size: 12px;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .grupo-name-info ion-icon {
   font-size: 28px;
@@ -44,5 +57,5 @@
   font-size: 11px;
   position: absolute;
   bottom: 5px;
-  left: 20px;
+  right: 10px;
 }

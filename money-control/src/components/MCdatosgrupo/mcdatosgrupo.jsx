@@ -97,10 +97,15 @@ const MCdatosgrupo = (props) => {
             ></IonInput>
           </IonItem>
           <IonItem className="mc-input">
-            <IonLabel>
+            <IonLabel
+              position="floating"
+              style={error && !desc ? { color: "red" } : { color: "black" }}
+            >
               Descripción <span className="required">*</span>
             </IonLabel>
             <IonTextarea
+              maxlength="100"
+              disabled={success.status}
               clearOnEdit={true}
               value={desc}
               onIonChange={(e) => setDesc(e.detail.value)}

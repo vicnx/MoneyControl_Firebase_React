@@ -39,10 +39,13 @@ const MClistgrupos = (props) => {
               }}
             >
               <div className="grupo-name-info">
-                <DynamicFaIcon name={c.icono} color={c.color} />
-                <IonLabel className="grupo-name" style={{ color: c.color }}>
-                  {c.name}
-                </IonLabel>
+                <div className="grupo-name-info-top">
+                  <DynamicFaIcon name={c.icono} color={c.color} />
+                  <IonLabel className="grupo-name" style={{ color: c.color }}>
+                    {c.name}
+                  </IonLabel>
+                </div>
+                <div className="grupo-name-info-bottom">{c.desc}</div>
               </div>
               <div className="gastos_totales">
                 <span>-1000 €</span>
