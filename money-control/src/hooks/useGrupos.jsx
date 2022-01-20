@@ -100,19 +100,13 @@ export default function useGrupos() {
     let grupocopia = [];
     const colRefGrupoUser = collection(db, "grupouser");
     const pRefGrupoUser = query(colRefGrupoUser, where("uiduser", "==", uid));
-    const querySnapshotGrupoUser = await getDocs(pRefGrupoUser);
-    querySnapshotGrupoUser.forEach(async (document) => {
-      const actualgrupo = await getDoc(
-        doc(db, "grupos", document.data().uidgrupo)
-      );
-      grupocopia.push(actualgrupo.data());
-      localStorage.setItem("grupocopia", JSON.stringify(grupocopia));
+    getDocs(pRefGrupoUser).then((grupouser) => {
+      grupouser.forEach(async (gid) => {
+        let actual = await getDoc(doc(db, "grupos", gid.data().uidgrupo));
+        grupocopia.push({ ...actual.data(), docid: actual.id });
+        setGrupos(grupocopia);
+      });
     });
-
-    if (isSubscribed) {
-      setGrupos(JSON.parse(localStorage.getItem("grupocopia")));
-      setLoadingGrupos(false);
-    }
   });
 
   // const createNewCuenta = useCallback((cuenta) => {
