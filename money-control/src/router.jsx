@@ -48,7 +48,7 @@ export default function MCrouter() {
           <Route exact path="/profile" component={Profile}></Route>
           <Route exact path="/cuentas" component={Cuentas}></Route>
           <Route exact path="/cuentas/add" component={DatosCuenta}></Route>
-          <Route exact path="/grupos" component={Grupos}></Route>
+          <Route exact path="/groups" component={Grupos}></Route>
 
           <Route exact path="/" render={() => <Redirect to="/home" />}></Route>
         </Switch>

@@ -30,6 +30,7 @@ import {
   personOutline,
   gridOutline,
   barChartOutline,
+  peopleOutline,
 } from "ionicons/icons";
 import { menuController } from "@ionic/core";
 
@@ -142,6 +143,21 @@ export default function MCmenu(props) {
                     icon={barChartOutline}
                   ></IonIcon>
                   <span>Cuentas</span>
+                </IonItem>
+                <IonItem
+                  className={
+                    selected == "/groups"
+                      ? "menu-item selected-item"
+                      : "menu-item"
+                  }
+                  routerLink={"/groups"}
+                  routerDirection="none"
+                >
+                  <IonIcon
+                    className="menu-item-icon"
+                    icon={peopleOutline}
+                  ></IonIcon>
+                  <span>Grupos</span>
                 </IonItem>
               </IonMenuToggle>
             </div>

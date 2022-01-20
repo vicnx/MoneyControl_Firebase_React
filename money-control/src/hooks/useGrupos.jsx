@@ -104,9 +104,10 @@ export default function useGrupos() {
       grupouser.forEach(async (gid) => {
         let actual = await getDoc(doc(db, "grupos", gid.data().uidgrupo));
         grupocopia.push({ ...actual.data(), docid: actual.id });
-        setGrupos(grupocopia);
+        localStorage.setItem("Groups", JSON.stringify(grupocopia));
       });
     });
+    setGrupos(JSON.parse(localStorage.getItem("Groups")));
   });
 
   // const createNewCuenta = useCallback((cuenta) => {

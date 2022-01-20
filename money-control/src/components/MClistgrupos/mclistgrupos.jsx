@@ -24,7 +24,6 @@ const MClistgrupos = (props) => {
   const { grupos, loadinggrupos } = useGrupos();
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [selected, setSelected] = useState({});
-
   return (
     <>
       {grupos ? (
