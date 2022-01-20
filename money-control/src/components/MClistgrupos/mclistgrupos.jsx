@@ -29,28 +29,37 @@ const MClistgrupos = (props) => {
       {grupos ? (
         <div>
           {grupos.map((c, index) => (
-            <span key={index}>{c.name} wdad</span>
-            // <IonItem className="grupo-item" key={index}>
-            //   <div className="grupo-name-info">
-            //     {/* <DynamicFaIcon name={c.icono} color={c.color} /> */}
-            //     <IonLabel className="grupo-name">{c.name}</IonLabel>
-            //   </div>
+            <div
+              className="grupo-item"
+              key={index}
+              style={{
+                borderColor: c.color,
+                borderWidth: "4px",
+                borderStyle: "solid",
+              }}
+            >
+              <div className="grupo-name-info">
+                <DynamicFaIcon name={c.icono} color={c.color} />
+                <IonLabel className="grupo-name" style={{ color: c.color }}>
+                  {c.name}
+                </IonLabel>
+              </div>
 
-            //   <div className="grupo-options" slot="end">
-            //     <div
-            //       className="delete"
-            //       onClick={() => {
-            //         setSelected(c);
-            //         setIsConfirmOpen(true);
-            //       }}
-            //     >
-            //       <DynamicFaIcon
-            //         name="trash"
-            //         color="var(--ion-color-danger-tint)"
-            //       />
-            //     </div>
-            //   </div>
-            // </IonItem>
+              <div className="grupo-options">
+                <div
+                  className="delete"
+                  onClick={() => {
+                    setSelected(c);
+                    setIsConfirmOpen(true);
+                  }}
+                >
+                  <DynamicFaIcon
+                    name="exitOutline"
+                    color="var(--ion-color-danger-tint)"
+                  />
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       ) : (

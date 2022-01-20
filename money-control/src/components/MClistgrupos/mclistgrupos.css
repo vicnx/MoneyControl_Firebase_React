@@ -1,37 +1,26 @@
-.cuenta-item {
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
+.grupo-item {
+  padding: 30px 20px 30px 20px;
   color: var(--color_text);
   display: flex;
-}
-.cuenta-name-info {
-  display: flex;
-  justify-content: flex-start;
   align-items: center;
-  margin-right: 10%;
-  width: 55%;
-  text-transform: capitalize;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: var(--best_shadow);
+  justify-content: space-between;
+  font-size: 20px;
+  background-color: white;
+  border-radius: 15px;
+  position: relative;
 }
-.cuenta-name-info ion-icon {
-  font-size: 28px;
+.grupo-name-info {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+.grupo-name-info ion-icon {
+  font-size: 22px;
   margin-right: 10px;
 }
-
-.cuenta-content {
-  display: flex;
-  justify-content: space-around;
-}
-.cuenta-options {
-  font-size: 23px;
-  color: var(--ion-color-danger-tint);
-}
-.cuenta-name-info .cuenta-name {
-  font-size: 14px;
-}
-.contador-money {
-  font-size: 13px;
+.grupo-options {
+  font-size: 25px;
 }
