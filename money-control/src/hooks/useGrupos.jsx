@@ -64,28 +64,13 @@ export default function useGrupos() {
   const createNewGrupo = useCallback(async (grupo) => {
     isSubscribed = true;
     const colRef = collection(db, "grupos");
-    const colRefGrupoUser = collection(db, "grupouser");
     let codigoInv = await checkCodInv(colRef);
     addDoc(colRef, { ...grupo, codinv: codigoInv })
       .then((res) => {
-        getDoc(res).then((snapshot) => {
-          if (isSubscribed) {
-            addDoc(colRefGrupoUser, {
-              admin: true,
-              uidgrupo: snapshot.id,
-              uiduser: grupo.createdby,
-            })
-              .then((res) => {
-                setSuccess({ status: true, msg: "Grupo creado con exito!" });
-                setTimeout(() => {
-                  history.push("/groups");
-                }, 2000);
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-          }
-        });
+        setSuccess({ status: true, msg: "Grupo creado con exito!" });
+        setTimeout(() => {
+          history.push("/groups");
+        }, 2000);
       })
       .catch((error) => {
         console.log(error);
@@ -109,7 +94,6 @@ export default function useGrupos() {
   const createDefaultGrupo = useCallback((user) => {
     isSubscribed = true;
     const colRefGrupos = collection(db, "grupos");
-    const colRefGrupoUser = collection(db, "grupouser");
     addDoc(colRefGrupos, {
       icono: "piechardOutline",
       color: "#7895ff",
@@ -119,23 +103,10 @@ export default function useGrupos() {
       codinv: null,
       desc: "Grupo de gastos generales.",
       createdby: user.uid,
+      users: [user.uid],
     })
       .then((res) => {
-        getDoc(res).then((snapshot) => {
-          if (isSubscribed) {
-            addDoc(colRefGrupoUser, {
-              admin: true,
-              uidgrupo: snapshot.id,
-              uiduser: user.uid,
-            })
-              .then((res) => {
-                console.log(res);
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-          }
-        });
+        console.log(res);
       })
       .catch((error) => {
         console.log(error);
@@ -143,17 +114,17 @@ export default function useGrupos() {
   });
 
   const getGrupos = useCallback(async (uid) => {
+    const colRefGrupoUser = collection(db, "grupos");
+    const q = query(colRefGrupoUser, where("users", "array-contains", uid));
+    const querySnapshot = await getDocs(q);
     let grupocopia = [];
-    const colRefGrupoUser = collection(db, "grupouser");
-    const pRefGrupoUser = query(colRefGrupoUser, where("uiduser", "==", uid));
-    getDocs(pRefGrupoUser).then((grupouser) => {
-      grupouser.forEach(async (gid) => {
-        let actual = await getDoc(doc(db, "grupos", gid.data().uidgrupo));
-        grupocopia.push({ ...actual.data(), docid: actual.id });
-        localStorage.setItem("Groups", JSON.stringify(grupocopia));
-      });
+    querySnapshot.forEach((doc) => {
+      grupocopia.push({ ...doc.data(), docid: doc.id });
     });
-    setGrupos(JSON.parse(localStorage.getItem("Groups")));
+    if (isSubscribed) {
+      setGrupos(grupocopia);
+      setLoadingGrupos(false);
+    }
   });
 
   // const createNewCuenta = useCallback((cuenta) => {

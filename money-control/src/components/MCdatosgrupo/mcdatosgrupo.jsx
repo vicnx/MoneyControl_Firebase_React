@@ -27,7 +27,7 @@ const MCdatosgrupo = (props) => {
   const [desc, setDesc] = useState("");
   const [error, setError] = useState(false);
   const [color, setColor] = useState("#5499C7");
-  const [icono, setIcono] = useState("cashOutline");
+  const [icono, setIcono] = useState("happyOutline");
   const [cantidad, setCantidad] = useState(0);
   const [toast, setToast] = useState({
     isOpen: false,
@@ -62,8 +62,8 @@ const MCdatosgrupo = (props) => {
       color: color ? color : "#5499C7",
       desc: desc,
       name: name,
+      users: [profile.uid],
     };
-    console.log("NewGrupo", NewGrupo);
     createNewGrupo(NewGrupo);
   }
 
