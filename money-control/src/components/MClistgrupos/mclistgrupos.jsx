@@ -62,6 +62,11 @@ const MClistgrupos = (props) => {
                   />
                 </div>
               </div>
+              {c.codinv ? (
+                <div className="codinv">CODIGO: {c.codinv}</div>
+              ) : (
+                <></>
+              )}
             </div>
           ))}
         </div>

@@ -64,7 +64,7 @@ export default function useGrupos() {
   const createNewGrupo = useCallback(async (grupo) => {
     isSubscribed = true;
     const colRef = collection(db, "grupos");
-    let codigoInv = await checkCodInv(colRef);
+    let codigoInv = grupo.codinv ? null : await checkCodInv(colRef); //comprueba si el grupo es privado
     addDoc(colRef, { ...grupo, codinv: codigoInv })
       .then((res) => {
         setSuccess({ status: true, msg: "Grupo creado con exito!" });

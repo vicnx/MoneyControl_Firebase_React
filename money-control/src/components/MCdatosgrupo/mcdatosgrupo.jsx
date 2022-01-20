@@ -5,6 +5,7 @@ import {
   IonInput,
   IonButton,
   IonTextarea,
+  IonCheckbox,
 } from "@ionic/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -26,6 +27,7 @@ const MCdatosgrupo = (props) => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [error, setError] = useState(false);
+  const [gprivate, setGprivate] = useState(false);
   const [color, setColor] = useState("#5499C7");
   const [icono, setIcono] = useState("happyOutline");
   const [cantidad, setCantidad] = useState(0);
@@ -63,6 +65,7 @@ const MCdatosgrupo = (props) => {
       desc: desc,
       name: name,
       users: [profile.uid],
+      codinv: gprivate,
     };
     createNewGrupo(NewGrupo);
   }
@@ -110,6 +113,18 @@ const MCdatosgrupo = (props) => {
             iconoSelected={icono}
             type="group"
           />
+          <IonItem className="checkbox-gprivate">
+            <div className="checkbox-gprivate-text">
+              <IonLabel>Grupo privado</IonLabel>
+              <small>Si activas esta opción nadie podrá unirse.</small>
+            </div>
+
+            <IonCheckbox
+              slot="start"
+              checked={gprivate}
+              onIonChange={(e) => setGprivate(e.detail.checked)}
+            />
+          </IonItem>
           <IonButton
             expand="full"
             className="boton-guardar"

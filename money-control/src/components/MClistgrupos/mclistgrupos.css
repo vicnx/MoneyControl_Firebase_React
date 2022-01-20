@@ -18,7 +18,7 @@
   width: 50%;
 }
 .grupo-name-info ion-icon {
-  font-size: 30px;
+  font-size: 28px;
   margin-right: 10px;
 }
 .grupo-options {
@@ -27,8 +27,22 @@
 .grupo-options .delete {
   display: flex;
   align-items: center;
-  font-size: 25px;
+  font-size: 23px;
 }
 .gastos_totales {
   color: var(--ion-color-danger-shade);
+}
+.grupo-name-info .grupo-name {
+  width: 77%;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 16px;
+}
+.codinv {
+  font-size: 11px;
+  position: absolute;
+  bottom: 5px;
+  left: 20px;
 }
