@@ -113,12 +113,6 @@ const MClistgrupos = (props) => {
                     ) : (
                       <></>
                     )}
-                    <div className="viewGroup">
-                      <DynamicFaIcon
-                        name="eyeOutline"
-                        color="var(--ion-color-success)"
-                      />
-                    </div>
                     {!c.default ? (
                       <div
                         className="exit"

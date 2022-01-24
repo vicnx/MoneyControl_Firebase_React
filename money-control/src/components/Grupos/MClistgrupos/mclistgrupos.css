@@ -34,6 +34,7 @@
   background-color: white;
 }
 .grupo-r-l {
+  width: 60%;
   margin-top: 5px;
   flex-direction: column;
   display: flex;
@@ -43,6 +44,8 @@
   box-sizing: border-box;
 }
 .grupo-r-r {
+  width: 40%;
+
   height: 100%;
   display: flex;
   justify-content: center;
@@ -52,6 +55,11 @@
 }
 .grupo-r-l .grupo-name {
   font-size: 18px;
+  width: 100%;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .grupo-r-l .gastos_totales {
   margin-top: 5px;
