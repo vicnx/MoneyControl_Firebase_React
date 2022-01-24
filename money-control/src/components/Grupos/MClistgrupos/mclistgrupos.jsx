@@ -78,7 +78,7 @@ const MClistgrupos = (props) => {
                 </div>
                 <div className="grupo-r-r">
                   <div className="grupo-options">
-                    {c.isAdmin ? (
+                    {c.isAdmin && !c.default ? (
                       <div
                         className="delete"
                         onClick={() => {
@@ -94,10 +94,26 @@ const MClistgrupos = (props) => {
                     ) : (
                       <></>
                     )}
-                    <DynamicFaIcon
-                      name="clipboardOutline"
-                      color="var(--ion-color-primary)"
-                    />
+                    {c.codinv ? (
+                      <div
+                        className="copy"
+                        onClick={() => {
+                          navigator.clipboard.writeText(c.codinv);
+                          setSuccess({
+                            status: true,
+                            msg: "Código de grupo copiado",
+                          });
+                        }}
+                      >
+                        <DynamicFaIcon
+                          name="clipboardOutline"
+                          color="var(--ion-color-primary)"
+                        />
+                      </div>
+                    ) : (
+                      <></>
+                    )}
+
                     <div
                       className="exit"
                       onClick={() => {
