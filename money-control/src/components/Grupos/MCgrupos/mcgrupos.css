@@ -43,9 +43,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  color: var(--color_title);
-  font-weight: bold;
+  font-weight: lighter;
   z-index: 2;
+  margin-top: 5px;
+  text-transform: capitalize;
 }
 .grupo-content {
   display: flex;
@@ -70,7 +71,7 @@
 .separador-grupos {
   width: 100%;
   height: 5px;
-  background-color: var(--ion-color-primary);
+  background-color: white;
   border-radius: 5px;
   z-index: 2;
 }

@@ -15,68 +15,69 @@ import "swiper/css";
 import "swiper/css/navigation";
 import useUser from "hooks/useUser";
 import React, { useEffect, useState } from "react";
-import * as Icons from "ionicons/icons";
 import "./mcgrupos.css";
+import useGrupos from "hooks/useGrupos";
+import ClipLoader from "react-spinners/ClipLoader";
+import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 
-const MCgrupos = () => {
+const MCgrupos = (props) => {
   // const { profile } = useUser();
   const [grupoSelected, setgrupoSelected] = useState("grupo1");
+  const {
+    grupos,
+    loadinggrupos,
+    exitGroup,
+    checkAdmin,
+    deleteGroup,
+    setError,
+    error,
+    success,
+    setSuccess,
+  } = useGrupos();
 
   return (
     <>
       <IonLabel className="title">Grupos de gastos</IonLabel>
-      <div className="grupos-list">
-        <Swiper slidesPerView={2} loop={false} className="mySwiper">
-          <SwiperSlide className="grupo">
-            <hr className="separador-grupos" />
-            <div className="grupo-content">
-              <IonIcon icon={Icons.peopleOutline}></IonIcon>
-              <IonLabel className="grupo-name">Fammily</IonLabel>
-            </div>
-            <hr className="separador-grupos" />
-            <img
-              src="https://filesedc.com/uploads/333/img/2020/08/1200/existen-8-tipos-distintos-de-familias-5f312cc934b72.webp"
-              alt=""
-            />
-          </SwiperSlide>
-          <SwiperSlide className="grupo">
-            <hr className="separador-grupos" />
-            <div className="grupo-content">
-              <IonIcon icon={Icons.peopleCircleOutline}></IonIcon>
-              <IonLabel className="grupo-name">Fammily</IonLabel>
-            </div>
-            <hr className="separador-grupos" />
-            <img
-              src="https://static.guiainfantil.com/media/17060/c/mi-familia-poemas-cortos-para-ninos-md.jpg"
-              alt=""
-            />
-          </SwiperSlide>
-          <SwiperSlide className="grupo">
-            <hr className="separador-grupos" />
-            <div className="grupo-content">
-              <IonIcon icon={Icons.peopleCircleOutline}></IonIcon>
-              <IonLabel className="grupo-name">Fammily</IonLabel>
-            </div>
-            <hr className="separador-grupos" />
-            <img
-              src="https://static.guiainfantil.com/media/17060/c/mi-familia-poemas-cortos-para-ninos-md.jpg"
-              alt=""
-            />
-          </SwiperSlide>
-          <SwiperSlide className="grupo">
-            <hr className="separador-grupos" />
-            <div className="grupo-content">
-              <IonIcon icon={Icons.peopleCircleOutline}></IonIcon>
-              <IonLabel className="grupo-name">Fammily</IonLabel>
-            </div>
-            <hr className="separador-grupos" />
-            <img
-              src="https://static.guiainfantil.com/media/17060/c/mi-familia-poemas-cortos-para-ninos-md.jpg"
-              alt=""
-            />
-          </SwiperSlide>
-        </Swiper>
-      </div>
+      {loadinggrupos ? (
+        <ClipLoader
+          color={"blue"}
+          loading={true}
+          css={"display: block;margin: 0 auto"}
+          size={150}
+        />
+      ) : grupos ? (
+        <div className="grupos-list">
+          <Swiper slidesPerView={2} loop={false} className="mySwiper">
+            {grupos.map((g, index) => (
+              <SwiperSlide
+                className="grupo"
+                key={index}
+                onClick={() => {
+                  console.log("click");
+                }}
+              >
+                <hr
+                  className="separador-grupos"
+                  style={{ backgroundColor: g.color }}
+                />
+                <div className="grupo-content">
+                  <DynamicFaIcon name={g.icono} color={g.color} />
+
+                  <IonLabel className="grupo-name" style={{ color: g.color }}>
+                    {g.name}
+                  </IonLabel>
+                </div>
+                <hr
+                  className="separador-grupos"
+                  style={{ backgroundColor: g.color }}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      ) : (
+        "No grupos"
+      )}
     </>
   );
 };
