@@ -113,23 +113,34 @@ const MClistgrupos = (props) => {
                     ) : (
                       <></>
                     )}
-
-                    <div
-                      className="exit"
-                      onClick={() => {
-                        setSelected(c);
-                        setIsConfirmOpen(true);
-                      }}
-                    >
+                    <div className="viewGroup">
                       <DynamicFaIcon
-                        name="exitOutline"
-                        color="var(--ion-color-danger-tint)"
+                        name="eyeOutline"
+                        color="var(--ion-color-success)"
                       />
                     </div>
+                    {!c.default ? (
+                      <div
+                        className="exit"
+                        onClick={() => {
+                          setSelected(c);
+                          setIsConfirmOpen(true);
+                        }}
+                      >
+                        <DynamicFaIcon
+                          name="exitOutline"
+                          color="var(--ion-color-danger-tint)"
+                        />
+                      </div>
+                    ) : (
+                      <></>
+                    )}
                   </div>
                 </div>
                 <div className="grupo-r-participantes">
-                  {c.users.length < 2
+                  {c.default
+                    ? "És tu grupo principal"
+                    : c.users.length < 2
                     ? "Solo tú"
                     : c.users.length + " participantes"}
                 </div>
