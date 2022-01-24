@@ -31,6 +31,7 @@ import {
   gridOutline,
   barChartOutline,
   peopleOutline,
+  diamondOutline,
 } from "ionicons/icons";
 import { menuController } from "@ionic/core";
 
@@ -48,7 +49,6 @@ export default function MCmenu(props) {
   };
   useEffect(() => {
     setSelected(location.pathname);
-    console.log(profile);
   }, [location]);
 
   return (
@@ -110,8 +110,6 @@ export default function MCmenu(props) {
                   ></IonIcon>
                   <span>Home</span>
                 </IonItem>
-              </IonMenuToggle>
-              <IonMenuToggle>
                 <IonItem
                   className={
                     selected == "/profile"
@@ -127,8 +125,6 @@ export default function MCmenu(props) {
                   ></IonIcon>
                   <span>Perfil</span>
                 </IonItem>
-              </IonMenuToggle>
-              <IonMenuToggle>
                 <IonItem
                   className={
                     selected == "/cuentas"

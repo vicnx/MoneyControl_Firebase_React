@@ -1,4 +1,11 @@
-import { IonLabel, IonList, IonItem, IonToast, IonAlert } from "@ionic/react";
+import {
+  IonLabel,
+  IonList,
+  IonItem,
+  IonToast,
+  IonAlert,
+  IonRouterLink,
+} from "@ionic/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -27,6 +34,7 @@ const MClistgrupos = (props) => {
   const [isConfirmDeleteOpen, setIsConfirmDeleteOpen] = useState(false);
   const [selected, setSelected] = useState({});
   const [selectedDelete, setSelectedDelete] = useState({});
+
   return (
     <>
       {loadinggrupos ? (
@@ -39,107 +47,121 @@ const MClistgrupos = (props) => {
       ) : grupos ? (
         <div>
           {grupos.map((c, index) => (
-            <div
-              className="grupo-item"
-              key={index}
-              style={{
-                borderColor: c.color,
-                borderWidth: "5px",
-                borderStyle: "solid",
-                backgroundColor: c.color,
-              }}
+            <IonRouterLink
+              routerLink={"/group/" + c.docid}
+              routerDirection="none"
             >
-              <div className="grupo-left" style={{ backgroundColor: c.color }}>
-                {c.isAdmin ? (
-                  <div className="isAdmin">
-                    <DynamicFaIcon
-                      name="ellipse"
-                      color="var(--ion-color-success)"
-                    />
-                  </div>
-                ) : (
-                  <></>
-                )}
-                <DynamicFaIcon name={c.icono} color="white" />
-              </div>
-              <div className="grupo-right">
-                <div className="grupo-r-l">
-                  <IonLabel className="grupo-name" style={{ color: c.color }}>
-                    {c.name}
-                  </IonLabel>
-                  <div className="gastos_totales">
-                    <span>-1000 €</span>
-                  </div>
-                  {c.codinv ? (
-                    <div className="codinv">CODIGO: {c.codinv}</div>
+              <div
+                className="grupo-item"
+                key={index}
+                style={{
+                  borderColor: c.color,
+                  borderWidth: "5px",
+                  borderStyle: "solid",
+                  backgroundColor: c.color,
+                }}
+              >
+                <div
+                  className="grupo-left"
+                  style={{ backgroundColor: c.color }}
+                >
+                  {c.isAdmin ? (
+                    <div className="isAdmin">
+                      <DynamicFaIcon
+                        name="ellipse"
+                        color="var(--ion-color-success)"
+                      />
+                    </div>
                   ) : (
-                    <div className="codinv">Grupo privado</div>
+                    <></>
                   )}
+                  <DynamicFaIcon name={c.icono} color="white" />
                 </div>
-                <div className="grupo-r-r">
-                  <div className="grupo-options">
-                    {c.isAdmin && !c.default ? (
-                      <div
-                        className="delete"
-                        onClick={() => {
-                          setSelectedDelete(c);
-                          setIsConfirmDeleteOpen(true);
-                        }}
-                      >
-                        <DynamicFaIcon
-                          name="trashOutline"
-                          color="var(--ion-color-danger-tint)"
-                        />
-                      </div>
-                    ) : (
-                      <></>
-                    )}
+                <div className="grupo-right">
+                  <div className="grupo-r-l">
+                    <IonLabel className="grupo-name" style={{ color: c.color }}>
+                      {c.name}
+                    </IonLabel>
+                    <div className="gastos_totales">
+                      <span>-1000 €</span>
+                    </div>
                     {c.codinv ? (
-                      <div
-                        className="copy"
-                        onClick={() => {
-                          navigator.clipboard.writeText(c.codinv);
-                          setSuccess({
-                            status: true,
-                            msg: "Código de grupo copiado",
-                          });
-                        }}
-                      >
-                        <DynamicFaIcon
-                          name="clipboardOutline"
-                          color="var(--ion-color-primary)"
-                        />
-                      </div>
+                      <div className="codinv">CODIGO: {c.codinv}</div>
                     ) : (
-                      <></>
-                    )}
-                    {!c.default ? (
-                      <div
-                        className="exit"
-                        onClick={() => {
-                          setSelected(c);
-                          setIsConfirmOpen(true);
-                        }}
-                      >
-                        <DynamicFaIcon
-                          name="exitOutline"
-                          color="var(--ion-color-danger-tint)"
-                        />
-                      </div>
-                    ) : (
-                      <></>
+                      <div className="codinv">Grupo privado</div>
                     )}
                   </div>
-                </div>
-                <div className="grupo-r-participantes">
-                  {c.default
-                    ? "És tu grupo principal"
-                    : c.users.length < 2
-                    ? "Solo tú"
-                    : c.users.length + " participantes"}
+                  <div className="grupo-r-r">
+                    <div className="grupo-options">
+                      {c.isAdmin && !c.default ? (
+                        <div
+                          className="delete"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setSelectedDelete(c);
+                            setIsConfirmDeleteOpen(true);
+                          }}
+                        >
+                          <DynamicFaIcon
+                            name="trashOutline"
+                            color="var(--ion-color-danger-tint)"
+                          />
+                        </div>
+                      ) : (
+                        <></>
+                      )}
+                      {c.codinv ? (
+                        <div
+                          className="copy"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            navigator.clipboard.writeText(c.codinv);
+                            setSuccess({
+                              status: true,
+                              msg: "Código de grupo copiado",
+                            });
+                          }}
+                        >
+                          <DynamicFaIcon
+                            name="clipboardOutline"
+                            color="var(--ion-color-primary)"
+                          />
+                        </div>
+                      ) : (
+                        <></>
+                      )}
+                      {!c.default ? (
+                        <div
+                          className="exit"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setSelected(c);
+                            setIsConfirmOpen(true);
+                          }}
+                        >
+                          <DynamicFaIcon
+                            name="exitOutline"
+                            color="var(--ion-color-danger-tint)"
+                          />
+                        </div>
+                      ) : (
+                        <></>
+                      )}
+                    </div>
+                  </div>
+                  <div className="grupo-r-participantes">
+                    {c.default
+                      ? "És tu grupo principal"
+                      : c.users.length < 2
+                      ? "Solo tú"
+                      : c.users.length + " participantes"}
+                  </div>
                 </div>
               </div>
-            </div>
+            </IonRouterLink>
           ))}
         </div>
       ) : (

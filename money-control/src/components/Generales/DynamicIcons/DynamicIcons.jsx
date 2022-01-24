@@ -20,7 +20,13 @@ const DynamicFaIcon = ({ name, color, slot }) => {
   if (!IconComponent) {
     // Return a default one
 
-    return <IonIcon icon={Icons.imageOutline} />;
+    return (
+      <IonIcon
+        icon={Icons.imageOutline}
+        style={{ color: color ? color : "black" }}
+        slot={slot ? slot : null}
+      />
+    );
   }
 
   return slot ? (

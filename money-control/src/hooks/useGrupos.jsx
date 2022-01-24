@@ -24,6 +24,7 @@ import randomString from "global/functions";
 
 export default function useGrupos() {
   const { grupos, setGrupos } = useContext(GruposContext);
+  const { grupoSelected, setgrupoSelected } = useContext(GruposContext);
   const [loadinggrupos, setLoadingGrupos] = useState(false);
   const [state, setState] = useState({
     loading: false,
@@ -229,6 +230,13 @@ export default function useGrupos() {
     });
   });
 
+  const getGroup = useCallback(async (uid) => {
+    setLoadingGrupos(true);
+    const docRef = doc(db, "grupos", uid);
+    const Grupo = await getDoc(docRef);
+    setgrupoSelected(Grupo.data());
+    await setLoadingGrupos(false);
+  });
   // const createNewCuenta = useCallback((cuenta) => {
   //   const colRef = collection(db, "cuentas");
   //   addDoc(colRef, cuenta)
@@ -243,7 +251,6 @@ export default function useGrupos() {
   //     });
   // });
   const deleteGroup = useCallback(async (grupo) => {
-    console.log("deleteGroup", grupo);
     if (grupo.default) {
       setError({
         status: true,
@@ -272,5 +279,8 @@ export default function useGrupos() {
     joinGroup,
     exitGroup,
     deleteGroup,
+    getGroup,
+    setgrupoSelected,
+    grupoSelected,
   };
 }
