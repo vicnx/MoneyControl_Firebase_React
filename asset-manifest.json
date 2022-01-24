@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/MoneyControl_Firebase_React/static/css/main.f83218c8.css",
-    "main.js": "/MoneyControl_Firebase_React/static/js/main.79b2c5ab.js",
+    "main.js": "/MoneyControl_Firebase_React/static/js/main.9c71741c.js",
     "static/js/3630.9f07ec2e.chunk.js": "/MoneyControl_Firebase_React/static/js/3630.9f07ec2e.chunk.js",
     "static/js/738.25b24187.chunk.js": "/MoneyControl_Firebase_React/static/js/738.25b24187.chunk.js",
     "static/js/7372.9dc7930c.chunk.js": "/MoneyControl_Firebase_React/static/js/7372.9dc7930c.chunk.js",
@@ -20,8 +20,8 @@
     "static/js/5489.718fc1b4.chunk.js": "/MoneyControl_Firebase_React/static/js/5489.718fc1b4.chunk.js",
     "static/css/9515.f5af024d.chunk.css": "/MoneyControl_Firebase_React/static/css/9515.f5af024d.chunk.css",
     "static/js/9515.dffaa238.chunk.js": "/MoneyControl_Firebase_React/static/js/9515.dffaa238.chunk.js",
-    "static/css/9759.71ba1da3.chunk.css": "/MoneyControl_Firebase_React/static/css/9759.71ba1da3.chunk.css",
-    "static/js/9759.be5f86f7.chunk.js": "/MoneyControl_Firebase_React/static/js/9759.be5f86f7.chunk.js",
+    "static/css/6300.5e577e63.chunk.css": "/MoneyControl_Firebase_React/static/css/6300.5e577e63.chunk.css",
+    "static/js/6300.f2149c4d.chunk.js": "/MoneyControl_Firebase_React/static/js/6300.f2149c4d.chunk.js",
     "static/css/6804.fd19736b.chunk.css": "/MoneyControl_Firebase_React/static/css/6804.fd19736b.chunk.css",
     "static/js/6804.e2f23f2b.chunk.js": "/MoneyControl_Firebase_React/static/js/6804.e2f23f2b.chunk.js",
     "static/js/1609.0ff06d63.chunk.js": "/MoneyControl_Firebase_React/static/js/1609.0ff06d63.chunk.js",
@@ -85,7 +85,7 @@
     "static/media/people_SVG.svg": "/MoneyControl_Firebase_React/static/media/people_SVG.5abca6d657a9d45cf4de44e692b1234b.svg",
     "index.html": "/MoneyControl_Firebase_React/index.html",
     "main.f83218c8.css.map": "/MoneyControl_Firebase_React/static/css/main.f83218c8.css.map",
-    "main.79b2c5ab.js.map": "/MoneyControl_Firebase_React/static/js/main.79b2c5ab.js.map",
+    "main.9c71741c.js.map": "/MoneyControl_Firebase_React/static/js/main.9c71741c.js.map",
     "3630.9f07ec2e.chunk.js.map": "/MoneyControl_Firebase_React/static/js/3630.9f07ec2e.chunk.js.map",
     "738.25b24187.chunk.js.map": "/MoneyControl_Firebase_React/static/js/738.25b24187.chunk.js.map",
     "7372.9dc7930c.chunk.js.map": "/MoneyControl_Firebase_React/static/js/7372.9dc7930c.chunk.js.map",
@@ -104,8 +104,8 @@
     "5489.718fc1b4.chunk.js.map": "/MoneyControl_Firebase_React/static/js/5489.718fc1b4.chunk.js.map",
     "9515.f5af024d.chunk.css.map": "/MoneyControl_Firebase_React/static/css/9515.f5af024d.chunk.css.map",
     "9515.dffaa238.chunk.js.map": "/MoneyControl_Firebase_React/static/js/9515.dffaa238.chunk.js.map",
-    "9759.71ba1da3.chunk.css.map": "/MoneyControl_Firebase_React/static/css/9759.71ba1da3.chunk.css.map",
-    "9759.be5f86f7.chunk.js.map": "/MoneyControl_Firebase_React/static/js/9759.be5f86f7.chunk.js.map",
+    "6300.5e577e63.chunk.css.map": "/MoneyControl_Firebase_React/static/css/6300.5e577e63.chunk.css.map",
+    "6300.f2149c4d.chunk.js.map": "/MoneyControl_Firebase_React/static/js/6300.f2149c4d.chunk.js.map",
     "6804.fd19736b.chunk.css.map": "/MoneyControl_Firebase_React/static/css/6804.fd19736b.chunk.css.map",
     "6804.e2f23f2b.chunk.js.map": "/MoneyControl_Firebase_React/static/js/6804.e2f23f2b.chunk.js.map",
     "1609.0ff06d63.chunk.js.map": "/MoneyControl_Firebase_React/static/js/1609.0ff06d63.chunk.js.map",
@@ -163,6 +163,6 @@
   },
   "entrypoints": [
     "static/css/main.f83218c8.css",
-    "static/js/main.79b2c5ab.js"
+    "static/js/main.9c71741c.js"
   ]
 }
