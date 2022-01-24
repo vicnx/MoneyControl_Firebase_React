@@ -18,7 +18,7 @@ import CountUp from "react-countup";
 import DynamicFaIcon from "components/DynamicIcons/DynamicIcons";
 import { Link } from "react-router-dom";
 import MClistgrupos from "components/MClistgrupos/mclistgrupos";
-
+import MCjoingroup from "components/MCjoingroup/mcjoingroup";
 const GruposPage = () => {
   const { cuentas, loadingcuentas } = useCuentas();
   console.log("GruposPage");
@@ -33,15 +33,7 @@ const GruposPage = () => {
           >
             <DynamicFaIcon name="addCircle" color="var(--ion-color-primary)" />
           </IonRouterLink>
-          <IonButton
-            className="boton-join"
-            size="medium"
-            shape="round"
-            color="danger"
-          >
-            <IonLabel className="label">Unirse a un grupo</IonLabel>
-            <DynamicFaIcon name="peopleOutline" color="white" slot="end" />
-          </IonButton>
+          <MCjoingroup />
         </div>
         <IonContent className="list-grupos">
           <MClistgrupos />

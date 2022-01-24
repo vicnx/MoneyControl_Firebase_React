@@ -144,7 +144,6 @@ export default function useUser() {
   });
 
   const updateProfile = async (newdata) => {
-    console.log("uiipdate");
     const docRef = doc(db, "profiles", profile.docid);
     console.log(profile.docid);
     updateDoc(docRef, {

@@ -17,6 +17,7 @@ import {
   updateDoc,
   limit,
   deleteDoc,
+  arrayUnion,
 } from "firebase/firestore";
 import randomString from "global/functions";
 
@@ -61,10 +62,11 @@ export default function useGrupos() {
     });
     return () => (isSubscribed = false);
   }, [auth]);
+
   const createNewGrupo = useCallback(async (grupo) => {
     isSubscribed = true;
     const colRef = collection(db, "grupos");
-    let codigoInv = grupo.codinv ? null : await checkCodInv(colRef); //comprueba si el grupo es privado
+    let codigoInv = grupo.codinv ? null : await createNewCode(colRef); //comprueba si el grupo es privado
     addDoc(colRef, { ...grupo, codinv: codigoInv })
       .then((res) => {
         setSuccess({ status: true, msg: "Grupo creado con exito!" });
@@ -77,7 +79,7 @@ export default function useGrupos() {
       });
   });
 
-  const checkCodInv = async (colRef) => {
+  const createNewCode = async (colRef) => {
     let ok = false;
     let codinv = "";
     while (!ok) {
@@ -127,6 +129,88 @@ export default function useGrupos() {
     }
   });
 
+  const joinGroup = useCallback(async (code) => {
+    const colRefGrupoUser = collection(db, "grupos");
+    console.log("joinGroup", code);
+    if (code) {
+      if (code.length == 8) {
+        setLoadingGrupos(true);
+        let grupo = await getGrupoByCodInv(code);
+        let codeOK = await checkCodeExists(code);
+        let userInGroup = await checkUserinGroup(auth.currentUser.uid, code);
+        if (codeOK && !userInGroup) {
+          const docRef = doc(db, "grupos", grupo.docid);
+          updateDoc(docRef, {
+            users: arrayUnion(auth.currentUser.uid),
+          }).then((res) => {
+            setLoadingGrupos(false);
+            getGrupos(auth.currentUser.uid);
+            setSuccess({ status: true, msg: "Te has unido a un nuevo grupo." });
+          });
+        } else {
+          setLoadingGrupos(false);
+          setError({
+            status: true,
+            msg: "Ya perteneces a este grupo!",
+          });
+        }
+      } else {
+        setError({
+          status: true,
+          msg: "Los códigos de grupo deben tener 8 carácteres.",
+        });
+      }
+    } else {
+      setError({
+        status: true,
+        msg: "No has introducido ningún código.",
+      });
+    }
+  });
+
+  const checkCodeExists = async (code) => {
+    const colRef = collection(db, "grupos");
+    let ok = false;
+    const checkifinvexits = query(colRef, where("codinv", "==", code));
+    const querySnapshot = await getDocs(checkifinvexits);
+    if (querySnapshot.empty) {
+      ok = false;
+    } else {
+      ok = true;
+    }
+    return ok;
+  };
+
+  const checkUserinGroup = async (uiduser, groupcode) => {
+    const colRef = collection(db, "grupos");
+    let ok = false;
+    const q = query(
+      colRef,
+      where("users", "array-contains", uiduser),
+      where("codinv", "==", groupcode)
+    );
+    const querySnapshot = await getDocs(q);
+    if (querySnapshot.empty) {
+      ok = false;
+    } else {
+      ok = true;
+    }
+    return ok;
+  };
+
+  const getGrupoByCodInv = useCallback(async (codinbv) => {
+    const colRefGrupo = collection(db, "grupos");
+    const q = query(colRefGrupo, where("codinv", "==", codinbv));
+    const querySnapshot = await getDocs(q);
+    let gruposbycodinv = [];
+    querySnapshot.forEach((doc) => {
+      gruposbycodinv.push({ ...doc.data(), docid: doc.id });
+    });
+    if (isSubscribed && gruposbycodinv.length > 0) {
+      return gruposbycodinv[0];
+    }
+  });
+
   // const createNewCuenta = useCallback((cuenta) => {
   //   const colRef = collection(db, "cuentas");
   //   addDoc(colRef, cuenta)
@@ -164,5 +248,6 @@ export default function useGrupos() {
     createDefaultGrupo,
     getGrupos,
     createNewGrupo,
+    joinGroup,
   };
 }
