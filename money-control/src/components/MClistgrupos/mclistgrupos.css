@@ -76,6 +76,12 @@
 .grupo-options {
   display: flex;
 }
+.isAdmin {
+  position: absolute;
+  bottom: 0px;
+  left: 2px;
+  font-size: 11px;
+}
 /* .grupo-item {
   padding: 30px 20px 30px 20px;
   color: var(--color_text);

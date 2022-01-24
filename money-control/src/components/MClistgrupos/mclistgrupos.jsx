@@ -13,17 +13,20 @@ import { informationCircle } from "ionicons/icons";
 
 const MClistgrupos = (props) => {
   const {
-    cuentas,
-    loadingcuentas,
-    deleteCuenta,
+    grupos,
+    loadinggrupos,
+    exitGroup,
+    checkAdmin,
+    deleteGroup,
+    setError,
+    error,
     success,
     setSuccess,
-    error,
-    setError,
-  } = useCuentas();
-  const { grupos, loadinggrupos, exitGroup } = useGrupos();
+  } = useGrupos();
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+  const [isConfirmDeleteOpen, setIsConfirmDeleteOpen] = useState(false);
   const [selected, setSelected] = useState({});
+  const [selectedDelete, setSelectedDelete] = useState({});
   return (
     <>
       {grupos ? (
@@ -40,6 +43,16 @@ const MClistgrupos = (props) => {
               }}
             >
               <div className="grupo-left" style={{ backgroundColor: c.color }}>
+                {c.isAdmin ? (
+                  <div className="isAdmin">
+                    <DynamicFaIcon
+                      name="ellipse"
+                      color="var(--ion-color-success)"
+                    />
+                  </div>
+                ) : (
+                  <></>
+                )}
                 <DynamicFaIcon name={c.icono} color="white" />
               </div>
               <div className="grupo-right">
@@ -58,12 +71,28 @@ const MClistgrupos = (props) => {
                 </div>
                 <div className="grupo-r-r">
                   <div className="grupo-options">
+                    {c.isAdmin ? (
+                      <div
+                        className="delete"
+                        onClick={() => {
+                          setSelectedDelete(c);
+                          setIsConfirmDeleteOpen(true);
+                        }}
+                      >
+                        <DynamicFaIcon
+                          name="trashOutline"
+                          color="var(--ion-color-danger-tint)"
+                        />
+                      </div>
+                    ) : (
+                      <></>
+                    )}
                     <DynamicFaIcon
                       name="clipboardOutline"
                       color="var(--ion-color-primary)"
                     />
                     <div
-                      className="delete"
+                      className="exit"
                       onClick={() => {
                         setSelected(c);
                         setIsConfirmOpen(true);
@@ -178,6 +207,32 @@ const MClistgrupos = (props) => {
             id: "confirm-button",
             handler: () => {
               exitGroup(selected);
+            },
+          },
+        ]}
+      />
+      <IonAlert
+        isOpen={isConfirmDeleteOpen}
+        onDidDismiss={() => setIsConfirmDeleteOpen(false)}
+        // cssClass='my-custom-class'
+        header={"Eliminar grupo"}
+        message={
+          "¿Seguro que quieres eliminar el grupo </br><strong>" +
+          selectedDelete.name +
+          "</strong>?"
+        }
+        buttons={[
+          {
+            text: "Cancelar",
+            role: "cancel",
+            cssClass: "secondary",
+            id: "cancel-button",
+          },
+          {
+            text: "ELIMINAR",
+            id: "confirm-button",
+            handler: () => {
+              deleteGroup(selectedDelete);
             },
           },
         ]}

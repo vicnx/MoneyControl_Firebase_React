@@ -117,12 +117,18 @@ export default function useGrupos() {
   });
 
   const getGrupos = useCallback(async (uid) => {
+    let isAdmin = false;
     const colRefGrupoUser = collection(db, "grupos");
     const q = query(colRefGrupoUser, where("users", "array-contains", uid));
     const querySnapshot = await getDocs(q);
     let grupocopia = [];
     querySnapshot.forEach((doc) => {
-      grupocopia.push({ ...doc.data(), docid: doc.id });
+      if (doc.data().createdby == uid) {
+        isAdmin = true;
+      } else {
+        isAdmin = false;
+      }
+      grupocopia.push({ ...doc.data(), docid: doc.id, isAdmin: isAdmin });
     });
     if (isSubscribed) {
       setGrupos(grupocopia);
@@ -236,17 +242,20 @@ export default function useGrupos() {
   //       console.log(error);
   //     });
   // });
-  // const deleteCuenta = useCallback(async (cuenta) => {
-  //   console.log("cuentas length", cuentas.length);
-  //   if (cuentas.length <= 1) {
-  //     setError({ status: true, msg: "No puedes eliminar tu ultima cuenta!" });
-  //   } else {
-  //     deleteDoc(doc(db, "cuentas", cuenta.docid)).then((res) => {
-  //       setSuccess({ status: true, msg: "Cuenta eliminada con exito!" });
-  //       getCuentas(auth.currentUser.uid);
-  //     });
-  //   }
-  // });
+  const deleteGroup = useCallback(async (grupo) => {
+    console.log("deleteGroup", grupo);
+    if (grupo.default) {
+      setError({
+        status: true,
+        msg: "No puedes eliminar tu grupo principal.",
+      });
+    } else {
+      deleteDoc(doc(db, "grupos", grupo.docid)).then((res) => {
+        setSuccess({ status: true, msg: "Grupo eliminado con exito!" });
+        getGrupos(auth.currentUser.uid);
+      });
+    }
+  });
 
   return {
     errors: errorMSG,
@@ -262,5 +271,6 @@ export default function useGrupos() {
     createNewGrupo,
     joinGroup,
     exitGroup,
+    deleteGroup,
   };
 }
