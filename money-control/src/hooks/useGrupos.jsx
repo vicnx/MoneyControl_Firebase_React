@@ -18,6 +18,7 @@ import {
   limit,
   deleteDoc,
   arrayUnion,
+  arrayRemove,
 } from "firebase/firestore";
 import randomString from "global/functions";
 
@@ -211,6 +212,17 @@ export default function useGrupos() {
     }
   });
 
+  const exitGroup = useCallback(async (grupo) => {
+    const grupoRef = doc(db, "grupos", grupo.docid);
+    updateDoc(grupoRef, {
+      users: arrayRemove(auth.currentUser.uid),
+    }).then((res) => {
+      setLoadingGrupos(false);
+      getGrupos(auth.currentUser.uid);
+      setSuccess({ status: true, msg: "Has salido del grupo" });
+    });
+  });
+
   // const createNewCuenta = useCallback((cuenta) => {
   //   const colRef = collection(db, "cuentas");
   //   addDoc(colRef, cuenta)
@@ -249,5 +261,6 @@ export default function useGrupos() {
     getGrupos,
     createNewGrupo,
     joinGroup,
+    exitGroup,
   };
 }

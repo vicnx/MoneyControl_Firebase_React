@@ -21,7 +21,7 @@ const MClistgrupos = (props) => {
     error,
     setError,
   } = useCuentas();
-  const { grupos, loadinggrupos } = useGrupos();
+  const { grupos, loadinggrupos, exitGroup } = useGrupos();
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [selected, setSelected] = useState({});
   return (
@@ -58,6 +58,10 @@ const MClistgrupos = (props) => {
                 </div>
                 <div className="grupo-r-r">
                   <div className="grupo-options">
+                    <DynamicFaIcon
+                      name="clipboardOutline"
+                      color="var(--ion-color-primary)"
+                    />
                     <div
                       className="delete"
                       onClick={() => {
@@ -65,10 +69,6 @@ const MClistgrupos = (props) => {
                         setIsConfirmOpen(true);
                       }}
                     >
-                      <DynamicFaIcon
-                        name="clipboardOutline"
-                        color="var(--ion-color-primary)"
-                      />
                       <DynamicFaIcon
                         name="exitOutline"
                         color="var(--ion-color-danger-tint)"
@@ -160,9 +160,9 @@ const MClistgrupos = (props) => {
         isOpen={isConfirmOpen}
         onDidDismiss={() => setIsConfirmOpen(false)}
         // cssClass='my-custom-class'
-        header={"Eliminar Cuenta"}
+        header={"Salir del grupo"}
         message={
-          "¿Seguro que quieres elimiar la cuenta</br><strong>" +
+          "¿Seguro que quieres salir de </br><strong>" +
           selected.name +
           "</strong>?"
         }
@@ -174,10 +174,10 @@ const MClistgrupos = (props) => {
             id: "cancel-button",
           },
           {
-            text: "Elimiar",
+            text: "Salir",
             id: "confirm-button",
             handler: () => {
-              deleteCuenta(selected);
+              exitGroup(selected);
             },
           },
         ]}
