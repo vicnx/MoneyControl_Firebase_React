@@ -23,9 +23,9 @@ import {
   homeOutline,
 } from "ionicons/icons";
 
-import MCfabmenu from "components/MCfabmenu/mcfabmenu";
-import MCmenu from "components/MCmenu/mcmenu";
-import MCheader from "components/MCheader/mcheader";
+import MCfabmenu from "components/Generales/MCfabmenu/mcfabmenu";
+import MCmenu from "components/Generales/MCmenu/mcmenu";
+import MCheader from "components/Generales/MCheader/mcheader";
 
 export default function MCrouter() {
   const { auth } = useUser();

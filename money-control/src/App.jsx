@@ -27,7 +27,7 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 
 import useUser from "hooks/useUser";
-import MCloading from "components/MCloading/MCloading";
+import MCloading from "components/Generales/MCloading/MCloading";
 import MCrouter from "router";
 
 setupIonicReact();

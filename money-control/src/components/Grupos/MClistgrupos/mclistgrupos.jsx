@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react";
 import "./mclistgrupos.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import CountUp from "react-countup";
-import DynamicFaIcon from "components/DynamicIcons/DynamicIcons";
+import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 import { informationCircle } from "ionicons/icons";
 
 const MClistgrupos = (props) => {
@@ -29,7 +29,14 @@ const MClistgrupos = (props) => {
   const [selectedDelete, setSelectedDelete] = useState({});
   return (
     <>
-      {grupos ? (
+      {loadinggrupos ? (
+        <ClipLoader
+          color={"blue"}
+          loading={true}
+          css={"display: block;margin: 0 auto"}
+          size={150}
+        />
+      ) : grupos ? (
         <div>
           {grupos.map((c, index) => (
             <div
@@ -117,6 +124,7 @@ const MClistgrupos = (props) => {
       ) : (
         "Sin grupos"
       )}
+
       {/* {grupos ? (
         <div>
           {grupos.map((c, index) => (

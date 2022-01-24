@@ -15,8 +15,8 @@ import "./Cuentas.css";
 import useCuentas from "hooks/useCuentas";
 import ClipLoader from "react-spinners/ClipLoader";
 import CountUp from "react-countup";
-import DynamicFaIcon from "components/DynamicIcons/DynamicIcons";
-import MClistcuentas from "components/MClistcuentas/mclistcuentas";
+import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
+import MClistcuentas from "components/Cuentas/MClistcuentas/mclistcuentas";
 import { Link } from "react-router-dom";
 
 const CuentasPage = () => {

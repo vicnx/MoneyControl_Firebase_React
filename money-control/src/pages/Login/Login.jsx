@@ -12,7 +12,7 @@ import LogoutButton from "components/auth/logout";
 import "./Login.css";
 import people from "assets/images/people_SVG.svg";
 import useUser from "hooks/useUser";
-import MCloading from "components/MCloading/MCloading";
+import MCloading from "components/Generales/MCloading/MCloading";
 import { Redirect } from "react-router-dom";
 
 const LoginPage = () => {

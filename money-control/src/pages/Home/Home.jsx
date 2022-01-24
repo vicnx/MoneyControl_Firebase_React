@@ -4,12 +4,12 @@ import "swiper/css/navigation";
 import React, { useEffect, useState } from "react";
 import * as Icons from "ionicons/icons";
 import "./Home.css";
-import MCcuentas from "components/MCcuentas/mccuentas";
-import MCgrupos from "components/MCgrupos/mcgrupos";
+import MCcuentas from "components/Cuentas/MCcuentas/mccuentas";
+import MCgrupos from "components/Grupos/MCgrupos/mcgrupos";
 import useCuentas from "hooks/useCuentas";
 import ClipLoader from "react-spinners/ClipLoader";
 import CountUp from "react-countup";
-import DynamicFaIcon from "components/DynamicIcons/DynamicIcons";
+import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 
 const HomePage = () => {
   const { cuentas, loadingcuentas } = useCuentas();

@@ -11,8 +11,8 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import "./DatosCuenta.css";
 import useCuentas from "hooks/useCuentas";
-import MClistcuentas from "components/MClistcuentas/mclistcuentas";
-import MCdatoscuenta from "components/MCdatoscuenta/mcdatoscuenta";
+import MClistcuentas from "components/Cuentas/MClistcuentas/mclistcuentas";
+import MCdatoscuenta from "components/Cuentas/MCdatoscuenta/mcdatoscuenta";
 
 const DatosCuentaPage = () => {
   const { cuentas, loadingcuentas } = useCuentas();

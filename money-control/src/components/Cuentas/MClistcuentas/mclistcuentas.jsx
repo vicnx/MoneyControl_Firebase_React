@@ -7,7 +7,7 @@ import React, { useEffect, useState } from "react";
 import "./mclistcuentas.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import CountUp from "react-countup";
-import DynamicFaIcon from "components/DynamicIcons/DynamicIcons";
+import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 import { informationCircle } from "ionicons/icons";
 
 const MClistcuentas = (props) => {

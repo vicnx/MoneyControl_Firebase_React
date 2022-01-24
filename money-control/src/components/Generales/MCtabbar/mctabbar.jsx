@@ -24,7 +24,7 @@ import {
   homeOutline,
 } from "ionicons/icons";
 
-import MCfabmenu from "components/MCfabmenu/mcfabmenu";
+import MCfabmenu from "components/Generales/MCfabmenu/mcfabmenu";
 import MCmenu from "components/MCmenu/mcmenu";
 
 export default function MCtabbar() {

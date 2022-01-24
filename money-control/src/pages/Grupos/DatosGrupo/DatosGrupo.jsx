@@ -11,9 +11,9 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import "./DatosGrupo.css";
 import useCuentas from "hooks/useCuentas";
-import MClistcuentas from "components/MClistcuentas/mclistcuentas";
-import MCdatoscuenta from "components/MCdatoscuenta/mcdatoscuenta";
-import MCdatosgrupo from "components/MCdatosgrupo/mcdatosgrupo";
+import MClistcuentas from "components/Cuentas/MClistcuentas/mclistcuentas";
+import MCdatoscuenta from "components/Cuentas/MCdatoscuenta/mcdatoscuenta";
+import MCdatosgrupo from "components/Grupos/MCdatosgrupo/mcdatosgrupo";
 
 const DatosGrupoPage = () => {
   const { cuentas, loadingcuentas } = useCuentas();

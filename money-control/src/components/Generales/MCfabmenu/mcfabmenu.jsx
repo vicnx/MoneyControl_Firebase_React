@@ -16,8 +16,8 @@ import { add, remove, arrowUp } from "ionicons/icons";
 
 export default function MCfabmenu() {
   const { auth } = useUser();
-  const Profile = React.lazy(() => import("../../pages/Profile/Profile"));
-  const Login = React.lazy(() => import("../../pages/Login/Login"));
+  const Profile = React.lazy(() => import("../../../pages/Profile/Profile"));
+  const Login = React.lazy(() => import("../../../pages/Login/Login"));
   const userImage = {
     backgroundImage: 'url("' + auth.currentUser.photoURL + '")',
   };
