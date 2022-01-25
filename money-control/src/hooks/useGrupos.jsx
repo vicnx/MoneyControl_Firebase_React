@@ -234,7 +234,13 @@ export default function useGrupos() {
     setLoadingGrupos(true);
     const docRef = doc(db, "grupos", uid);
     const Grupo = await getDoc(docRef);
-    setgrupoSelected(Grupo.data());
+    let isAdmin = false;
+    if (Grupo.data().createdby == auth.currentUser.uid) {
+      isAdmin = true;
+    } else {
+      isAdmin = false;
+    }
+    setgrupoSelected({ ...Grupo.data(), docid: Grupo.id, isAdmin: isAdmin });
     await setLoadingGrupos(false);
   });
   // const createNewCuenta = useCallback((cuenta) => {

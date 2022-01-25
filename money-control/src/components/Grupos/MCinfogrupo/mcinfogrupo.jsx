@@ -9,6 +9,10 @@ import {
   IonSelect,
   IonSelectOption,
   IonIcon,
+  IonFab,
+  IonFabButton,
+  IonFabList,
+  IonButton,
 } from "@ionic/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -54,6 +58,39 @@ const MCinfogrupo = ({ grupo }) => {
         >
           {grupo.name}
         </span>
+        {grupo.isAdmin ? (
+          <IonFab className="grupo-info-fab">
+            <IonFabButton color="success" className="grupo-info-fab-first">
+              <DynamicFaIcon name={"arrowBackOutline"} color="white" />
+            </IonFabButton>
+            <IonFabList side="start" className="grupo-info-list">
+              <IonButton
+                color="warning"
+                className="grupo-info-fab-button"
+                style={{ boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.1);" }}
+              >
+                Editar grupo
+                <DynamicFaIcon
+                  name={"pencilOutline"}
+                  color="black"
+                  slot="end"
+                />
+              </IonButton>
+              <IonButton
+                color="secondary"
+                style={{
+                  boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.1);",
+                }}
+                className="grupo-info-fab-button"
+              >
+                <span>Categorías</span>
+                <DynamicFaIcon name={"appsOutline"} slot="end" color="black" />
+              </IonButton>
+            </IonFabList>
+          </IonFab>
+        ) : (
+          <></>
+        )}
       </div>
       <IonContent className="content-info-grupo">
         {/* <MClistgrupos /> */}

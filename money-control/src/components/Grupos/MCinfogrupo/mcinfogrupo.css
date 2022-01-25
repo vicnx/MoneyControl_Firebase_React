@@ -5,4 +5,22 @@
   justify-content: center;
   align-items: center;
   font-size: 22px;
+  position: relative;
+}
+.grupo-info-fab {
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+}
+.grupo-info-fab .grupo-info-fab-first {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+}
+.grupo-info-list {
+  margin-inline: 50px;
+  padding-bottom: 20px;
+}
+.grupo-info-fab-button span {
+  color: black;
 }
