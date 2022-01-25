@@ -8,7 +8,7 @@ import {
   IonImg,
   IonSelect,
   IonSelectOption,
-  IonIcon,
+  IonRouterLink,
   IonFab,
   IonFabButton,
   IonFabList,
@@ -64,28 +64,20 @@ const MCinfogrupo = ({ grupo }) => {
               <DynamicFaIcon name={"arrowBackOutline"} color="white" />
             </IonFabButton>
             <IonFabList side="start" className="grupo-info-list">
-              <IonButton
-                color="warning"
-                className="grupo-info-fab-button"
-                style={{ boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.1);" }}
+              <IonFabButton color="warning" className="grupo-info-fab-button">
+                <DynamicFaIcon name={"pencilOutline"} color="black" />
+              </IonFabButton>
+              <IonRouterLink
+                routerLink={"/categories/" + grupo.docid}
+                routerDirection="forward"
               >
-                Editar grupo
-                <DynamicFaIcon
-                  name={"pencilOutline"}
-                  color="black"
-                  slot="end"
-                />
-              </IonButton>
-              <IonButton
-                color="secondary"
-                style={{
-                  boxShadow: "0px 8px 15px rgba(0, 0, 0, 0.1);",
-                }}
-                className="grupo-info-fab-button"
-              >
-                <span>Categorías</span>
-                <DynamicFaIcon name={"appsOutline"} slot="end" color="black" />
-              </IonButton>
+                <IonFabButton
+                  color="secondary"
+                  className="grupo-info-fab-button"
+                >
+                  <DynamicFaIcon name={"appsOutline"} color="black" />
+                </IonFabButton>
+              </IonRouterLink>
             </IonFabList>
           </IonFab>
         ) : (

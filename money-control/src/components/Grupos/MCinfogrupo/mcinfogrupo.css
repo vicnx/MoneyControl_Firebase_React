@@ -9,7 +9,7 @@
 }
 .grupo-info-fab {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   right: 10px;
 }
 .grupo-info-fab .grupo-info-fab-first {
@@ -19,8 +19,12 @@
 }
 .grupo-info-list {
   margin-inline: 50px;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 }
 .grupo-info-fab-button span {
   color: black;
+}
+.grupo-info-fab-button {
+  width: 40px;
+  height: 40px;
 }
