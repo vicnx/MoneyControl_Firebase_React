@@ -33,7 +33,7 @@ const CuentasPage = () => {
         <div className="boton_add_parent">
           <IonRouterLink
             routerLink={"/cuentas/add"}
-            routerDirection="none"
+            routerDirection="forward"
             className="boton-add"
           >
             <DynamicFaIcon name="addCircle" color="var(--ion-color-primary)" />
@@ -43,7 +43,7 @@ const CuentasPage = () => {
           <IonLabel className="title">Gestión de cuentas</IonLabel>
           <IonRouterLink
             routerLink={"/cuentas/add"}
-            routerDirection="none"
+            routerDirection="forward"
             className="boton-add"
           >
             <DynamicFaIcon name="addCircle" color="var(--ion-color-primary" />

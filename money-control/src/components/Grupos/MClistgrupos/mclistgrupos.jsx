@@ -49,7 +49,7 @@ const MClistgrupos = (props) => {
           {grupos.map((c, index) => (
             <IonRouterLink
               routerLink={"/group/" + c.docid}
-              routerDirection="none"
+              routerDirection="forward"
             >
               <div
                 className="grupo-item"

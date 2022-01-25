@@ -9,6 +9,7 @@ import {
   IonAvatar,
   IonMenuButton,
   IonRouterLink,
+  IonBackButton,
 } from "@ionic/react";
 import { gridOutline } from "ionicons/icons";
 import "./mcheader.css";
@@ -49,22 +50,43 @@ export default function MCheader() {
     <>
       <IonHeader className="ion-no-border" color="white" fixed>
         <IonToolbar color="white">
-          <IonMenuButton autoHide={true} slot="start">
-            <IonIcon
-              icon={gridOutline}
-              style={{ color: "var(--ion-color-primary-shade)" }}
-            />
-          </IonMenuButton>
           <IonTitle>{page}</IonTitle>
-          <IonRouterLink
+          {location.pathname == "/home" ? (
+            <></>
+          ) : (
+            <IonBackButton
+              defaultHref="home"
+              slot="start"
+              text=""
+              style={{
+                color: "var(--ion-color-primary)",
+                fontSize: "20px",
+              }}
+              className="backButtonHeader"
+            />
+          )}
+          {/* <IonRouterLink
             routerLink={"/profile"}
-            routerDirection="none"
-            slot="end"
+            routerDirection="forward"
+            slot="start"
           >
             <IonAvatar className="header-avatar">
               <img src={profile.image} />
             </IonAvatar>
-          </IonRouterLink>
+          </IonRouterLink> */}
+          <IonMenuButton
+            autoHide={true}
+            slot="end"
+            className="header-menu-avatar"
+          >
+            <IonAvatar className="header-avatar">
+              <img src={profile.image} />
+            </IonAvatar>
+            {/* <IonIcon
+              icon={gridOutline}
+              style={{ color: "var(--ion-color-primary-shade)" }}
+            /> */}
+          </IonMenuButton>
         </IonToolbar>
       </IonHeader>
     </>

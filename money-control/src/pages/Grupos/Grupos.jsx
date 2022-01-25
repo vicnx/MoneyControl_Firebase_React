@@ -28,7 +28,7 @@ const GruposPage = () => {
         <div className="boton_group">
           <IonRouterLink
             routerLink={"/groups/add"}
-            routerDirection="none"
+            routerDirection="forward"
             className="boton-add"
           >
             <DynamicFaIcon name="addCircle" color="var(--ion-color-primary)" />

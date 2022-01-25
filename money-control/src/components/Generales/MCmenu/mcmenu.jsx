@@ -102,7 +102,7 @@ export default function MCmenu(props) {
                       : "menu-item"
                   }
                   routerLink={"/home"}
-                  routerDirection="none"
+                  routerDirection="forward"
                 >
                   <IonIcon
                     className="menu-item-icon"
@@ -117,7 +117,7 @@ export default function MCmenu(props) {
                       : "menu-item"
                   }
                   routerLink={"/profile"}
-                  routerDirection="none"
+                  routerDirection="forward"
                 >
                   <IonIcon
                     className="menu-item-icon"
@@ -132,7 +132,7 @@ export default function MCmenu(props) {
                       : "menu-item"
                   }
                   routerLink={"/cuentas"}
-                  routerDirection="none"
+                  routerDirection="forward"
                 >
                   <IonIcon
                     className="menu-item-icon"
@@ -147,7 +147,7 @@ export default function MCmenu(props) {
                       : "menu-item"
                   }
                   routerLink={"/groups"}
-                  routerDirection="none"
+                  routerDirection="forward"
                 >
                   <IonIcon
                     className="menu-item-icon"
