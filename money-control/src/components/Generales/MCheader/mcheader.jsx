@@ -12,6 +12,7 @@ import {
   IonBackButton,
 } from "@ionic/react";
 import { gridOutline } from "ionicons/icons";
+import { CONSTANTS } from "global/functions";
 import "./mcheader.css";
 
 export default function MCheader() {
@@ -80,7 +81,9 @@ export default function MCheader() {
             className="header-menu-avatar"
           >
             <IonAvatar className="header-avatar">
-              <img src={profile.image} />
+              <img
+                src={profile.image ? profile.image : CONSTANTS.defaultAvatar}
+              />
             </IonAvatar>
             {/* <IonIcon
               icon={gridOutline}

@@ -20,7 +20,7 @@ import {
   arrayUnion,
   arrayRemove,
 } from "firebase/firestore";
-import randomString from "global/functions";
+import { randomString } from "global/functions";
 
 export default function useGrupos() {
   const { grupos, setGrupos } = useContext(GruposContext);

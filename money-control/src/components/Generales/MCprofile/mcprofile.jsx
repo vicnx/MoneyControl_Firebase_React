@@ -15,13 +15,16 @@ import {
 import "./mcprofile.css";
 import * as Icons from "ionicons/icons";
 import LogoutButton from "components/auth/logout";
-import randomString from "global/functions";
+import { randomString, CONSTANTS } from "global/functions";
 export default function MCprofile() {
   const { profile, updateProfile } = useUser();
   const [showModal, setShowModal] = useState(false);
   const [imageURL, setImageURL] = useState(profile.image);
   const userImage = {
-    backgroundImage: 'url("' + profile.image + '")',
+    backgroundImage:
+      'url("' +
+      (profile.image ? profile.image : CONSTANTS.defaultAvatar) +
+      '")',
   };
   const tiposavatar = [
     "adventurer",
@@ -32,7 +35,7 @@ export default function MCprofile() {
 
   useEffect(() => {
     console.log("ha cambiado profile");
-    setImageURL(profile.image);
+    setImageURL(profile.image ? profile.image : CONSTANTS.defaultAvatar);
   }, [profile]);
 
   const genAvatar = () => {

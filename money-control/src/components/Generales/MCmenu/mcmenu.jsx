@@ -34,7 +34,7 @@ import {
   diamondOutline,
 } from "ionicons/icons";
 import { menuController } from "@ionic/core";
-
+import { CONSTANTS } from "global/functions";
 export default function MCmenu(props) {
   const { auth, profile } = useUser();
   const [selected, setSelected] = useState("");
@@ -45,7 +45,10 @@ export default function MCmenu(props) {
   // const Login = React.lazy(() => import("../../pages/Login/Login"));
 
   const userImage = {
-    backgroundImage: 'url("' + profile.image + '")',
+    backgroundImage:
+      'url("' +
+      (profile.image ? profile.image : CONSTANTS.defaultAvatar) +
+      '")',
   };
   useEffect(() => {
     setSelected(location.pathname);
