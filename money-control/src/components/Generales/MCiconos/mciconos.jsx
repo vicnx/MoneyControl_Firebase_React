@@ -19,42 +19,31 @@ import "./mciconos.css";
 import ClipLoader from "react-spinners/ClipLoader";
 import CountUp from "react-countup";
 import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
+import {
+  iconosCuentas,
+  iconosGrupos,
+  iconosCategorias,
+} from "global/functions";
 
 const MCiconos = (props) => {
-  const iconosCuentas = [
-    "walletOutline",
-    "cardOutline",
-    "logoPaypal",
-    "cashOutline",
-    "contrastOutline",
-    "earthOutline",
-    "serverOutline",
-    "happyOutline",
-    "flashOutline",
-    "flaskOutline",
-    "globeOutline",
-    "heartOutline",
-    "flowerOutline",
-    "rocketOutline",
-  ];
+  const [iconos, setIconos] = useState(iconosCuentas);
 
-  const iconosGrupos = [
-    "happyOutline",
-    "flashOutline",
-    "flaskOutline",
-    "globeOutline",
-    "heartOutline",
-    "flowerOutline",
-    "rocketOutline",
-    "accessibilityOutline",
-    "airplaneOutline",
-    "alarmOutline",
-    "beerOutline",
-    "boatOutline",
-    "barbellOutline",
-    "bedOutline",
-    "chatbubblesOutline",
-  ];
+  useEffect(() => {
+    switch (props.type) {
+      case "group":
+        setIconos(iconosGrupos);
+        break;
+      case "cuentas":
+        setIconos(iconosCuentas);
+        break;
+      case "categories":
+        setIconos(iconosCategorias);
+        break;
+      default:
+        break;
+    }
+  }, [props.type]);
+
   return (
     <div className="icono-component">
       <span className="info">
@@ -62,33 +51,8 @@ const MCiconos = (props) => {
       </span>
       <div className="icono-list">
         <Swiper slidesPerView={5} loop={true} className="mySwiper">
-          {props.type != "group"
-            ? iconosCuentas
-              ? iconosCuentas.map((i, index) => (
-                  <SwiperSlide
-                    className={
-                      props.iconoSelected == i ? "icono selected" : "icono"
-                    }
-                    style={
-                      props.iconoSelected == i
-                        ? {
-                            borderColor: props.colorSelected,
-                            borderWidth: "3px",
-                            borderStyle: "solid",
-                          }
-                        : {}
-                    }
-                    key={index}
-                    onClick={() => {
-                      props.onChange(i);
-                    }}
-                  >
-                    <DynamicFaIcon name={i} color={props.colorSelected} />
-                  </SwiperSlide>
-                ))
-              : "No hay iconos disponibles"
-            : iconosGrupos
-            ? iconosGrupos.map((i, index) => (
+          {iconos
+            ? iconos.map((i, index) => (
                 <SwiperSlide
                   className={
                     props.iconoSelected == i ? "icono selected" : "icono"

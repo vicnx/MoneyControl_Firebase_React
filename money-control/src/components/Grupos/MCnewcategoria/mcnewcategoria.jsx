@@ -19,8 +19,7 @@ import useCuentas from "hooks/useCuentas";
 import useGrupos from "hooks/useGrupos";
 import React, { useEffect, useState } from "react";
 import "./mcnewcategoria.css";
-import ClipLoader from "react-spinners/ClipLoader";
-import CountUp from "react-countup";
+
 import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 import { informationCircle } from "ionicons/icons";
 import MCloading from "components/Generales/MCloading/MCloading";
@@ -31,24 +30,34 @@ const MCnewcategoria = (props) => {
     useGrupos();
   const [showModal, setShowModal] = useState(false);
   const [color, setColor] = useState("#5499C7");
-  const [icono, setIcono] = useState("cashOutline");
+  const [icono, setIcono] = useState("shirtOutline");
   const [newCategoria, setNewCategoria] = useState({
     name: "",
-    icono: "carSportOutline",
+    icono: "shirtOutline",
     color: "#F44336",
   });
   const [isErrorOpen, setIsErrorOpen] = useState(false);
+
   useEffect(() => {
     if (success.status && showModal) {
       setShowModal(false);
     }
   }, [success]);
+
   function changeColor(newValue) {
-    setColor(newValue);
+    setNewCategoria({ ...newCategoria, color: newValue });
   }
 
   function changeIcono(newValue) {
-    setIcono(newValue);
+    setNewCategoria({ ...newCategoria, icono: newValue });
+  }
+  function createCategoria() {
+    if (!newCategoria.name) {
+      setError({
+        status: true,
+        msg: "El nombre de la categoría no puede estar vacio",
+      });
+    }
   }
   return (
     <>
@@ -77,7 +86,8 @@ const MCnewcategoria = (props) => {
             <>
               <IonItem>
                 <IonLabel position="stacked">
-                  Introduce el nombre de la categoría
+                  Introduce el nombre de la categoría{" "}
+                  <span className="required">*</span>
                 </IonLabel>
                 <IonInput
                   value={newCategoria.name}
@@ -88,11 +98,15 @@ const MCnewcategoria = (props) => {
                   clearInput
                 ></IonInput>
               </IonItem>
-              <MCcolores onChange={changeColor} colorSelected={color} />
+              <MCcolores
+                onChange={changeColor}
+                colorSelected={newCategoria.color}
+              />
               <MCiconos
                 onChange={changeIcono}
-                colorSelected={color}
-                iconoSelected={icono}
+                colorSelected={newCategoria.color}
+                iconoSelected={newCategoria.icono}
+                type="categories"
               />
               <div className="buttons-div">
                 <IonButton
@@ -100,7 +114,7 @@ const MCnewcategoria = (props) => {
                   size="medium"
                   shape="round"
                   color="success"
-                  onClick={() => console.log(newCategoria)}
+                  onClick={() => createCategoria()}
                 >
                   <IonLabel className="label">Crear</IonLabel>
                   <DynamicFaIcon
@@ -114,16 +128,19 @@ const MCnewcategoria = (props) => {
           )}
         </IonContent>
       </IonModal>
-      <IonButton
-        className="boton-join"
-        size="medium"
-        shape="round"
-        color="danger"
-        onClick={() => setShowModal(true)}
-      >
-        <IonLabel className="label">Unirse a un grupo</IonLabel>
-        <DynamicFaIcon name="peopleOutline" color="white" slot="end" />
-      </IonButton>
+      <div className="button-add">
+        <IonButton
+          className="boton-new-categoria"
+          size="medium"
+          shape="round"
+          color="primary"
+          onClick={() => setShowModal(true)}
+        >
+          <span>Nueva categoría</span>
+          <DynamicFaIcon name="add" color="white" slot="end" />
+        </IonButton>
+      </div>
+
       <IonToast
         isOpen={error.status}
         onDidDismiss={() => setError({ status: false, msg: "" })}

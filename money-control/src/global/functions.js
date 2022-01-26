@@ -61,3 +61,49 @@ export let defaultCategories = [
     color: "#4336f4",
   },
 ];
+
+export const iconosGrupos = [
+  "happyOutline",
+  "flashOutline",
+  "flaskOutline",
+  "globeOutline",
+  "heartOutline",
+  "flowerOutline",
+  "rocketOutline",
+  "accessibilityOutline",
+  "airplaneOutline",
+  "alarmOutline",
+  "beerOutline",
+  "boatOutline",
+  "barbellOutline",
+  "bedOutline",
+  "chatbubblesOutline",
+];
+
+export const iconosCuentas = [
+  "walletOutline",
+  "cardOutline",
+  "logoPaypal",
+  "cashOutline",
+  "contrastOutline",
+  "earthOutline",
+  "serverOutline",
+  "happyOutline",
+  "flashOutline",
+  "flaskOutline",
+  "globeOutline",
+  "heartOutline",
+  "flowerOutline",
+  "rocketOutline",
+];
+
+export const iconosCategorias = [
+  "shirtOutline",
+  "bugOutline",
+  "sparklesOutline",
+  "footballOutline",
+  "callOutline",
+  "fastFoodOutline",
+  "homeOutline",
+  "carSportOutline",
+];
