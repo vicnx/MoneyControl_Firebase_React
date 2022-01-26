@@ -1,39 +1,15 @@
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonLabel,
-  IonToolbar,
-  IonImg,
-  IonSelect,
-  IonSelectOption,
-  IonIcon,
-} from "@ionic/react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { IonLabel } from "@ionic/react";
+import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
+import useGrupos from "hooks/useGrupos";
+import React, { useState } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 import "swiper/css";
 import "swiper/css/navigation";
-import useUser from "hooks/useUser";
-import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "./mcgrupos.css";
-import useGrupos from "hooks/useGrupos";
-import ClipLoader from "react-spinners/ClipLoader";
-import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 
 const MCgrupos = (props) => {
-  // const { profile } = useUser();
-  const [grupoSelected, setgrupoSelected] = useState("grupo1");
-  const {
-    grupos,
-    loadinggrupos,
-    exitGroup,
-    checkAdmin,
-    deleteGroup,
-    setError,
-    error,
-    success,
-    setSuccess,
-  } = useGrupos();
+  const { grupos, loadinggrupos } = useGrupos();
 
   return (
     <>

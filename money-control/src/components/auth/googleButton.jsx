@@ -1,7 +1,7 @@
-import React from "react";
-import { IonButton, IonIcon, IonContent } from "@ionic/react";
-import { logoGoogle } from "ionicons/icons";
+import { IonButton, IonIcon } from "@ionic/react";
 import useUser from "hooks/useUser";
+import { logoGoogle } from "ionicons/icons";
+import React from "react";
 
 export default function GoogleButton() {
   const { GoogleSignIn } = useUser();

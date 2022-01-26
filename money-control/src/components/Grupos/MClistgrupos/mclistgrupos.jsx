@@ -1,29 +1,18 @@
-import {
-  IonLabel,
-  IonList,
-  IonItem,
-  IonToast,
-  IonAlert,
-  IonRouterLink,
-} from "@ionic/react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { IonAlert, IonLabel, IonRouterLink, IonToast } from "@ionic/react";
+import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
+import useGrupos from "hooks/useGrupos";
+import { informationCircle } from "ionicons/icons";
+import React, { useState } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 import "swiper/css";
 import "swiper/css/navigation";
-import useCuentas from "hooks/useCuentas";
-import useGrupos from "hooks/useGrupos";
-import React, { useEffect, useState } from "react";
 import "./mclistgrupos.css";
-import ClipLoader from "react-spinners/ClipLoader";
-import CountUp from "react-countup";
-import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
-import { informationCircle } from "ionicons/icons";
 
 const MClistgrupos = (props) => {
   const {
     grupos,
     loadinggrupos,
     exitGroup,
-    checkAdmin,
     deleteGroup,
     setError,
     error,

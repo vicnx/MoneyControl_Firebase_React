@@ -1,26 +1,23 @@
-import { useCallback, useContext, useState, useEffect } from "react"; //evita que se vuelva a ejecutar una funcion
-import CuentasContext from "context/CuentasContext";
 import GruposContext from "context/GruposContext";
-import { useHistory } from "react-router-dom";
 //Firebase
 import { app, db } from "firebase.jsx";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-
 import {
   addDoc,
+  arrayRemove,
+  arrayUnion,
   collection,
+  deleteDoc,
   doc,
   getDoc,
-  query,
-  where,
   getDocs,
+  query,
   updateDoc,
-  limit,
-  deleteDoc,
-  arrayUnion,
-  arrayRemove,
+  where,
 } from "firebase/firestore";
-import { randomString, defaultCategories } from "global/functions";
+import { defaultCategories, randomString } from "global/functions";
+import { useCallback, useContext, useEffect, useState } from "react"; //evita que se vuelva a ejecutar una funcion
+import { useHistory } from "react-router-dom";
 
 export default function useGrupos() {
   const { grupos, setGrupos } = useContext(GruposContext);

@@ -1,15 +1,15 @@
-import { IonContent, IonPage, IonLabel, IonIcon } from "@ionic/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import React, { useEffect, useState } from "react";
-import * as Icons from "ionicons/icons";
-import "./Home.css";
+import { IonContent, IonIcon, IonLabel, IonPage } from "@ionic/react";
 import MCcuentas from "components/Cuentas/MCcuentas/mccuentas";
+import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 import MCgrupos from "components/Grupos/MCgrupos/mcgrupos";
 import useCuentas from "hooks/useCuentas";
-import ClipLoader from "react-spinners/ClipLoader";
+import * as Icons from "ionicons/icons";
+import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
-import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
+import ClipLoader from "react-spinners/ClipLoader";
+import "swiper/css";
+import "swiper/css/navigation";
+import "./Home.css";
 
 const HomePage = () => {
   const { cuentas, loadingcuentas } = useCuentas();
@@ -28,9 +28,6 @@ const HomePage = () => {
   return (
     <IonPage>
       <IonContent fullscreen>
-        {/* <div className="header-home">
-          <IonLabel className="title">Resumen</IonLabel>
-        </div> */}
         <div className="home-page">
           <div className="home-page-top">
             {loadingcuentas ? (
@@ -49,10 +46,7 @@ const HomePage = () => {
                         name={cuentaSelected.icono}
                         color={cuentaSelected.color}
                       />
-                      <IonLabel
-                        className="cuenta-selected-name"
-                        // style={{ color: cuentaSelected.color }}
-                      >
+                      <IonLabel className="cuenta-selected-name">
                         {cuentaSelected.name}
                       </IonLabel>
                     </div>

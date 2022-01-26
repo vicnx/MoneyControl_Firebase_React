@@ -1,14 +1,13 @@
-import { IonLabel, IonList, IonItem, IonToast, IonAlert } from "@ionic/react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { IonAlert, IonItem, IonLabel, IonList, IonToast } from "@ionic/react";
+import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
+import useCuentas from "hooks/useCuentas";
+import { informationCircle } from "ionicons/icons";
+import React, { useState } from "react";
+import CountUp from "react-countup";
+import ClipLoader from "react-spinners/ClipLoader";
 import "swiper/css";
 import "swiper/css/navigation";
-import useCuentas from "hooks/useCuentas";
-import React, { useEffect, useState } from "react";
 import "./mclistcuentas.css";
-import ClipLoader from "react-spinners/ClipLoader";
-import CountUp from "react-countup";
-import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
-import { informationCircle } from "ionicons/icons";
 
 const MClistcuentas = (props) => {
   const {

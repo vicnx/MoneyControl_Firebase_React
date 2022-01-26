@@ -1,23 +1,8 @@
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonLabel,
-  IonToolbar,
-  IonImg,
-  IonSelect,
-  IonSelectOption,
-  IonIcon,
-} from "@ionic/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import useCuentas from "hooks/useCuentas";
 import React, { useEffect, useState } from "react";
 import "./mciconos.css";
-import ClipLoader from "react-spinners/ClipLoader";
-import CountUp from "react-countup";
 import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 import {
   iconosCuentas,

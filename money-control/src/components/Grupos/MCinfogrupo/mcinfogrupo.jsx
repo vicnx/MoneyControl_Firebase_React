@@ -1,34 +1,18 @@
 import {
   IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonLabel,
-  IonToolbar,
-  IonImg,
-  IonSelect,
-  IonSelectOption,
-  IonRouterLink,
   IonFab,
   IonFabButton,
   IonFabList,
-  IonButton,
+  IonRouterLink,
 } from "@ionic/react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
+import useGrupos from "hooks/useGrupos";
+import React, { useEffect } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
-import useUser from "hooks/useUser";
-import React, { useEffect, useState } from "react";
 import "./mcinfogrupo.css";
-import useGrupos from "hooks/useGrupos";
-import ClipLoader from "react-spinners/ClipLoader";
-import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 
 const MCinfogrupo = ({ grupo }) => {
-  // const { profile } = useUser();
-  useEffect(() => {
-    console.log(grupo);
-  }, [grupo]);
   const {
     grupos,
     loadinggrupos,

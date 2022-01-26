@@ -1,22 +1,19 @@
+import {
+  IonAvatar,
+  IonBackButton,
+  IonHeader,
+  IonMenuButton,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/react";
+import { CONSTANTS } from "global/functions";
+import useUser from "hooks/useUser";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import useUser from "hooks/useUser";
-import {
-  IonIcon,
-  IonTitle,
-  IonHeader,
-  IonToolbar,
-  IonAvatar,
-  IonMenuButton,
-  IonRouterLink,
-  IonBackButton,
-} from "@ionic/react";
-import { gridOutline } from "ionicons/icons";
-import { CONSTANTS } from "global/functions";
 import "./mcheader.css";
 
 export default function MCheader() {
-  const { auth, profile } = useUser();
+  const { profile } = useUser();
   const [page, setPage] = useState("");
 
   const location = useLocation();
@@ -71,15 +68,6 @@ export default function MCheader() {
               className="backButtonHeader"
             />
           )}
-          {/* <IonRouterLink
-            routerLink={"/profile"}
-            routerDirection="forward"
-            slot="start"
-          >
-            <IonAvatar className="header-avatar">
-              <img src={profile.image} />
-            </IonAvatar>
-          </IonRouterLink> */}
           <IonMenuButton
             autoHide={true}
             slot="end"
@@ -90,10 +78,6 @@ export default function MCheader() {
                 src={profile.image ? profile.image : CONSTANTS.defaultAvatar}
               />
             </IonAvatar>
-            {/* <IonIcon
-              icon={gridOutline}
-              style={{ color: "var(--ion-color-primary-shade)" }}
-            /> */}
           </IonMenuButton>
         </IonToolbar>
       </IonHeader>

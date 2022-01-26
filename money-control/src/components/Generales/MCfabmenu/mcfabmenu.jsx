@@ -1,28 +1,9 @@
+import { IonFab, IonFabButton, IonFabList, IonIcon } from "@ionic/react";
+import { add, arrowUp, remove } from "ionicons/icons";
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
-
-import useUser from "hooks/useUser";
-import {
-  IonFab,
-  IonFabButton,
-  IonIcon,
-  IonFabList,
-  IonButton,
-  IonLabel,
-} from "@ionic/react";
-
 import "./mcfabmenu.css";
-import { add, remove, arrowUp } from "ionicons/icons";
 
 export default function MCfabmenu() {
-  const { auth } = useUser();
-  const Profile = React.lazy(() => import("../../../pages/Profile/Profile"));
-  const Login = React.lazy(() => import("../../../pages/Login/Login"));
-  const userImage = {
-    backgroundImage: 'url("' + auth.currentUser.photoURL + '")',
-  };
-
-  console.log(auth);
   return (
     <>
       <IonFab

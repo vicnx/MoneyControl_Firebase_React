@@ -1,18 +1,16 @@
-import { IonLabel, IonToast, IonItem, IonInput, IonButton } from "@ionic/react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import useCuentas from "hooks/useCuentas";
-import React, { useEffect, useState } from "react";
-import "./mcdatoscuenta.css";
-import ClipLoader from "react-spinners/ClipLoader";
-import CountUp from "react-countup";
+import { IonButton, IonInput, IonItem, IonLabel, IonToast } from "@ionic/react";
 import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 import MCcolores from "components/Generales/MCcolores/mccolores";
 import MCiconos from "components/Generales/MCiconos/mciconos";
+import useCuentas from "hooks/useCuentas";
 import useUser from "hooks/useUser";
 import { informationCircle } from "ionicons/icons";
+import React, { useState } from "react";
 import CurrencyInput from "react-currency-input-field";
+import ClipLoader from "react-spinners/ClipLoader";
+import "swiper/css";
+import "swiper/css/navigation";
+import "./mcdatoscuenta.css";
 
 const MCdatoscuenta = (props) => {
   const { profile, updateProfile, loadingprofile } = useUser();

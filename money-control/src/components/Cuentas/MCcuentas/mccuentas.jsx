@@ -1,24 +1,13 @@
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonLabel,
-  IonToolbar,
-  IonImg,
-  IonSelect,
-  IonSelectOption,
-  IonIcon,
-} from "@ionic/react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { IonLabel } from "@ionic/react";
+import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
+import useCuentas from "hooks/useCuentas";
+import React from "react";
+import CountUp from "react-countup";
+import ClipLoader from "react-spinners/ClipLoader";
 import "swiper/css";
 import "swiper/css/navigation";
-import useCuentas from "hooks/useCuentas";
-import React, { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "./mccuentas.css";
-import ClipLoader from "react-spinners/ClipLoader";
-import CountUp from "react-countup";
-import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 
 const MCcuenta = (props) => {
   const { cuentas, loadingcuentas } = useCuentas();

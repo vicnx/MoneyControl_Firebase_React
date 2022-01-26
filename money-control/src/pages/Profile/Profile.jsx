@@ -1,13 +1,9 @@
-import { IonContent, IonPage } from "@ionic/react";
-import "./Profile.css";
-import useUser from "hooks/useUser";
-import MCloading from "components/Generales/MCloading/MCloading";
+import { IonPage } from "@ionic/react";
 import MCprofile from "components/Generales/MCprofile/mcprofile";
 import React from "react";
+import "./Profile.css";
 
 const Profile = () => {
-  const { loadingprofile } = useUser();
-
   return (
     <IonPage>
       <MCprofile />

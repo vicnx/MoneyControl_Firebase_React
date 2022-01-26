@@ -1,36 +1,29 @@
 import {
-  IonLabel,
-  IonList,
-  IonItem,
-  IonToast,
-  IonAlert,
   IonButton,
-  IonModal,
-  IonContent,
-  IonToolbar,
-  IonTitle,
   IonButtons,
+  IonContent,
   IonInput,
+  IonItem,
+  IonLabel,
+  IonModal,
+  IonTitle,
+  IonToast,
+  IonToolbar,
 } from "@ionic/react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
+import MCloading from "components/Generales/MCloading/MCloading";
+import useGrupos from "hooks/useGrupos";
+import { informationCircle } from "ionicons/icons";
+import React, { useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
-import useCuentas from "hooks/useCuentas";
-import useGrupos from "hooks/useGrupos";
-import React, { useEffect, useState } from "react";
 import "./mcjoingroup.css";
-import ClipLoader from "react-spinners/ClipLoader";
-import CountUp from "react-countup";
-import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
-import { informationCircle } from "ionicons/icons";
-import MCloading from "components/Generales/MCloading/MCloading";
 
 const MCjoingroup = () => {
   const { error, setError, joinGroup, loadinggrupos, success, setSuccess } =
     useGrupos();
   const [showModal, setShowModal] = useState(false);
   const [groupcode, setGroupcode] = useState("");
-  const [isErrorOpen, setIsErrorOpen] = useState(false);
   useEffect(() => {
     if (success.status && showModal) {
       setShowModal(false);

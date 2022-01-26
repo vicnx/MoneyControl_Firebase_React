@@ -1,42 +1,32 @@
 import {
-  IonLabel,
-  IonList,
-  IonItem,
-  IonToast,
-  IonAlert,
   IonButton,
-  IonModal,
-  IonContent,
-  IonToolbar,
-  IonTitle,
   IonButtons,
+  IonContent,
   IonInput,
+  IonItem,
+  IonLabel,
+  IonModal,
+  IonTitle,
+  IonToast,
+  IonToolbar,
 } from "@ionic/react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import useCuentas from "hooks/useCuentas";
+import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
+import MCcolores from "components/Generales/MCcolores/mccolores";
+import MCiconos from "components/Generales/MCiconos/mciconos";
+import MCloading from "components/Generales/MCloading/MCloading";
 import useGrupos from "hooks/useGrupos";
+import { informationCircle } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
 import "./mcnewcategoria.css";
 
-import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
-import { informationCircle } from "ionicons/icons";
-import MCloading from "components/Generales/MCloading/MCloading";
-import MCcolores from "components/Generales/MCcolores/mccolores";
-import MCiconos from "components/Generales/MCiconos/mciconos";
 const MCnewcategoria = (props) => {
-  const { error, setError, joinGroup, loadinggrupos, success, setSuccess } =
-    useGrupos();
+  const { error, setError, loadinggrupos, success, setSuccess } = useGrupos();
   const [showModal, setShowModal] = useState(false);
-  const [color, setColor] = useState("#5499C7");
-  const [icono, setIcono] = useState("shirtOutline");
   const [newCategoria, setNewCategoria] = useState({
     name: "",
     icono: "shirtOutline",
     color: "#F44336",
   });
-  const [isErrorOpen, setIsErrorOpen] = useState(false);
 
   useEffect(() => {
     if (success.status && showModal) {
@@ -59,6 +49,7 @@ const MCnewcategoria = (props) => {
       });
     }
   }
+
   return (
     <>
       <IonModal

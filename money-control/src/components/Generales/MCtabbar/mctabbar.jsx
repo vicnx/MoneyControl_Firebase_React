@@ -1,44 +1,26 @@
-import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
-
-import useUser from "hooks/useUser";
 import {
   IonIcon,
-  IonLabel,
+  IonMenuButton,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
   IonTabs,
-  IonMenuButton,
-  IonContent,
-  IonFab,
-  IonFabButton,
-  IonSplitPane,
 } from "@ionic/react";
-import "./mctabbar.css";
-import {
-  ellipse,
-  square,
-  triangle,
-  personOutline,
-  homeOutline,
-} from "ionicons/icons";
-
-import MCfabmenu from "components/Generales/MCfabmenu/mcfabmenu";
 import MCmenu from "components/MCmenu/mcmenu";
+import useUser from "hooks/useUser";
+import { homeOutline, personOutline } from "ionicons/icons";
+import React from "react";
+import { Redirect, Route } from "react-router-dom";
+import "./mctabbar.css";
 
 export default function MCtabbar() {
   const { auth } = useUser();
   const Profile = React.lazy(() => import("../../pages/Profile/Profile"));
   const Login = React.lazy(() => import("../../pages/Login/Login"));
-  const userImage = {
-    backgroundImage: 'url("' + auth.currentUser.photoURL + '")',
-  };
 
   return (
     <>
       <MCmenu />
-
       <IonTabs>
         <IonRouterOutlet id="menuContent">
           <Route exact path="/profile">

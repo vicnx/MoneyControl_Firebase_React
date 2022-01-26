@@ -1,48 +1,33 @@
-import React, { useEffect, useState } from "react";
 import {
-  Redirect,
-  Route,
-  useLocation,
-  useNavigate,
-  Link,
-} from "react-router-dom";
-
-import useUser from "hooks/useUser";
-import {
-  IonMenu,
   IonContent,
-  IonItem,
-  IonLabel,
-  IonButton,
-  IonIcon,
-  IonMenuToggle,
-  IonRouterOutlet,
   IonFab,
   IonFabButton,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonMenu,
   IonMenuButton,
+  IonMenuToggle,
 } from "@ionic/react";
 import logo from "assets/logo/logorounded.png";
-import MCrouter from "router";
-
-import "./mcmenu.css";
-import {
-  homeOutline,
-  personOutline,
-  gridOutline,
-  barChartOutline,
-  peopleOutline,
-  diamondOutline,
-} from "ionicons/icons";
-import { menuController } from "@ionic/core";
 import { CONSTANTS } from "global/functions";
+import useUser from "hooks/useUser";
+import {
+  barChartOutline,
+  gridOutline,
+  homeOutline,
+  peopleOutline,
+  personOutline,
+} from "ionicons/icons";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import "./mcmenu.css";
+
 export default function MCmenu(props) {
-  const { auth, profile } = useUser();
+  const { profile } = useUser();
   const [selected, setSelected] = useState("");
-  const [closed, setClosed] = useState("");
 
   const location = useLocation();
-  // const Profile = React.lazy(() => import("../../pages/Profile/Profile"));
-  // const Login = React.lazy(() => import("../../pages/Login/Login"));
 
   const userImage = {
     backgroundImage:
@@ -57,7 +42,7 @@ export default function MCmenu(props) {
   return (
     <>
       {props.fabhidden ? (
-        ""
+        <></>
       ) : (
         <IonFab
           vertical="bottom"

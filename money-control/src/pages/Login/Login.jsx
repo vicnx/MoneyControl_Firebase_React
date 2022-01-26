@@ -1,38 +1,19 @@
-import {
-  IonContent,
-  IonHeader,
-  IonPage,
-  IonTitle,
-  IonLabel,
-  IonToolbar,
-  IonImg,
-} from "@ionic/react";
-import GoogleButton from "../../components/auth/googleButton";
-import LogoutButton from "components/auth/logout";
-import "./Login.css";
+import { IonContent, IonImg, IonLabel, IonPage } from "@ionic/react";
 import people from "assets/images/people_SVG.svg";
-import useUser from "hooks/useUser";
 import MCloading from "components/Generales/MCloading/MCloading";
-import { Redirect } from "react-router-dom";
+import useUser from "hooks/useUser";
+import GoogleButton from "../../components/auth/googleButton";
+import "./Login.css";
 
 const LoginPage = () => {
-  const {
-    isLogginLoading,
-    hasLoginError,
-    errors,
-    loadingUser,
-    error,
-    success,
-    auth,
-  } = useUser();
+  const { loadingUser, auth } = useUser();
   return (
     <IonPage>
       <IonContent fullscreen>
         {loadingUser ? (
           <MCloading loading={true} />
         ) : auth.currentUser ? (
-          // <Redirect to={"/profile"} />
-          "hola"
+          <></>
         ) : (
           <div className="page">
             <div className="pageContent">

@@ -1,36 +1,32 @@
 import {
-  IonLabel,
-  IonToast,
-  IonItem,
-  IonInput,
   IonButton,
-  IonTextarea,
   IonCheckbox,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonTextarea,
+  IonToast,
 } from "@ionic/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import useCuentas from "hooks/useCuentas";
-import useGrupos from "hooks/useGrupos";
-import React, { useEffect, useState } from "react";
-import "./mcdatosgrupo.css";
-import ClipLoader from "react-spinners/ClipLoader";
 import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 import MCcolores from "components/Generales/MCcolores/mccolores";
 import MCiconos from "components/Generales/MCiconos/mciconos";
+import useGrupos from "hooks/useGrupos";
 import useUser from "hooks/useUser";
 import { informationCircle } from "ionicons/icons";
-import randomString from "global/functions";
+import React, { useState } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
+import "swiper/css";
+import "swiper/css/navigation";
+import "./mcdatosgrupo.css";
 const MCdatosgrupo = (props) => {
-  const { profile, updateProfile, loadingprofile } = useUser();
-  const { grupos, loadinggrupos, createNewGrupo, success, setSuccess } =
-    useGrupos();
+  const { profile, loadingprofile } = useUser();
+  const { createNewGrupo, success, setSuccess } = useGrupos();
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [error, setError] = useState(false);
   const [gprivate, setGprivate] = useState(false);
   const [color, setColor] = useState("#5499C7");
   const [icono, setIcono] = useState("happyOutline");
-  const [cantidad, setCantidad] = useState(0);
   const [toast, setToast] = useState({
     isOpen: false,
     content: "Ha ocurrido un error!",

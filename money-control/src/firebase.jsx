@@ -1,14 +1,14 @@
-import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
 import {
   FIREBASE_API_KEY,
-  FIREBASE_messagingSenderId,
   FIREBASE_appId,
   FIREBASE_authDomain,
+  FIREBASE_messagingSenderId,
   FIREBASE_projectId,
   FIREBASE_storageBucket,
 } from "apis/private/apis";
+import { initializeApp } from "firebase/app";
+import { GoogleAuthProvider } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: FIREBASE_API_KEY,

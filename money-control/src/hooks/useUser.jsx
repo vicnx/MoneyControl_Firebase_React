@@ -1,28 +1,26 @@
-import { useCallback, useContext, useState, useEffect } from "react"; //evita que se vuelva a ejecutar una funcion
 import UserContext from "context/UserContext";
 //Firebase
-import { app, googleAuthProvider, db } from "firebase.jsx";
+import { app, db, googleAuthProvider } from "firebase.jsx";
 import {
-  signInWithPopup,
   getAdditionalUserInfo,
-  signOut,
   getAuth,
   onAuthStateChanged,
+  signInWithPopup,
+  signOut,
 } from "firebase/auth";
-
 import {
   addDoc,
   collection,
-  getDoc,
   doc,
-  query,
-  where,
+  getDoc,
   getDocs,
+  query,
   updateDoc,
+  where,
 } from "firebase/firestore";
+import { useCallback, useContext, useEffect, useState } from "react"; //evita que se vuelva a ejecutar una funcion
 import useCuentas from "./useCuentas";
 import useGrupos from "./useGrupos";
-import { useHistory } from "react-router-dom";
 
 export default function useUser() {
   const { profile, setProfile } = useContext(UserContext);
@@ -37,10 +35,8 @@ export default function useUser() {
   });
   const [error, setError] = useState({ status: false, msg: "" });
   const [success, setSuccess] = useState({ status: false, msg: "" });
-  const [errorMSG, setErrorMSG] = useState("");
   const auth = getAuth(app);
   let isSubscribed = true;
-  const history = useHistory();
 
   useEffect(() => {
     onAuthStateChanged(auth, () => {
@@ -158,9 +154,10 @@ export default function useUser() {
     SignOut,
     isLogginLoading: state.loading,
     hasLoginError: state.error,
-    errors: errorMSG,
     loadingUser: state.loadingUser,
     error: error,
+    setError,
+    setSuccess,
     success: success,
     auth,
     isLogged: state.isLogged,

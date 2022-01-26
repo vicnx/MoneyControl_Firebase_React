@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from "react";
-import useUser from "hooks/useUser";
 import {
-  IonContent,
-  IonModal,
-  IonToolbar,
-  IonButtons,
   IonButton,
-  IonTitle,
-  IonItem,
-  IonInput,
-  IonLabel,
+  IonButtons,
+  IonContent,
   IonIcon,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonModal,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/react";
-import "./mcprofile.css";
-import * as Icons from "ionicons/icons";
 import LogoutButton from "components/auth/logout";
-import { randomString, CONSTANTS } from "global/functions";
+import { CONSTANTS, randomString } from "global/functions";
+import useUser from "hooks/useUser";
+import * as Icons from "ionicons/icons";
+import React, { useEffect, useState } from "react";
+import "./mcprofile.css";
+
 export default function MCprofile() {
   const { profile, updateProfile } = useUser();
   const [showModal, setShowModal] = useState(false);
