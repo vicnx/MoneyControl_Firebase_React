@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkionic_app_base=self.webpackChunkionic_app_base||[]).push([[4662],{4662:function(n,a,e){e.r(a),e.d(a,{ion_toast:function(){return i.T}});var i=e(3800);e(4039),e(323),e(7368),e(236),e(1045),e(9022),e(7481)}}]);
