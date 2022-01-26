@@ -29,6 +29,12 @@ const MCcolores = (props) => {
     "#7DCEA0",
     "#F7DC6F",
     "#E59866",
+    "#36f443",
+    "#4336f4",
+    "#f436a8",
+    "#9e36f4",
+    "#36f488",
+    "#f47f36",
   ];
   return (
     <div className="color-component">

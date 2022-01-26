@@ -22,6 +22,8 @@ import { Link } from "react-router-dom";
 import MClistgrupos from "components/Grupos/MClistgrupos/mclistgrupos";
 import MCjoingroup from "components/Grupos/MCjoingroup/mcjoingroup";
 import MCinfogrupo from "components/Grupos/MCinfogrupo/mcinfogrupo";
+import MClistcategorias from "components/Grupos/MClistcategorias/mclistcategorias";
+import MCnewcategoria from "components/Grupos/MCnewcategoria/mcnewcategoria";
 import useGrupos from "hooks/useGrupos";
 const CategoriasPage = () => {
   let { groupUID } = useParams();
@@ -45,8 +47,8 @@ const CategoriasPage = () => {
           />
         ) : (
           <>
-            CATEGORIAS
-            {/* <MCinfogrupo grupo={grupoSelected} /> */}
+            <MCnewcategoria />
+            <MClistcategorias grupo={grupoSelected} />
           </>
         )}
       </IonContent>

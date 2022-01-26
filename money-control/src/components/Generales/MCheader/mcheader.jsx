@@ -22,6 +22,7 @@ export default function MCheader() {
   const location = useLocation();
 
   useEffect(() => {
+    console.log(location.pathname.split("/"));
     switch (location.pathname) {
       case "/home":
         setPage("Home");
@@ -42,7 +43,11 @@ export default function MCheader() {
         setPage("Nuevo grupo");
         break;
       default:
-        setPage("");
+        if (location.pathname.split("/")[1] == "categories") {
+          setPage("Gestor de categorías");
+        } else {
+          setPage("");
+        }
         break;
     }
   }, [location]);

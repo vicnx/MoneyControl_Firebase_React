@@ -20,7 +20,7 @@ import {
   arrayUnion,
   arrayRemove,
 } from "firebase/firestore";
-import { randomString } from "global/functions";
+import { randomString, defaultCategories } from "global/functions";
 
 export default function useGrupos() {
   const { grupos, setGrupos } = useContext(GruposContext);
@@ -69,7 +69,12 @@ export default function useGrupos() {
     isSubscribed = true;
     const colRef = collection(db, "grupos");
     let codigoInv = grupo.codinv ? null : await createNewCode(colRef); //comprueba si el grupo es privado
-    addDoc(colRef, { ...grupo, codinv: codigoInv })
+    addDoc(colRef, {
+      ...grupo,
+      codinv: codigoInv,
+      users: [auth.currentUser.uid],
+      categories: defaultCategories,
+    })
       .then((res) => {
         setSuccess({ status: true, msg: "Grupo creado con exito!" });
         setTimeout(() => {
@@ -108,6 +113,7 @@ export default function useGrupos() {
       desc: "Grupo de gastos generales.",
       createdby: user.uid,
       users: [user.uid],
+      categories: defaultCategories,
     })
       .then((res) => {
         console.log(res);

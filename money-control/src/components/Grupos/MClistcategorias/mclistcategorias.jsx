@@ -9,66 +9,47 @@ import ClipLoader from "react-spinners/ClipLoader";
 import CountUp from "react-countup";
 import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 import { informationCircle } from "ionicons/icons";
+import useGrupos from "hooks/useGrupos";
 
-const MClistcategorias = (props) => {
-  const {
-    cuentas,
-    loadingcuentas,
-    deleteCuenta,
-    success,
-    setSuccess,
-    error,
-    setError,
-  } = useCuentas();
+const MClistcategorias = ({ grupo }) => {
+  console.log("MClistcategorias", grupo);
+  const { grupos, loadinggrupos, setError, error, success, setSuccess } =
+    useGrupos();
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [selected, setSelected] = useState({});
 
   return (
     <>
-      {loadingcuentas ? (
-        <ClipLoader
-          color={"blue"}
-          loading={true}
-          css={"display: block;margin: 0 auto"}
-          size={150}
-        />
-      ) : cuentas ? (
+      {grupo ? (
         <IonList>
-          {cuentas.map((c, index) => (
-            <IonItem className="cuenta-item" key={index}>
-              <div className="cuenta-name-info">
-                <DynamicFaIcon name={c.icono} color={c.color} />
-                <IonLabel className="cuenta-name">{c.name}</IonLabel>
-              </div>
-              <CountUp
-                end={c.cantidad}
-                suffix=" €"
-                duration={1.5}
-                separator=" "
-                decimal=","
-                decimals={2}
-                className="contador-money"
-              />
+          {grupo.categories
+            ? grupo.categories.map((c, index) => (
+                <IonItem className="cuenta-item" key={index}>
+                  <div className="cuenta-name-info">
+                    <DynamicFaIcon name={c.icono} color={c.color} />
+                    <IonLabel className="cuenta-name">{c.name}</IonLabel>
+                  </div>
 
-              <div className="cuenta-options" slot="end">
-                <div
-                  className="delete"
-                  onClick={() => {
-                    setSelected(c);
-                    setIsConfirmOpen(true);
-                  }}
-                >
-                  <DynamicFaIcon
-                    name="trash"
-                    color="var(--ion-color-danger-tint)"
-                  />
-                </div>
-              </div>
-            </IonItem>
-          ))}
+                  <div className="cuenta-options" slot="end">
+                    <div
+                      className="delete"
+                      onClick={() => {
+                        setSelected(c);
+                        setIsConfirmOpen(true);
+                      }}
+                    >
+                      <DynamicFaIcon
+                        name="trash"
+                        color="var(--ion-color-danger-tint)"
+                      />
+                    </div>
+                  </div>
+                </IonItem>
+              ))
+            : "Sin categorias"}
         </IonList>
       ) : (
-        "Sin cuentas"
+        "Sin categorias"
       )}
       <IonToast
         isOpen={success.status}
@@ -92,9 +73,9 @@ const MClistcategorias = (props) => {
         isOpen={isConfirmOpen}
         onDidDismiss={() => setIsConfirmOpen(false)}
         // cssClass='my-custom-class'
-        header={"Eliminar Cuenta"}
+        header={"Eliminar Categoría"}
         message={
-          "¿Seguro que quieres elimiar la cuenta</br><strong>" +
+          "¿Seguro que quieres elimiar la categoría</br><strong>" +
           selected.name +
           "</strong>?"
         }
@@ -109,7 +90,7 @@ const MClistcategorias = (props) => {
             text: "Elimiar",
             id: "confirm-button",
             handler: () => {
-              deleteCuenta(selected);
+              // deleteCuenta(selected);
             },
           },
         ]}
