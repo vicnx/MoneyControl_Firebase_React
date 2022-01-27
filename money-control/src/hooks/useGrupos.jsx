@@ -244,7 +244,7 @@ export default function useGrupos() {
       isAdmin = false;
     }
     setgrupoSelected({ ...Grupo.data(), docid: Grupo.id, isAdmin: isAdmin });
-    await setLoadingGrupos(false);
+    setLoadingGrupos(false);
   });
   // const createNewCuenta = useCallback((cuenta) => {
   //   const colRef = collection(db, "cuentas");

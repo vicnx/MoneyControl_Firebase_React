@@ -14,7 +14,7 @@ const InfoGrupoPage = () => {
 
   useEffect(() => {
     getGroup(groupUID);
-  }, [groupUID, getGroup]);
+  }, [groupUID]);
 
   return (
     <IonPage>

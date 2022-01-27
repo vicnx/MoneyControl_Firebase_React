@@ -15,7 +15,7 @@ const CategoriasPage = () => {
 
   useEffect(() => {
     getGroup(groupUID);
-  }, [groupUID, getGroup]);
+  }, [groupUID]);
 
   return (
     <IonPage>
