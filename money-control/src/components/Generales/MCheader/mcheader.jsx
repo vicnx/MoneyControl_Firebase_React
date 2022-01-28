@@ -60,7 +60,7 @@ export default function MCheader() {
             <></>
           ) : (
             <IonBackButton
-              defaultHref="home"
+              defaultHref="/home"
               slot="start"
               text=""
               style={{
