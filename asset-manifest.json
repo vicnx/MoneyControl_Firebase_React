@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/MoneyControl_Firebase_React/static/css/main.a2c229d8.css",
-    "main.js": "/MoneyControl_Firebase_React/static/js/main.368e3bd5.js",
+    "main.js": "/MoneyControl_Firebase_React/static/js/main.5c0cbe39.js",
     "static/js/630.6c0d646d.chunk.js": "/MoneyControl_Firebase_React/static/js/630.6c0d646d.chunk.js",
     "static/js/738.25b24187.chunk.js": "/MoneyControl_Firebase_React/static/js/738.25b24187.chunk.js",
     "static/js/372.64e90dce.chunk.js": "/MoneyControl_Firebase_React/static/js/372.64e90dce.chunk.js",
@@ -20,10 +20,10 @@
     "static/js/157.19329a8d.chunk.js": "/MoneyControl_Firebase_React/static/js/157.19329a8d.chunk.js",
     "static/css/736.27974a38.chunk.css": "/MoneyControl_Firebase_React/static/css/736.27974a38.chunk.css",
     "static/js/736.051abcf9.chunk.js": "/MoneyControl_Firebase_React/static/js/736.051abcf9.chunk.js",
-    "static/css/185.921c491c.chunk.css": "/MoneyControl_Firebase_React/static/css/185.921c491c.chunk.css",
-    "static/js/185.66f73614.chunk.js": "/MoneyControl_Firebase_React/static/js/185.66f73614.chunk.js",
+    "static/css/185.32134974.chunk.css": "/MoneyControl_Firebase_React/static/css/185.32134974.chunk.css",
+    "static/js/185.7a7733e5.chunk.js": "/MoneyControl_Firebase_React/static/js/185.7a7733e5.chunk.js",
     "static/css/298.262038a5.chunk.css": "/MoneyControl_Firebase_React/static/css/298.262038a5.chunk.css",
-    "static/js/298.8f3d90ff.chunk.js": "/MoneyControl_Firebase_React/static/js/298.8f3d90ff.chunk.js",
+    "static/js/298.b79bd6b9.chunk.js": "/MoneyControl_Firebase_React/static/js/298.b79bd6b9.chunk.js",
     "static/css/538.ce182b5e.chunk.css": "/MoneyControl_Firebase_React/static/css/538.ce182b5e.chunk.css",
     "static/js/538.5d7f52bb.chunk.js": "/MoneyControl_Firebase_React/static/js/538.5d7f52bb.chunk.js",
     "static/css/924.88cfb5c2.chunk.css": "/MoneyControl_Firebase_React/static/css/924.88cfb5c2.chunk.css",
@@ -36,7 +36,7 @@
     "static/media/people_SVG.svg": "/MoneyControl_Firebase_React/static/media/people_SVG.5abca6d657a9d45cf4de44e692b1234b.svg",
     "index.html": "/MoneyControl_Firebase_React/index.html",
     "main.a2c229d8.css.map": "/MoneyControl_Firebase_React/static/css/main.a2c229d8.css.map",
-    "main.368e3bd5.js.map": "/MoneyControl_Firebase_React/static/js/main.368e3bd5.js.map",
+    "main.5c0cbe39.js.map": "/MoneyControl_Firebase_React/static/js/main.5c0cbe39.js.map",
     "630.6c0d646d.chunk.js.map": "/MoneyControl_Firebase_React/static/js/630.6c0d646d.chunk.js.map",
     "738.25b24187.chunk.js.map": "/MoneyControl_Firebase_React/static/js/738.25b24187.chunk.js.map",
     "372.64e90dce.chunk.js.map": "/MoneyControl_Firebase_React/static/js/372.64e90dce.chunk.js.map",
@@ -55,10 +55,10 @@
     "157.19329a8d.chunk.js.map": "/MoneyControl_Firebase_React/static/js/157.19329a8d.chunk.js.map",
     "736.27974a38.chunk.css.map": "/MoneyControl_Firebase_React/static/css/736.27974a38.chunk.css.map",
     "736.051abcf9.chunk.js.map": "/MoneyControl_Firebase_React/static/js/736.051abcf9.chunk.js.map",
-    "185.921c491c.chunk.css.map": "/MoneyControl_Firebase_React/static/css/185.921c491c.chunk.css.map",
-    "185.66f73614.chunk.js.map": "/MoneyControl_Firebase_React/static/js/185.66f73614.chunk.js.map",
+    "185.32134974.chunk.css.map": "/MoneyControl_Firebase_React/static/css/185.32134974.chunk.css.map",
+    "185.7a7733e5.chunk.js.map": "/MoneyControl_Firebase_React/static/js/185.7a7733e5.chunk.js.map",
     "298.262038a5.chunk.css.map": "/MoneyControl_Firebase_React/static/css/298.262038a5.chunk.css.map",
-    "298.8f3d90ff.chunk.js.map": "/MoneyControl_Firebase_React/static/js/298.8f3d90ff.chunk.js.map",
+    "298.b79bd6b9.chunk.js.map": "/MoneyControl_Firebase_React/static/js/298.b79bd6b9.chunk.js.map",
     "538.ce182b5e.chunk.css.map": "/MoneyControl_Firebase_React/static/css/538.ce182b5e.chunk.css.map",
     "538.5d7f52bb.chunk.js.map": "/MoneyControl_Firebase_React/static/js/538.5d7f52bb.chunk.js.map",
     "924.88cfb5c2.chunk.css.map": "/MoneyControl_Firebase_React/static/css/924.88cfb5c2.chunk.css.map",
@@ -71,6 +71,6 @@
   },
   "entrypoints": [
     "static/css/main.a2c229d8.css",
-    "static/js/main.368e3bd5.js"
+    "static/js/main.5c0cbe39.js"
   ]
 }
