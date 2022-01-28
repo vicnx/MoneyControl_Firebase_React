@@ -16,8 +16,15 @@ import "./mclistcategorias.css";
 
 const MClistcategorias = ({ grupo }) => {
   console.log("MClistcategorias", grupo);
-  const { grupos, loadinggrupos, setError, error, success, setSuccess } =
-    useGrupos();
+  const {
+    grupos,
+    loadinggrupos,
+    setError,
+    error,
+    success,
+    setSuccess,
+    deleteCategoria,
+  } = useGrupos();
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [selected, setSelected] = useState({});
 
@@ -93,7 +100,7 @@ const MClistcategorias = ({ grupo }) => {
             text: "Elimiar",
             id: "confirm-button",
             handler: () => {
-              // deleteCuenta(selected);
+              deleteCategoria(grupo, selected);
             },
           },
         ]}

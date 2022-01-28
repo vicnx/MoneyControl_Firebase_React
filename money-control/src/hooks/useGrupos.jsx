@@ -267,6 +267,7 @@ export default function useGrupos() {
     updateDoc(grupoRef, {
       categories: arrayUnion(categoria),
     }).then((res) => {
+      getGrupos(auth.currentUser.uid);
       getGroup(grupo.docid);
       setSuccess({ status: true, msg: "Nueva categoría creada!" });
       setTimeout(() => {
@@ -282,6 +283,7 @@ export default function useGrupos() {
     }).then((res) => {
       setLoadingGrupos(false);
       getGrupos(auth.currentUser.uid);
+      getGroup(grupo.docid);
       setSuccess({ status: true, msg: "Categoría eliminada!" });
     });
   });
