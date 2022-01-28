@@ -90,6 +90,9 @@
   left: 2px;
   font-size: 11px;
 }
+.lista-grupos {
+  padding-bottom: 180px;
+}
 /* .grupo-item {
   padding: 30px 20px 30px 20px;
   color: var(--color_text);

@@ -63,24 +63,34 @@ export default function useGrupos() {
   }, [auth]);
 
   const createNewGrupo = useCallback(async (grupo) => {
-    isSubscribed = true;
-    const colRef = collection(db, "grupos");
-    let codigoInv = grupo.codinv ? null : await createNewCode(colRef); //comprueba si el grupo es privado
-    addDoc(colRef, {
-      ...grupo,
-      codinv: codigoInv,
-      users: [auth.currentUser.uid],
-      categories: defaultCategories,
-    })
-      .then((res) => {
-        setSuccess({ status: true, msg: "Grupo creado con exito!" });
-        setTimeout(() => {
-          history.push("/groups");
-        }, 2000);
-      })
-      .catch((error) => {
-        console.log(error);
+    if (grupos.length >= 10) {
+      setError({
+        status: true,
+        msg: "Solo puedes pertenecer a 10 grupos como máximo.",
       });
+      setTimeout(() => {
+        history.push("/groups");
+      }, 2000);
+    } else {
+      isSubscribed = true;
+      const colRef = collection(db, "grupos");
+      let codigoInv = grupo.codinv ? null : await createNewCode(colRef); //comprueba si el grupo es privado
+      addDoc(colRef, {
+        ...grupo,
+        codinv: codigoInv,
+        users: [auth.currentUser.uid],
+        categories: defaultCategories,
+      })
+        .then((res) => {
+          setSuccess({ status: true, msg: "Grupo creado con exito!" });
+          setTimeout(() => {
+            history.push("/groups");
+          }, 2000);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   });
 
   const createNewCode = async (colRef) => {
@@ -141,41 +151,52 @@ export default function useGrupos() {
   });
 
   const joinGroup = useCallback(async (code) => {
-    const colRefGrupoUser = collection(db, "grupos");
-    console.log("joinGroup", code);
-    if (code) {
-      if (code.length == 8) {
-        setLoadingGrupos(true);
-        let grupo = await getGrupoByCodInv(code);
-        let codeOK = await checkCodeExists(code);
-        let userInGroup = await checkUserinGroup(auth.currentUser.uid, code);
-        if (codeOK && !userInGroup) {
-          const docRef = doc(db, "grupos", grupo.docid);
-          updateDoc(docRef, {
-            users: arrayUnion(auth.currentUser.uid),
-          }).then((res) => {
+    if (grupos.length >= 10) {
+      setError({
+        status: true,
+        msg: "Solo puedes pertenecer a 10 grupos como máximo.",
+      });
+      setTimeout(() => {
+        history.push("/groups");
+      }, 2000);
+    } else {
+      if (code) {
+        if (code.length == 8) {
+          setLoadingGrupos(true);
+          let grupo = await getGrupoByCodInv(code);
+          let codeOK = await checkCodeExists(code);
+          let userInGroup = await checkUserinGroup(auth.currentUser.uid, code);
+          if (codeOK && !userInGroup) {
+            const docRef = doc(db, "grupos", grupo.docid);
+            updateDoc(docRef, {
+              users: arrayUnion(auth.currentUser.uid),
+            }).then((res) => {
+              setLoadingGrupos(false);
+              getGrupos(auth.currentUser.uid);
+              setSuccess({
+                status: true,
+                msg: "Te has unido a un nuevo grupo.",
+              });
+            });
+          } else {
             setLoadingGrupos(false);
-            getGrupos(auth.currentUser.uid);
-            setSuccess({ status: true, msg: "Te has unido a un nuevo grupo." });
-          });
+            setError({
+              status: true,
+              msg: "Ya perteneces a este grupo!",
+            });
+          }
         } else {
-          setLoadingGrupos(false);
           setError({
             status: true,
-            msg: "Ya perteneces a este grupo!",
+            msg: "Los códigos de grupo deben tener 8 carácteres.",
           });
         }
       } else {
         setError({
           status: true,
-          msg: "Los códigos de grupo deben tener 8 carácteres.",
+          msg: "No has introducido ningún código.",
         });
       }
-    } else {
-      setError({
-        status: true,
-        msg: "No has introducido ningún código.",
-      });
     }
   });
 
@@ -262,30 +283,49 @@ export default function useGrupos() {
   });
 
   const createCategoria = useCallback(async (grupo, categoria) => {
-    setLoadingGrupos(true);
-    const grupoRef = doc(db, "grupos", grupo.docid);
-    updateDoc(grupoRef, {
-      categories: arrayUnion(categoria),
-    }).then((res) => {
-      getGrupos(auth.currentUser.uid);
-      getGroup(grupo.docid);
-      setSuccess({ status: true, msg: "Nueva categoría creada!" });
+    console.log("grupo.categories.length", grupo.categories.length);
+    if (grupo.categories.length >= 10) {
+      setError({
+        status: true,
+        msg: "Solo se permiten 10 categorias.",
+      });
       setTimeout(() => {
         history.push("/categories/" + grupo.docid);
         setLoadingGrupos(false);
       }, 1000);
-    });
+    } else {
+      setLoadingGrupos(true);
+      const grupoRef = doc(db, "grupos", grupo.docid);
+      updateDoc(grupoRef, {
+        categories: arrayUnion(categoria),
+      }).then((res) => {
+        getGrupos(auth.currentUser.uid);
+        getGroup(grupo.docid);
+        setSuccess({ status: true, msg: "Nueva categoría creada!" });
+        setTimeout(() => {
+          history.push("/categories/" + grupo.docid);
+          setLoadingGrupos(false);
+        }, 1000);
+      });
+    }
   });
   const deleteCategoria = useCallback(async (grupo, categoria) => {
-    const grupoRef = doc(db, "grupos", grupo.docid);
-    updateDoc(grupoRef, {
-      categories: arrayRemove(categoria),
-    }).then((res) => {
-      setLoadingGrupos(false);
-      getGrupos(auth.currentUser.uid);
-      getGroup(grupo.docid);
-      setSuccess({ status: true, msg: "Categoría eliminada!" });
-    });
+    if (grupo.categories.length <= 1) {
+      setError({
+        status: true,
+        msg: "No puedes eliminar tu ultima categoria!",
+      });
+    } else {
+      const grupoRef = doc(db, "grupos", grupo.docid);
+      updateDoc(grupoRef, {
+        categories: arrayRemove(categoria),
+      }).then((res) => {
+        setLoadingGrupos(false);
+        getGrupos(auth.currentUser.uid);
+        getGroup(grupo.docid);
+        setSuccess({ status: true, msg: "Categoría eliminada!" });
+      });
+    }
   });
 
   return {

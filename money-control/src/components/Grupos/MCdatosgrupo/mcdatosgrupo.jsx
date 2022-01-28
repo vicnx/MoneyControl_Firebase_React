@@ -20,10 +20,9 @@ import "swiper/css/navigation";
 import "./mcdatosgrupo.css";
 const MCdatosgrupo = (props) => {
   const { profile, loadingprofile } = useUser();
-  const { createNewGrupo, success, setSuccess } = useGrupos();
+  const { createNewGrupo, success, setSuccess, error, setError } = useGrupos();
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
-  const [error, setError] = useState(false);
   const [gprivate, setGprivate] = useState(false);
   const [color, setColor] = useState("#5499C7");
   const [icono, setIcono] = useState("happyOutline");
@@ -43,15 +42,11 @@ const MCdatosgrupo = (props) => {
 
   function saveGrupo() {
     if (!name) {
-      setError(true);
-      setToast({
-        isOpen: true,
-        content: "Revise los campos marcados en rojo.",
-        color: "danger",
+      setError({
+        status: true,
+        msg: "El nombre del grupo no puede estar vacio",
       });
       return;
-    } else {
-      setError(true);
     }
 
     const NewGrupo = {
@@ -88,7 +83,7 @@ const MCdatosgrupo = (props) => {
               maxlength="20"
               disabled={success.status}
               value={name}
-              placeholder="Nombre de la cuenta"
+              placeholder="Nombre del grupo"
               onIonChange={(e) => setName(e.detail.value)}
             ></IonInput>
           </IonItem>
@@ -97,7 +92,7 @@ const MCdatosgrupo = (props) => {
               position="floating"
               style={error && !desc ? { color: "red" } : { color: "black" }}
             >
-              Descripción <span className="required">*</span>
+              Descripción
             </IonLabel>
             <IonTextarea
               maxlength="100"
@@ -142,16 +137,6 @@ const MCdatosgrupo = (props) => {
         </>
       )}
       <IonToast
-        isOpen={toast.isOpen}
-        onDidDismiss={() => setToast(false)}
-        message={toast.content}
-        icon={informationCircle}
-        position="top"
-        duration={2000}
-        color={toast.color}
-      />
-
-      <IonToast
         isOpen={success.status}
         onDidDismiss={() => setSuccess({ status: false, msg: "" })}
         message={success.msg}
@@ -159,6 +144,15 @@ const MCdatosgrupo = (props) => {
         position="top"
         duration={2000}
         color="success"
+      />
+      <IonToast
+        isOpen={error.status}
+        onDidDismiss={() => setError({ status: false, msg: "" })}
+        message={error.msg}
+        icon={informationCircle}
+        position="top"
+        duration={2000}
+        color="warning"
       />
     </>
   );
