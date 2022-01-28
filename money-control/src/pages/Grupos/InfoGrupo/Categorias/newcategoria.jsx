@@ -1,15 +1,15 @@
-import { IonContent, IonPage, IonRouterLink } from "@ionic/react";
+import { IonContent, IonPage } from "@ionic/react";
 import MClistcategorias from "components/Grupos/MClistcategorias/mclistcategorias";
+import MCnewcategoria from "components/Grupos/MCnewcategoria/mcnewcategoria";
 import useGrupos from "hooks/useGrupos";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
-import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 import "swiper/css";
 import "swiper/css/navigation";
-import "./categorias.css";
+import "./newcategoria.css";
 
-const CategoriasPage = () => {
+const NewCategoriaPage = () => {
   let { groupUID } = useParams();
   const { loadinggrupos, getGroup, grupoSelected } = useGrupos();
 
@@ -19,7 +19,7 @@ const CategoriasPage = () => {
 
   return (
     <IonPage>
-      <IonContent fullscreen scrollX="true" scrollY="true">
+      <IonContent fullscreen scrollX="false" scrollY="false">
         {loadinggrupos ? (
           <ClipLoader
             color={"blue"}
@@ -29,20 +29,7 @@ const CategoriasPage = () => {
           />
         ) : (
           <>
-            <div className="botones-div">
-              <IonRouterLink
-                routerLink={"/newcategorie/" + groupUID}
-                routerDirection="forward"
-                className="boton-add"
-              >
-                <DynamicFaIcon
-                  name="addCircle"
-                  color="var(--ion-color-primary)"
-                />
-              </IonRouterLink>
-            </div>
-
-            <MClistcategorias grupo={grupoSelected} />
+            <MCnewcategoria grupo={grupoSelected} />
           </>
         )}
       </IonContent>
@@ -50,4 +37,4 @@ const CategoriasPage = () => {
   );
 };
 
-export default CategoriasPage;
+export default NewCategoriaPage;

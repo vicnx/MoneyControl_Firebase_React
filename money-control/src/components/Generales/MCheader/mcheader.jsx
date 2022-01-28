@@ -42,6 +42,8 @@ export default function MCheader() {
       default:
         if (location.pathname.split("/")[1] == "categories") {
           setPage("Gestor de categorías");
+        } else if (location.pathname.split("/")[1] == "newcategorie") {
+          setPage("Nueva categoría");
         } else {
           setPage("");
         }

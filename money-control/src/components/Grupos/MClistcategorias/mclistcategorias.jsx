@@ -1,4 +1,11 @@
-import { IonAlert, IonItem, IonLabel, IonList, IonToast } from "@ionic/react";
+import {
+  IonAlert,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonToast,
+  IonContent,
+} from "@ionic/react";
 import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 import useGrupos from "hooks/useGrupos";
 import { informationCircle } from "ionicons/icons";
@@ -17,7 +24,7 @@ const MClistcategorias = ({ grupo }) => {
   return (
     <>
       {grupo ? (
-        <IonList>
+        <IonList className="lista-categorias">
           {grupo.categories
             ? grupo.categories.map((c, index) => (
                 <IonItem className="cuenta-item" key={index}>

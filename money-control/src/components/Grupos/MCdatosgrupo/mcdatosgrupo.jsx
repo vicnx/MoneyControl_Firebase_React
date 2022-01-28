@@ -41,7 +41,7 @@ const MCdatosgrupo = (props) => {
     setIcono(newValue);
   }
 
-  function saveCuenta() {
+  function saveGrupo() {
     if (!name) {
       setError(true);
       setToast({
@@ -129,7 +129,7 @@ const MCdatosgrupo = (props) => {
           <IonButton
             expand="full"
             className="boton-guardar"
-            onClick={saveCuenta}
+            onClick={saveGrupo}
             disabled={success.status}
           >
             Guardar

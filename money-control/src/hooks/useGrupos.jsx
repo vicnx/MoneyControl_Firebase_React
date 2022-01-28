@@ -246,19 +246,7 @@ export default function useGrupos() {
     setgrupoSelected({ ...Grupo.data(), docid: Grupo.id, isAdmin: isAdmin });
     setLoadingGrupos(false);
   });
-  // const createNewCuenta = useCallback((cuenta) => {
-  //   const colRef = collection(db, "cuentas");
-  //   addDoc(colRef, cuenta)
-  //     .then((res) => {
-  //       setSuccess({ status: true, msg: "Cuenta creada con exito!" });
-  //       setTimeout(() => {
-  //         history.push("/cuentas");
-  //       }, 2000);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // });
+
   const deleteGroup = useCallback(async (grupo) => {
     if (grupo.default) {
       setError({
@@ -271,6 +259,31 @@ export default function useGrupos() {
         getGrupos(auth.currentUser.uid);
       });
     }
+  });
+
+  const createCategoria = useCallback(async (grupo, categoria) => {
+    setLoadingGrupos(true);
+    const grupoRef = doc(db, "grupos", grupo.docid);
+    updateDoc(grupoRef, {
+      categories: arrayUnion(categoria),
+    }).then((res) => {
+      getGroup(grupo.docid);
+      setSuccess({ status: true, msg: "Nueva categoría creada!" });
+      setTimeout(() => {
+        history.push("/categories/" + grupo.docid);
+        setLoadingGrupos(false);
+      }, 1000);
+    });
+  });
+  const deleteCategoria = useCallback(async (grupo, categoria) => {
+    const grupoRef = doc(db, "grupos", grupo.docid);
+    updateDoc(grupoRef, {
+      categories: arrayRemove(categoria),
+    }).then((res) => {
+      setLoadingGrupos(false);
+      getGrupos(auth.currentUser.uid);
+      setSuccess({ status: true, msg: "Categoría eliminada!" });
+    });
   });
 
   return {
@@ -291,5 +304,7 @@ export default function useGrupos() {
     getGroup,
     setgrupoSelected,
     grupoSelected,
+    createCategoria,
+    deleteCategoria,
   };
 }

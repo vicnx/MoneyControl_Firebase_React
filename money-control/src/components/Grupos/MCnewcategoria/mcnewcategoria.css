@@ -6,3 +6,9 @@
   width: 100%;
   justify-content: center;
 }
+.buttons-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
