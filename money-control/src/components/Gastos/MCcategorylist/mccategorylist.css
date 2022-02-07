@@ -1,0 +1,107 @@
+.categories-component {
+  margin-top: 20px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+}
+.categories-component .info {
+  margin-top: 10px;
+  padding: 5px;
+  align-self: center;
+}
+.categories {
+  margin: 3px;
+  padding: 13px;
+  min-width: 75px;
+  max-width: 75px;
+  min-height: 75px;
+  width: 75px !important;
+  max-height: 75px;
+  box-shadow: var(--best_shadow);
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s;
+  border: 3px solid white;
+}
+.categories-list {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--ion-color-primary-tint);
+  padding: 10px 0px 10px 0px;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: var(--best_shadow);
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+.circle {
+  box-shadow: var(--best_shadow);
+  width: 100%;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.selected {
+  transform: scale(105%);
+}
+
+.separador-categories {
+  width: 80%;
+  height: 5px;
+  border-radius: 5px;
+  transition: 0.5s;
+  align-self: center;
+}
+.errorShow {
+  align-self: center;
+  font-size: 14px;
+}
+.category {
+  margin: 3px;
+  padding: 5px;
+  min-width: 110px;
+  max-width: 110px;
+  min-height: 110px;
+  height: 110px;
+  width: 110px !important;
+  max-height: 110px;
+  box-shadow: var(--best_shadow);
+  background-color: white;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.4s;
+  border: 3px solid white;
+  font-size: 35px;
+}
+.category .category-content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.category-content .category-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70%;
+}
+.category .category-name {
+  height: 30%;
+  margin-top: 2px;
+  font-size: 11px;
+  word-break: break-all;
+}

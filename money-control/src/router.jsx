@@ -48,6 +48,7 @@ export default function MCrouter() {
   const NewCategoriaPage = React.lazy(() =>
     import("pages/Grupos/InfoGrupo/Categorias/newcategoria")
   );
+  const NuevoGasto = React.lazy(() => import("pages/Gastos/NuevoGasto"));
 
   return (
     <>
@@ -71,6 +72,8 @@ export default function MCrouter() {
             path="/newcategorie/:groupUID"
             component={NewCategoriaPage}
           ></Route>
+          <Route path="/spendings/new" component={NuevoGasto}></Route>
+
           <Route exact path="/" render={() => <Redirect to="/home" />}></Route>
           <Route path="*">
             <Redirect to="/home" />

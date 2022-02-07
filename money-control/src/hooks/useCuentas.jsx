@@ -102,7 +102,6 @@ export default function useCuentas() {
       });
   });
   const deleteCuenta = useCallback(async (cuenta) => {
-    console.log("cuentas length", cuentas.length);
     if (cuentas.length <= 1) {
       setError({ status: true, msg: "No puedes eliminar tu ultima cuenta!" });
     } else {
