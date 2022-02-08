@@ -120,3 +120,7 @@
   justify-content: center;
   align-items: center;
 }
+.dinero-cuenta .info-cuenta-saldo-negativo {
+  margin-top: 10px;
+  color: var(--ion-color-danger-tint);
+}

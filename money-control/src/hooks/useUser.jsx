@@ -164,5 +164,6 @@ export default function useUser() {
     profile,
     loadingprofile,
     updateProfile,
+    getProfile,
   };
 }

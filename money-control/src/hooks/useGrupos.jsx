@@ -19,10 +19,12 @@ import { defaultCategories, randomString } from "global/functions";
 import { useCallback, useContext, useEffect, useState } from "react"; //evita que se vuelva a ejecutar una funcion
 import { useHistory } from "react-router-dom";
 import useCuentas from "./useCuentas";
+
 export default function useGrupos() {
   const { grupos, setGrupos } = useContext(GruposContext);
   const { grupoSelected, setgrupoSelected } = useContext(GruposContext);
   const [loadinggrupos, setLoadingGrupos] = useState(false);
+  const [loadinggastos, setLoadingGastos] = useState(false);
   const [state, setState] = useState({
     loading: false,
     error: false,
@@ -143,19 +145,42 @@ export default function useGrupos() {
       });
   });
 
-  const getGrupos = useCallback(async (uid) => {
+  const getGrupos = useCallback(async (uid, refers) => {
     let isAdmin = false;
+    const gastosArray = [];
     const colRefGrupoUser = collection(db, "grupos");
     const q = query(colRefGrupoUser, where("users", "array-contains", uid));
     const querySnapshot = await getDocs(q);
     let grupocopia = [];
-    querySnapshot.forEach((doc) => {
-      if (doc.data().createdby == uid) {
+    querySnapshot.forEach((grupo) => {
+      if (grupo.data().createdby == uid) {
         isAdmin = true;
       } else {
         isAdmin = false;
       }
-      grupocopia.push({ ...doc.data(), docid: doc.id, isAdmin: isAdmin });
+      if (refers && grupo.data().gastos) {
+        grupo.data().gastos.forEach(async (gasto) => {
+          const docRef = doc(db, "profiles", gasto.profile);
+          getDoc(docRef).then((profile) => {
+            gasto.profileData = profile.data();
+            console.log("gastoprofiledata", gasto);
+            gastosArray.push(gasto);
+          });
+          console.log(gastosArray);
+        });
+        grupocopia.push({
+          ...grupo.data(),
+          docid: grupo.id,
+          isAdmin: isAdmin,
+          gastos: gastosArray,
+        });
+      } else {
+        grupocopia.push({
+          ...grupo.data(),
+          docid: grupo.id,
+          isAdmin: isAdmin,
+        });
+      }
     });
     if (isSubscribed) {
       setGrupos(grupocopia);
@@ -267,8 +292,10 @@ export default function useGrupos() {
     });
   });
 
-  const getGroup = useCallback(async (uid) => {
-    setLoadingGrupos(true);
+  const getGroup = useCallback(async (uid, ref) => {
+    isSubscribed = true;
+    setLoadingGastos(true);
+    const gastosArray = [];
     const docRef = doc(db, "grupos", uid);
     const Grupo = await getDoc(docRef);
     let isAdmin = false;
@@ -277,8 +304,41 @@ export default function useGrupos() {
     } else {
       isAdmin = false;
     }
-    setgrupoSelected({ ...Grupo.data(), docid: Grupo.id, isAdmin: isAdmin });
-    setLoadingGrupos(false);
+    if (ref && Grupo.data().gastos) {
+      Grupo.data().gastos.forEach(async (gasto) => {
+        const docRef = doc(db, "profiles", gasto.profile);
+        getDoc(docRef).then((profile) => {
+          gasto.profileData = profile.data();
+          gastosArray.push(gasto);
+        });
+      });
+      if (isSubscribed) {
+        setgrupoSelected({
+          ...Grupo.data(),
+          docid: Grupo.id,
+          isAdmin: isAdmin,
+          gastos: gastosArray,
+        });
+        isSubscribed = false;
+        setTimeout(() => {
+          setLoadingGastos(false);
+          setLoadingGrupos(false);
+        }, 1000);
+      }
+    } else {
+      if (isSubscribed) {
+        setgrupoSelected({
+          ...Grupo.data(),
+          docid: Grupo.id,
+          isAdmin: isAdmin,
+        });
+        isSubscribed = false;
+        setTimeout(() => {
+          setLoadingGastos(false);
+          setLoadingGrupos(false);
+        }, 1000);
+      }
+    }
   });
 
   const deleteGroup = useCallback(async (grupo) => {
@@ -392,5 +452,6 @@ export default function useGrupos() {
     createCategoria,
     deleteCategoria,
     nuevoGasto,
+    loadinggastos,
   };
 }

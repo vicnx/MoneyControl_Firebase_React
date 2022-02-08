@@ -1,7 +1,7 @@
 import { IonContent, IonPage } from "@ionic/react";
 import MCinfogrupo from "components/Grupos/MCinfogrupo/mcinfogrupo";
 import useGrupos from "hooks/useGrupos";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import "swiper/css";
@@ -13,7 +13,7 @@ const InfoGrupoPage = () => {
   const { loadinggrupos, getGroup, grupoSelected } = useGrupos();
 
   useEffect(() => {
-    getGroup(groupUID);
+    getGroup(groupUID, true);
   }, [groupUID]);
 
   return (

@@ -34,6 +34,17 @@ const MCgruposselect = (props) => {
             <></>
           )}
         </div>
+        {props.grupoSelected ? (
+          !props.grupoSelected.default ? (
+            <small className="msg-gastos-default">
+              Los gastos añadidos se copiarán a la cuenta General
+            </small>
+          ) : (
+            <></>
+          )
+        ) : (
+          <></>
+        )}
         {loadinggrupos ? (
           <ClipLoader
             color={"blue"}

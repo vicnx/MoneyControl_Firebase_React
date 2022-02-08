@@ -10,6 +10,7 @@ import useGrupos from "hooks/useGrupos";
 import React, { useEffect } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
+import MClistgastos from "../MClistgastos/mclistgastos";
 import "./mcinfogrupo.css";
 
 const MCinfogrupo = ({ grupo }) => {
@@ -69,6 +70,7 @@ const MCinfogrupo = ({ grupo }) => {
       </div>
       <IonContent className="content-info-grupo">
         {/* <MClistgrupos /> */}
+        {grupo.gastos ? <MClistgastos gastos={grupo.gastos} /> : <></>}
       </IonContent>
     </>
   );

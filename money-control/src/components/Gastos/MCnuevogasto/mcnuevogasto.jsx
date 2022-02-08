@@ -65,6 +65,7 @@ const MCnuevogasto = (props) => {
       cuenta: cuenta,
       cantidad: cantidad ? cantidad.toString().replace(/,/g, ".") : 0,
       user: profile.uid,
+      profile: profile.docid,
       desc: desc,
       categoria: categoria,
       uidgasto: randomString(25),

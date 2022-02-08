@@ -62,7 +62,19 @@ const HomePage = () => {
                       separator=" "
                       decimal=","
                       decimals={2}
+                      style={
+                        cuentaSelected.cantidad < 0
+                          ? { color: "var(--ion-color-danger-tint)" }
+                          : { color: "black" }
+                      }
                     />
+                    {cuentaSelected.cantidad < 0 ? (
+                      <small className="info-cuenta-saldo-negativo">
+                        Esta cuenta tiene saldo negativo
+                      </small>
+                    ) : (
+                      <></>
+                    )}
                   </IonLabel>
                   <div className="gastos-beneficios">
                     <div className="gastos-beneficios-div">
@@ -71,7 +83,10 @@ const HomePage = () => {
                       </IonLabel>
                       <IonLabel className="beneficios-cuenta">
                         <IonIcon icon={Icons.caretUpOutline}></IonIcon>
-                        100 €
+                        {cuentaSelected.totalganancias
+                          ? cuentaSelected.totalganancias
+                          : 0}
+                        €
                       </IonLabel>
                     </div>
                     <div className="gastos-beneficios-div">
@@ -80,7 +95,10 @@ const HomePage = () => {
                       </IonLabel>
                       <IonLabel className="gastos-cuenta">
                         <IonIcon icon={Icons.caretDownOutline}></IonIcon>
-                        1020 €
+                        {cuentaSelected.totalgastos
+                          ? cuentaSelected.totalgastos
+                          : 0}
+                        €
                       </IonLabel>
                     </div>
                   </div>

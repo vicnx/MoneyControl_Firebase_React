@@ -1,0 +1,54 @@
+.gasto-item {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  color: var(--color_text);
+  display: flex;
+}
+.gasto-name-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 10%;
+  width: 55%;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.gasto-name-info ion-icon {
+  font-size: 28px;
+  margin-right: 10px;
+}
+
+.gasto-content {
+  display: flex;
+  justify-content: space-around;
+}
+.gasto-options {
+  font-size: 23px;
+  color: var(--ion-color-danger-tint);
+}
+.gasto-name-info .gasto-name {
+  font-size: 14px;
+}
+.contador-money {
+  font-size: 13px;
+}
+.lista-categorias {
+  padding-bottom: 100px;
+  width: 100%;
+}
+
+.listgastos-component {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.listgastos-component-title {
+  font-size: 20px;
+}
