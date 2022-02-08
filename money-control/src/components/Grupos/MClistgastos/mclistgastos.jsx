@@ -43,16 +43,21 @@ const MClistgastos = ({ gastos }) => {
         <>
           {gastos ? (
             <div className="listgastos-component">
-              <span className="listgastos-component-title">
-                Últimos movimientos
-              </span>
-              <IonList className="lista-categorias">
+              <span className="listgastos-component-title">Últimos gastos</span>
+              <IonList className="lista-gastos">
                 {gastos.map((g, index) => (
-                  <div className="gasto-item" key={index}>
+                  <div
+                    className="gasto-item"
+                    key={index}
+                    style={{ borderColor: g.categoria.color }}
+                  >
+                    <div className="gasto-name-username">
+                      {g.profileData.name}
+                    </div>
                     <div className="gasto-name-info">
-                      <div className="image">
+                      <div className="gasto-name-info-image">
                         <div
-                          className="image-circle"
+                          className="gasto-name-info-image-circle"
                           style={{
                             backgroundImage:
                               'url("' +
@@ -62,10 +67,22 @@ const MClistgastos = ({ gastos }) => {
                               '")',
                           }}
                         ></div>
-                        <div className="">{g.profileData.name}</div>
                       </div>
                     </div>
-                    wdad
+                    <div className="gasto-info">
+                      <div className="gasto-info-desc">{g.desc}</div>
+                      <div className="gasto-info-fecha">{g.fechaConvert}</div>
+                    </div>
+                    <div className="gasto-cantidad">- {g.cantidad} € </div>
+                    <div className="gasto-category">
+                      <div className="gasto-category-icon">
+                        <DynamicFaIcon
+                          name={g.categoria.icono}
+                          slot="end"
+                          color={g.categoria.color}
+                        />
+                      </div>
+                    </div>
                     <div className="gasto-options" slot="end"></div>
                   </div>
                 ))}

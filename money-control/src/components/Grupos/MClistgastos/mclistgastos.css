@@ -1,41 +1,91 @@
 .gasto-item {
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
+  padding: 10px;
   color: var(--color_text);
   display: flex;
+  display: flex;
+  align-items: center;
+  height: 75px;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  margin-top: 5px;
+  border-radius: 10px;
+  justify-content: space-around;
+  border: 3px solid black;
+  position: relative;
 }
 .gasto-name-info {
+  position: relative;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-right: 10%;
-  width: 55%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 20%;
   text-transform: capitalize;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
-.gasto-name-info ion-icon {
-  font-size: 28px;
-  margin-right: 10px;
+.gasto-name-info-image {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  /* border: 3px solid var(--ion-color-primary); */
+  background-size: cover;
+  overflow: hidden;
+  background-color: var(--ion-color-primary-tint);
 }
-
+.gasto-name-username {
+  bottom: 5px;
+  position: absolute;
+  font-size: 11px;
+  right: 10px;
+}
+.gasto-info {
+  height: 100%;
+  width: 40%;
+}
+.gasto-info-desc {
+  font-size: 14px;
+  height: 70%;
+  width: 100%;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.gasto-info-fecha {
+  font-size: 12px;
+  height: 20%;
+}
+.gasto-category {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 10%;
+}
+.gasto-category-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+.gasto-cantidad {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: var(--ion-color-danger-tint);
+}
 .gasto-content {
   display: flex;
   justify-content: space-around;
 }
-.gasto-options {
-  font-size: 23px;
-  color: var(--ion-color-danger-tint);
-}
-.gasto-name-info .gasto-name {
-  font-size: 14px;
-}
-.contador-money {
-  font-size: 13px;
-}
-.lista-categorias {
+
+.lista-gastos {
+  padding: 10px;
   padding-bottom: 100px;
   width: 100%;
 }

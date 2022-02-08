@@ -309,6 +309,9 @@ export default function useGrupos() {
         const docRef = doc(db, "profiles", gasto.profile);
         getDoc(docRef).then((profile) => {
           gasto.profileData = profile.data();
+          gasto.fechaConvert = new Date(gasto.fecha).toLocaleDateString(
+            "es-ES"
+          );
           gastosArray.push(gasto);
         });
       });
