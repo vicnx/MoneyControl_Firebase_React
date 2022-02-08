@@ -45,47 +45,50 @@ const MClistgastos = ({ gastos }) => {
             <div className="listgastos-component">
               <span className="listgastos-component-title">Últimos gastos</span>
               <IonList className="lista-gastos">
-                {gastos.map((g, index) => (
-                  <div
-                    className="gasto-item"
-                    key={index}
-                    style={{ borderColor: g.categoria.color }}
-                  >
-                    <div className="gasto-name-username">
-                      {g.profileData.name}
-                    </div>
-                    <div className="gasto-name-info">
-                      <div className="gasto-name-info-image">
-                        <div
-                          className="gasto-name-info-image-circle"
-                          style={{
-                            backgroundImage:
-                              'url("' +
-                              (g.profileData
-                                ? g.profileData.image
-                                : CONSTANTS.defaultAvatar) +
-                              '")',
-                          }}
-                        ></div>
+                {gastos
+                  .sort((a, b) => (a.fecha < b.fecha ? 1 : -1))
+                  .slice(0, 10)
+                  .map((g, index) => (
+                    <div
+                      className="gasto-item"
+                      key={index}
+                      style={{ borderColor: g.categoria.color }}
+                    >
+                      <div className="gasto-name-username">
+                        {g.profileData.name}
                       </div>
-                    </div>
-                    <div className="gasto-info">
-                      <div className="gasto-info-desc">{g.desc}</div>
-                      <div className="gasto-info-fecha">{g.fechaConvert}</div>
-                    </div>
-                    <div className="gasto-cantidad">- {g.cantidad} € </div>
-                    <div className="gasto-category">
-                      <div className="gasto-category-icon">
-                        <DynamicFaIcon
-                          name={g.categoria.icono}
-                          slot="end"
-                          color={g.categoria.color}
-                        />
+                      <div className="gasto-name-info">
+                        <div className="gasto-name-info-image">
+                          <div
+                            className="gasto-name-info-image-circle"
+                            style={{
+                              backgroundImage:
+                                'url("' +
+                                (g.profileData
+                                  ? g.profileData.image
+                                  : CONSTANTS.defaultAvatar) +
+                                '")',
+                            }}
+                          ></div>
+                        </div>
                       </div>
+                      <div className="gasto-info">
+                        <div className="gasto-info-desc">{g.desc}</div>
+                        <div className="gasto-info-fecha">{g.fechaConvert}</div>
+                      </div>
+                      <div className="gasto-cantidad">- {g.cantidad} € </div>
+                      <div className="gasto-category">
+                        <div className="gasto-category-icon">
+                          <DynamicFaIcon
+                            name={g.categoria.icono}
+                            slot="end"
+                            color={g.categoria.color}
+                          />
+                        </div>
+                      </div>
+                      <div className="gasto-options" slot="end"></div>
                     </div>
-                    <div className="gasto-options" slot="end"></div>
-                  </div>
-                ))}
+                  ))}
               </IonList>
             </div>
           ) : (

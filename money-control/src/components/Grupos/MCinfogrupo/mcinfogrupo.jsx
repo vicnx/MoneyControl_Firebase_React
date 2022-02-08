@@ -14,6 +14,7 @@ import MClistgastos from "../MClistgastos/mclistgastos";
 import "./mcinfogrupo.css";
 
 const MCinfogrupo = ({ grupo }) => {
+  console.log("MCinfogrupo", grupo);
   const {
     grupos,
     loadinggrupos,

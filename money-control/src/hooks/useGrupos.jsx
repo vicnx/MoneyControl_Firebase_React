@@ -376,7 +376,7 @@ export default function useGrupos() {
         categories: arrayUnion(categoria),
       }).then((res) => {
         getGrupos(auth.currentUser.uid);
-        getGroup(grupo.docid);
+        getGroup(grupo.docid, true);
         setSuccess({ status: true, msg: "Nueva categoría creada!" });
         setTimeout(() => {
           history.push("/categories/" + grupo.docid);
@@ -398,15 +398,13 @@ export default function useGrupos() {
       }).then((res) => {
         setLoadingGrupos(false);
         getGrupos(auth.currentUser.uid);
-        getGroup(grupo.docid);
+        getGroup(grupo.docid, true);
         setSuccess({ status: true, msg: "Categoría eliminada!" });
       });
     }
   });
 
   const nuevoGasto = async (newGasto, grupo) => {
-    console.log("grupo", grupo);
-    console.log("newGasto", newGasto);
     const grupoRef = doc(db, "grupos", grupo.docid);
     updateDoc(grupoRef, {
       gastos: arrayUnion(newGasto),
@@ -425,7 +423,7 @@ export default function useGrupos() {
         });
       }
       getGrupos(auth.currentUser.uid);
-      getGroup(grupo.docid);
+      getGroup(grupo.docid, true);
       setSuccess({ status: true, msg: "Nuevo gasto añadido!" });
       setTimeout(() => {
         history.push("/group/" + grupo.docid);
