@@ -44,6 +44,10 @@ export default function useGrupos() {
           loading: false,
           error: false,
         });
+        setError({
+          status: false,
+          msg: false,
+        });
         getGrupos(auth.currentUser.uid);
         // getCuentas(auth.currentUser.uid);
       } else {
@@ -51,10 +55,18 @@ export default function useGrupos() {
           loading: false,
           error: false,
         });
+        setError({
+          status: false,
+          msg: false,
+        });
         setTimeout(() => {
           setState({
             loading: false,
             error: false,
+          });
+          setError({
+            status: false,
+            msg: false,
           });
         }, 500);
       }

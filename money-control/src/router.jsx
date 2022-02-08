@@ -72,7 +72,7 @@ export default function MCrouter() {
             path="/newcategorie/:groupUID"
             component={NewCategoriaPage}
           ></Route>
-          <Route path="/spendings/new" component={NuevoGasto}></Route>
+          <Route path="/spendings/add" component={NuevoGasto}></Route>
 
           <Route exact path="/" render={() => <Redirect to="/home" />}></Route>
           <Route path="*">

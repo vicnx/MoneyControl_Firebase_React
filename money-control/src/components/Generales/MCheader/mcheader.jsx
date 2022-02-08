@@ -39,6 +39,9 @@ export default function MCheader() {
       case "/groups/add":
         setPage("Nuevo grupo");
         break;
+      case "/spendings/add":
+        setPage("Nuevo gasto");
+        break;
       default:
         if (location.pathname.split("/")[1] == "categories") {
           setPage("Gestor de categorías");

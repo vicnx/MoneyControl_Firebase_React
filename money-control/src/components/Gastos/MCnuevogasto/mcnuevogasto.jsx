@@ -20,59 +20,56 @@ import "swiper/css/navigation";
 import "./mcnuevogasto.css";
 import MCgruposselect from "../MCgruposselect/mcgruposselect";
 import MCcategorylist from "../MCcategorylist/mccategorylist";
-
+import CurrencyInput from "react-currency-input-field";
+import { useEffect } from "react";
+import MCcuentaselect from "../MCcuentaselect/mccuentaselect";
+import { randomString } from "global/functions";
 const MCnuevogasto = (props) => {
   const { profile, loadingprofile } = useUser();
   const { createNewGrupo, success, setSuccess, error, setError } = useGrupos();
-  const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
-  const [gprivate, setGprivate] = useState(false);
-  const [color, setColor] = useState("#5499C7");
-  const [icono, setIcono] = useState("happyOutline");
   const [grupo, setGrupo] = useState();
   const [categoria, setCategoria] = useState();
-
-  const [toast, setToast] = useState({
-    isOpen: false,
-    content: "Ha ocurrido un error!",
-    color: "danger",
-  });
-
-  function changeColor(newValue) {
-    setColor(newValue);
-  }
-
-  function changeIcono(newValue) {
-    setIcono(newValue);
-  }
+  const [cantidad, setCantidad] = useState(0);
+  const [cuenta, setCuenta] = useState(false);
 
   function changeGrupoSelect(newValue) {
     setGrupo(newValue);
+    setCategoria(false);
   }
 
   function changeCategoria(newValue) {
     setCategoria(newValue);
   }
 
-  function saveGrupo() {
-    if (!name) {
-      setError({
-        status: true,
-        msg: "El nombre del grupo no puede estar vacio",
-      });
+  function changeCuenta(newValue) {
+    setCuenta(newValue);
+  }
+
+  function saveGasto() {
+    if (!grupo) {
+      setError({ status: true, msg: "Selecciona un grupo." });
+      return;
+    }
+    if (!categoria) {
+      setError({ status: true, msg: "Selecciona una categoría." });
+      return;
+    }
+    if (!desc) {
+      setError({ status: true, msg: "Tienes que añadir una descripción." });
       return;
     }
 
-    const NewGrupo = {
-      createdby: profile.uid,
-      icono: icono ? icono : "cashOutline",
-      color: color ? color : "#5499C7",
+    let newGasto = {
+      cuenta: cuenta,
+      cantidad: cantidad,
+      user: profile.uid,
       desc: desc,
-      name: name,
-      users: [profile.uid],
-      codinv: gprivate,
+      categoria: categoria,
+      uidgasto: randomString(25),
+      fecha: Date.now(),
     };
-    createNewGrupo(NewGrupo);
+    console.log("newGasto", newGasto);
   }
 
   return (
@@ -86,18 +83,60 @@ const MCnuevogasto = (props) => {
         />
       ) : (
         <>
-          <MCgruposselect onChange={changeGrupoSelect} grupoSelected={grupo} />
-          <MCcategorylist
-            grupo={grupo}
-            onChange={changeCategoria}
-            categoria={categoria}
-          />
+          <div className="mc-input value">
+            <span>Cantidad (EUR)</span>
+            <div className="input-currency">
+              <button
+                id="decrement"
+                className="button-decrement"
+                onClick={(e) => {
+                  if (cantidad >= 1) {
+                    setCantidad(cantidad - 1);
+                  }
+                }}
+              >
+                <DynamicFaIcon
+                  name={"removeCircleOutline"}
+                  slot="end"
+                  color="white"
+                />
+              </button>
+              <CurrencyInput
+                className="valueInput"
+                id="input-example"
+                name="input-name"
+                placeholder="Valor inicial de la cuenta"
+                defaultValue={0}
+                value={cantidad}
+                decimalsLimit={2}
+                onValueChange={(value) => {
+                  setCantidad(value);
+                }}
+                suffix=" €"
+              />
+              <button
+                id="increment"
+                className="button-increment"
+                onClick={(e) => {
+                  setCantidad(cantidad + 1);
+                }}
+              >
+                <DynamicFaIcon
+                  name={"addCircleOutline"}
+                  slot="end"
+                  color="white"
+                />
+              </button>
+            </div>
+          </div>
           <IonItem className="mc-input">
             <IonLabel
               position="floating"
-              style={error && !desc ? { color: "red" } : { color: "black" }}
+              style={
+                error.status && !desc ? { color: "red" } : { color: "black" }
+              }
             >
-              Descripción
+              Descripción del gasto <span className="required">*</span>
             </IonLabel>
             <IonTextarea
               maxlength="100"
@@ -107,32 +146,24 @@ const MCnuevogasto = (props) => {
               onIonChange={(e) => setDesc(e.detail.value)}
             ></IonTextarea>
           </IonItem>
-          <MCcolores onChange={changeColor} colorSelected={color} />
-          <MCiconos
-            onChange={changeIcono}
-            colorSelected={color}
-            iconoSelected={icono}
-            type="group"
+          <MCcuentaselect
+            onChange={changeCuenta}
+            cuentaSelected={cuenta}
+            setCuentaSelected={setCuenta}
           />
-          <IonItem className="checkbox-gprivate">
-            <div className="checkbox-gprivate-text">
-              <IonLabel>Grupo privado</IonLabel>
-              <small>Si activas esta opción nadie podrá unirse.</small>
-            </div>
-
-            <IonCheckbox
-              slot="start"
-              checked={gprivate}
-              onIonChange={(e) => setGprivate(e.detail.checked)}
-            />
-          </IonItem>
+          <MCgruposselect onChange={changeGrupoSelect} grupoSelected={grupo} />
+          <MCcategorylist
+            grupo={grupo}
+            onChange={changeCategoria}
+            categoria={categoria}
+          />
           <IonButton
             expand="full"
             className="boton-guardar"
-            onClick={saveGrupo}
+            onClick={saveGasto}
             disabled={success.status}
           >
-            Guardar
+            Añadir gasto
             <DynamicFaIcon
               name={"arrowUpCircleOutline"}
               slot="end"

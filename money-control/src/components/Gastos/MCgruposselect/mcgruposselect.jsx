@@ -14,9 +14,26 @@ const MCgruposselect = (props) => {
   return (
     <>
       <div className="gruposselect-component">
-        <span className="title">
+        <span className="gruposselect-component-title">
           Selecciona un grupo <span className="required">*</span>
         </span>
+        <div className="gruposselect-info">
+          {props.grupoSelected ? (
+            <>
+              <div className="gruposselect-info-icono">
+                <DynamicFaIcon
+                  name={props.grupoSelected.icono}
+                  color={props.grupoSelected.color}
+                />
+              </div>
+              <div className="gruposselect-info-name">
+                {props.grupoSelected.name}
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
         {loadinggrupos ? (
           <ClipLoader
             color={"blue"}
@@ -30,17 +47,21 @@ const MCgruposselect = (props) => {
               {grupos.map((g, index) => (
                 <SwiperSlide
                   className={
-                    props.grupoSelected == g
-                      ? "gruposelect selected"
+                    props.grupoSelected
+                      ? props.grupoSelected.docid == g.docid
+                        ? "gruposelect selected"
+                        : "gruposelect"
                       : "gruposelect"
                   }
                   style={
-                    props.grupoSelected == g
-                      ? {
-                          borderColor: g.color,
-                          borderWidth: "3px",
-                          borderStyle: "solid",
-                        }
+                    props.grupoSelected
+                      ? props.grupoSelected.docid == g.docid
+                        ? {
+                            borderColor: g.color,
+                            borderWidth: "3px",
+                            borderStyle: "solid",
+                          }
+                        : {}
                       : {}
                   }
                   key={index}
@@ -51,10 +72,12 @@ const MCgruposselect = (props) => {
                   <hr
                     className="separador-grupos"
                     style={
-                      props.grupoSelected == g
-                        ? {
-                            backgroundColor: g.color,
-                          }
+                      props.grupoSelected
+                        ? props.grupoSelected.docid == g.docid
+                          ? {
+                              backgroundColor: g.color,
+                            }
+                          : { backgroundColor: "var(--color_small)" }
                         : { backgroundColor: "var(--color_small)" }
                     }
                   />
@@ -62,8 +85,10 @@ const MCgruposselect = (props) => {
                     <DynamicFaIcon
                       name={g.icono}
                       color={
-                        props.grupoSelected == g
-                          ? g.color
+                        props.grupoSelected
+                          ? props.grupoSelected.docid == g.docid
+                            ? g.color
+                            : "var(--color_small)"
                           : "var(--color_small)"
                       }
                     />
@@ -71,10 +96,12 @@ const MCgruposselect = (props) => {
                     <IonLabel
                       className="grupo-name"
                       style={
-                        props.grupoSelected == g
-                          ? {
-                              color: g.color,
-                            }
+                        props.grupoSelected
+                          ? props.grupoSelected.docid == g.docid
+                            ? {
+                                color: g.color,
+                              }
+                            : { color: "var(--color_small)" }
                           : { color: "var(--color_small)" }
                       }
                     >
@@ -84,10 +111,12 @@ const MCgruposselect = (props) => {
                   <hr
                     className="separador-grupos"
                     style={
-                      props.grupoSelected == g
-                        ? {
-                            backgroundColor: g.color,
-                          }
+                      props.grupoSelected
+                        ? props.grupoSelected.docid == g.docid
+                          ? {
+                              backgroundColor: g.color,
+                            }
+                          : { backgroundColor: "var(--color_small)" }
                         : { backgroundColor: "var(--color_small)" }
                     }
                   />

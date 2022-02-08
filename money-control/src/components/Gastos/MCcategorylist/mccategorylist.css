@@ -105,3 +105,24 @@
   font-size: 11px;
   word-break: break-all;
 }
+.categories-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.categories-info-icono {
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.categories-info-name {
+  font-size: 15px;
+  color: var(--color_small);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5px;
+}
