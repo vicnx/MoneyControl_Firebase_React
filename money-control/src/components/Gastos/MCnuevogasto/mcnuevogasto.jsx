@@ -26,7 +26,7 @@ import MCcuentaselect from "../MCcuentaselect/mccuentaselect";
 import { randomString } from "global/functions";
 const MCnuevogasto = (props) => {
   const { profile, loadingprofile } = useUser();
-  const { createNewGrupo, success, setSuccess, error, setError } = useGrupos();
+  const { nuevoGasto, success, setSuccess, error, setError } = useGrupos();
   const [desc, setDesc] = useState("");
   const [grupo, setGrupo] = useState();
   const [categoria, setCategoria] = useState();
@@ -59,17 +59,18 @@ const MCnuevogasto = (props) => {
       setError({ status: true, msg: "Tienes que añadir una descripción." });
       return;
     }
+    console.log(cantidad);
 
     let newGasto = {
       cuenta: cuenta,
-      cantidad: cantidad,
+      cantidad: cantidad ? cantidad.toString().replace(/,/g, ".") : 0,
       user: profile.uid,
       desc: desc,
       categoria: categoria,
       uidgasto: randomString(25),
       fecha: Date.now(),
     };
-    console.log("newGasto", newGasto);
+    nuevoGasto(newGasto, grupo);
   }
 
   return (
@@ -113,6 +114,7 @@ const MCnuevogasto = (props) => {
                   setCantidad(value);
                 }}
                 suffix=" €"
+                allowNegativeValue={false}
               />
               <button
                 id="increment"

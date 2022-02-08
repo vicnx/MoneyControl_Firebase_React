@@ -51,7 +51,7 @@ const MCdatoscuenta = (props) => {
       uid: profile.uid,
       icono: icono ? icono : "cashOutline",
       color: color ? color : "#5499C7",
-      cantidad: cantidad ? cantidad.replace(/,/g, ".") : 0,
+      cantidad: cantidad ? cantidad.toString().replace(/,/g, ".") : 0,
       name: name,
     };
     console.log("NewCuenta", NewCuenta);

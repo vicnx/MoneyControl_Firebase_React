@@ -24,7 +24,6 @@ const MCinfogrupo = ({ grupo }) => {
     success,
     setSuccess,
   } = useGrupos();
-
   return (
     <>
       <div

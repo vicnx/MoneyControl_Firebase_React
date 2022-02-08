@@ -18,7 +18,7 @@ import {
 import { defaultCategories, randomString } from "global/functions";
 import { useCallback, useContext, useEffect, useState } from "react"; //evita que se vuelva a ejecutar una funcion
 import { useHistory } from "react-router-dom";
-
+import useCuentas from "./useCuentas";
 export default function useGrupos() {
   const { grupos, setGrupos } = useContext(GruposContext);
   const { grupoSelected, setgrupoSelected } = useContext(GruposContext);
@@ -34,6 +34,7 @@ export default function useGrupos() {
   const history = useHistory();
   let isSubscribed = true;
   let gruposTotal = [];
+  const { removeSaldo } = useCuentas();
 
   useEffect(() => {
     onAuthStateChanged(auth, () => {
@@ -340,6 +341,36 @@ export default function useGrupos() {
     }
   });
 
+  const nuevoGasto = async (newGasto, grupo) => {
+    console.log("grupo", grupo);
+    console.log("newGasto", newGasto);
+    const grupoRef = doc(db, "grupos", grupo.docid);
+    updateDoc(grupoRef, {
+      gastos: arrayUnion(newGasto),
+    }).then((res) => {
+      removeSaldo(newGasto.cuenta, newGasto.cantidad);
+      if (!grupo.default) {
+        const defaultGroup = grupos.filter((grupo) => grupo.default);
+        const grupoDefRef = doc(db, "grupos", defaultGroup[0].docid);
+        let gastoDefault = {
+          ...newGasto,
+          isOtherGroup: true,
+          otherGroup: grupo,
+        };
+        updateDoc(grupoDefRef, {
+          gastos: arrayUnion(gastoDefault),
+        });
+      }
+      getGrupos(auth.currentUser.uid);
+      getGroup(grupo.docid);
+      setSuccess({ status: true, msg: "Nuevo gasto añadido!" });
+      setTimeout(() => {
+        history.push("/group/" + grupo.docid);
+        setLoadingGrupos(false);
+      }, 1000);
+    });
+  };
+
   return {
     errors: errorMSG,
     error: error,
@@ -360,5 +391,6 @@ export default function useGrupos() {
     grupoSelected,
     createCategoria,
     deleteCategoria,
+    nuevoGasto,
   };
 }

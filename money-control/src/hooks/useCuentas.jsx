@@ -112,6 +112,24 @@ export default function useCuentas() {
     }
   });
 
+  const removeSaldo = async (cuenta, newCantidad) => {
+    const docRef = doc(db, "cuentas", cuenta.docid);
+    const Cuenta = await getDoc(docRef);
+    let cuentaSelected = { ...Cuenta.data(), docid: Cuenta.id };
+    if (cuentaSelected) {
+      let newSaldo =
+        parseFloat(cuentaSelected.cantidad) - parseFloat(newCantidad);
+      updateDoc(docRef, {
+        cantidad: newSaldo,
+        totalgastos: cuentaSelected.totalgastos
+          ? parseFloat(cuentaSelected.totalgastos) + parseFloat(newCantidad)
+          : 0 + parseFloat(newCantidad),
+      }).then((res) => {
+        getCuentas(auth.currentUser.uid);
+      });
+    }
+  };
+
   return {
     errors: errorMSG,
     error: error,
@@ -124,5 +142,6 @@ export default function useCuentas() {
     success,
     setSuccess,
     deleteCuenta,
+    removeSaldo,
   };
 }
