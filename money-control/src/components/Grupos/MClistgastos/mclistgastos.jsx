@@ -4,7 +4,7 @@ import {
   IonLabel,
   IonList,
   IonToast,
-  IonContent,
+  IonRouterLink,
 } from "@ionic/react";
 import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 import useGrupos from "hooks/useGrupos";
@@ -29,7 +29,11 @@ const MClistgastos = ({ gastos }) => {
   } = useGrupos();
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [selected, setSelected] = useState({});
+  const [gastosview, setGastosview] = useState(5);
 
+  function viewAll(prop) {
+    setGastosview(prop ? gastos.length : 5);
+  }
   return (
     <>
       {loadinggastos ? (
@@ -47,7 +51,7 @@ const MClistgastos = ({ gastos }) => {
               <IonList className="lista-gastos">
                 {gastos
                   .sort((a, b) => (a.fecha < b.fecha ? 1 : -1))
-                  .slice(0, 10)
+                  .slice(0, gastosview)
                   .map((g, index) => (
                     <div
                       className="gasto-item"
@@ -76,7 +80,16 @@ const MClistgastos = ({ gastos }) => {
                         <div className="gasto-info-desc">{g.desc}</div>
                         <div className="gasto-info-fecha">{g.fechaConvert}</div>
                       </div>
-                      <div className="gasto-cantidad">- {g.cantidad} € </div>
+                      <div
+                        className="gasto-cantidad"
+                        style={
+                          g.cantidad.length < 7
+                            ? { fontSize: "16px" }
+                            : { fontSize: "10px" }
+                        }
+                      >
+                        - {g.cantidad} €{" "}
+                      </div>
                       <div className="gasto-category">
                         <div className="gasto-category-icon">
                           <DynamicFaIcon
@@ -90,6 +103,29 @@ const MClistgastos = ({ gastos }) => {
                     </div>
                   ))}
               </IonList>
+              {gastos ? (
+                gastos.length != gastosview ? (
+                  gastos.length <= 5 ? (
+                    <></>
+                  ) : (
+                    <IonRouterLink
+                      onClick={() => viewAll(true)}
+                      className="boton-view"
+                    >
+                      Ver todos...
+                    </IonRouterLink>
+                  )
+                ) : (
+                  <IonRouterLink
+                    onClick={() => viewAll(false)}
+                    className="boton-view"
+                  >
+                    Ver solo últimos...
+                  </IonRouterLink>
+                )
+              ) : (
+                <></>
+              )}
             </div>
           ) : (
             "Sin gastos"

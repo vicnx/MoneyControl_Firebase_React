@@ -18,7 +18,7 @@ const InfoGrupoPage = () => {
 
   return (
     <IonPage>
-      <IonContent fullscreen scrollX="false" scrollY="false">
+      <IonContent fullscreen scrollX="false" scrollY="true">
         {loadinggrupos ? (
           <ClipLoader
             color={"blue"}

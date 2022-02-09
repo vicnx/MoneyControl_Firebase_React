@@ -69,10 +69,8 @@ const MCinfogrupo = ({ grupo }) => {
           <></>
         )}
       </div>
-      <IonContent className="content-info-grupo">
-        {/* <MClistgrupos /> */}
-        {grupo.gastos ? <MClistgastos gastos={grupo.gastos} /> : <></>}
-      </IonContent>
+      {/* <MClistgrupos /> */}
+      {grupo.gastos ? <MClistgastos gastos={grupo.gastos} /> : <></>}
     </>
   );
 };
