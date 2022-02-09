@@ -14,7 +14,7 @@ const CategoriasPage = () => {
   const { loadinggrupos, getGroup, grupoSelected } = useGrupos();
 
   useEffect(() => {
-    getGroup(groupUID);
+    getGroup(groupUID, true);
   }, [groupUID]);
 
   return (

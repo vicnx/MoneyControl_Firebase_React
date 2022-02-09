@@ -17,6 +17,8 @@ import { CONSTANTS } from "global/functions";
 import ClipLoader from "react-spinners/ClipLoader";
 
 const MClistgastos = ({ gastos, groupuid }) => {
+  const gastosViewDefect = 5;
+  const gastosViewMaxDefect = 10;
   const {
     grupos,
     loadinggastos,
@@ -32,7 +34,13 @@ const MClistgastos = ({ gastos, groupuid }) => {
   const [gastosview, setGastosview] = useState(5);
 
   function viewAll(prop) {
-    setGastosview(prop ? (gastos.length < 10 ? gastos.length : 10) : 5);
+    setGastosview(
+      prop
+        ? gastos.length < gastosViewMaxDefect
+          ? gastos.length
+          : gastosViewMaxDefect
+        : gastosViewDefect
+    );
   }
 
   return (
@@ -51,7 +59,12 @@ const MClistgastos = ({ gastos, groupuid }) => {
               <span className="listgastos-component-title">Últimos gastos</span>
               <div className="info-gastos-pagin">
                 <span className="mostrando-text">
-                  Mostrando {gastosview} de {gastos.length} gastos.
+                  Mostrando{" "}
+                  {gastos.length > gastosViewDefect
+                    ? gastosview
+                    : gastos.length}{" "}
+                  de
+                  {gastos.length} gastos.
                 </span>
 
                 <IonRouterLink
@@ -103,7 +116,7 @@ const MClistgastos = ({ gastos, groupuid }) => {
                             : { fontSize: "10px" }
                         }
                       >
-                        - {g.cantidad} €{" "}
+                        - {g.cantidad} €
                       </div>
                       <div className="gasto-category">
                         <div className="gasto-category-icon">
@@ -120,7 +133,7 @@ const MClistgastos = ({ gastos, groupuid }) => {
               </IonList>
               {gastos ? (
                 gastos.length != gastosview ? (
-                  gastos.length <= 5 ? (
+                  gastos.length <= gastosViewDefect ? (
                     <></>
                   ) : (
                     <IonRouterLink

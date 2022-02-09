@@ -292,7 +292,7 @@ export default function useGrupos() {
     });
   });
 
-  const getGroup = useCallback(async (uid, ref) => {
+  const getGroup = useCallback(async (uid, ref = true) => {
     isSubscribed = true;
     setLoadingGastos(true);
     const gastosArray = [];
