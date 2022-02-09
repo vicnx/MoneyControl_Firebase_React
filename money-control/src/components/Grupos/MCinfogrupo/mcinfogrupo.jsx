@@ -70,7 +70,11 @@ const MCinfogrupo = ({ grupo }) => {
         )}
       </div>
       {/* <MClistgrupos /> */}
-      {grupo.gastos ? <MClistgastos gastos={grupo.gastos} /> : <></>}
+      {grupo.gastos ? (
+        <MClistgastos gastos={grupo.gastos} groupuid={grupo.docid} />
+      ) : (
+        <></>
+      )}
     </>
   );
 };

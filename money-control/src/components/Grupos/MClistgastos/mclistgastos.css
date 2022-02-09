@@ -100,7 +100,8 @@
 }
 
 .lista-gastos {
-  padding: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
   padding-bottom: 20px;
   width: 100%;
 }
@@ -118,7 +119,17 @@
 .listgastos-component-title {
   font-size: 20px;
 }
+.info-gastos-pagin {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
 .boton-view {
   align-self: flex-end;
   margin-right: 20px;
+}
+.mostrando-text {
+  margin-left: 20px;
+  font-size: 10px;
 }

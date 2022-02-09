@@ -16,7 +16,7 @@ import "./mclistgastos.css";
 import { CONSTANTS } from "global/functions";
 import ClipLoader from "react-spinners/ClipLoader";
 
-const MClistgastos = ({ gastos }) => {
+const MClistgastos = ({ gastos, groupuid }) => {
   const {
     grupos,
     loadinggastos,
@@ -32,8 +32,9 @@ const MClistgastos = ({ gastos }) => {
   const [gastosview, setGastosview] = useState(5);
 
   function viewAll(prop) {
-    setGastosview(prop ? gastos.length : 5);
+    setGastosview(prop ? (gastos.length < 10 ? gastos.length : 10) : 5);
   }
+
   return (
     <>
       {loadinggastos ? (
@@ -48,6 +49,20 @@ const MClistgastos = ({ gastos }) => {
           {gastos ? (
             <div className="listgastos-component">
               <span className="listgastos-component-title">Últimos gastos</span>
+              <div className="info-gastos-pagin">
+                <span className="mostrando-text">
+                  Mostrando {gastosview} de {gastos.length} gastos.
+                </span>
+
+                <IonRouterLink
+                  routerLink={"/spendings/" + groupuid}
+                  routerDirection="forward"
+                  className="boton-view"
+                >
+                  Ver todos
+                </IonRouterLink>
+              </div>
+
               <IonList className="lista-gastos">
                 {gastos
                   .sort((a, b) => (a.fecha < b.fecha ? 1 : -1))
@@ -112,7 +127,7 @@ const MClistgastos = ({ gastos }) => {
                       onClick={() => viewAll(true)}
                       className="boton-view"
                     >
-                      Ver todos...
+                      Ver más...
                     </IonRouterLink>
                   )
                 ) : (
@@ -120,7 +135,7 @@ const MClistgastos = ({ gastos }) => {
                     onClick={() => viewAll(false)}
                     className="boton-view"
                   >
-                    Ver solo últimos...
+                    Ver menos...
                   </IonRouterLink>
                 )
               ) : (
