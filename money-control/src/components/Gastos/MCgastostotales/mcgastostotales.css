@@ -1,0 +1,165 @@
+.gasto-item {
+  padding: 10px;
+  color: var(--color_text);
+  display: flex;
+  display: flex;
+  align-items: center;
+  height: 75px;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  margin-top: 10px;
+  border-radius: 10px;
+  justify-content: space-around;
+  border: 3px solid black;
+  position: relative;
+  background-color: white;
+}
+.gasto-name-info {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 20%;
+  text-transform: capitalize;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.gasto-name-info-image {
+  position: relative;
+  background-size: cover;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-top-right-radius: 5 px;
+  border-top-left-radius: 5 px;
+}
+.gasto-name-info-image-circle {
+  height: 45px;
+  width: 45px;
+  border-radius: 10px;
+  /* border: 3px solid var(--ion-color-primary); */
+  box-shadow: var(--best_shadow);
+  background-size: cover;
+  overflow: hidden;
+  background-color: var(--ion-color-primary-tint);
+}
+.gasto-name-username {
+  bottom: 5px;
+  position: absolute;
+  font-size: 11px;
+  right: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.gasto-info {
+  height: 100%;
+  width: 40%;
+}
+.gasto-info-desc {
+  font-size: 14px;
+  height: 80%;
+  width: 93%;
+  text-transform: capitalize;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.gasto-info-fecha {
+  font-size: 12px;
+  height: 20%;
+}
+.gasto-category {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 10%;
+}
+.gasto-category-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+.gasto-cantidad {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--ion-color-danger-tint);
+}
+.gasto-content {
+  display: flex;
+  justify-content: space-around;
+}
+
+.lista-gastostotales {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+.gastostotales-component {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 200px;
+}
+
+.gastostotales-component-title {
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+.info-gastos-pagin {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.boton-view {
+  align-self: flex-end;
+  margin-right: 20px;
+}
+.mostrando-text {
+  margin-left: 20px;
+  font-size: 10px;
+}
+.gastostotales-filters {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.dateTimeModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calendarModal {
+  --width: 290px;
+  --height: 382px;
+  --border-radius: 8px;
+}
+
+.calendarModal ion-datetime {
+  height: 382px;
+}
+.gastostotales-filters-fechas {
+  display: flex;
+  flex-direction: column;
+}
+.gastostotales-filters-fechas-fecha {
+  display: flex;
+  align-items: center;
+}
+.gastostotales-filters-fechas-fecha span {
+  margin-left: 10px;
+}

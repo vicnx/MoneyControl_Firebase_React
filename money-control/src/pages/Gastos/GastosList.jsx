@@ -7,6 +7,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./GastosList.css";
+import MCgastostotales from "components/Gastos/MCgastostotales/mcgastostotales";
 
 const GastosListPage = () => {
   let { groupUID } = useParams();
@@ -26,8 +27,13 @@ const GastosListPage = () => {
             css={"display: block;margin: 0 auto"}
             size={150}
           />
+        ) : grupoSelected.gastos ? (
+          <MCgastostotales
+            gastos={grupoSelected.gastos}
+            grupo={grupoSelected}
+          />
         ) : (
-          <>GASTOS LIST {groupUID}</>
+          <></>
         )}
       </IonContent>
     </IonPage>
