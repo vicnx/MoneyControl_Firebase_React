@@ -34,7 +34,7 @@ export default function MCfabmenu() {
           </IonRouterLink>
 
           <IonRouterLink
-            routerLink={"/spendings/add"}
+            routerLink={"/money/add"}
             routerDirection="forward"
             className="addgasto-fab"
           >

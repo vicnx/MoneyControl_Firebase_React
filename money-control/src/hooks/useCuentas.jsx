@@ -4,8 +4,11 @@ import { useHistory } from "react-router-dom";
 //Firebase
 import { app, db } from "firebase.jsx";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { Router } from "react-router";
 
 import {
+  arrayRemove,
+  arrayUnion,
   addDoc,
   collection,
   getDoc,
@@ -130,6 +133,31 @@ export default function useCuentas() {
     }
   };
 
+  const addSaldo = async (cuenta, ingreso) => {
+    const docRef = doc(db, "cuentas", cuenta.docid);
+    const Cuenta = await getDoc(docRef);
+    let cuentaSelected = { ...Cuenta.data(), docid: Cuenta.id };
+    if (cuentaSelected) {
+      let newSaldo =
+        parseFloat(cuentaSelected.cantidad) + parseFloat(ingreso.cantidad);
+      updateDoc(docRef, {
+        cantidad: newSaldo,
+        totalganancias: cuentaSelected.totalganancias
+          ? parseFloat(cuentaSelected.totalganancias) +
+            parseFloat(ingreso.cantidad)
+          : 0 + parseFloat(ingreso.cantidad),
+        ingresos: arrayUnion(ingreso),
+      }).then((res) => {
+        getCuentas(auth.currentUser.uid);
+        setSuccess({ status: true, msg: "Nuevo ingreso añadido con exito!" });
+        setTimeout(() => {
+          history.goBack();
+          setLoadingCuentas(false);
+        }, 1000);
+      });
+    }
+  };
+
   return {
     errors: errorMSG,
     error: error,
@@ -143,5 +171,6 @@ export default function useCuentas() {
     setSuccess,
     deleteCuenta,
     removeSaldo,
+    addSaldo,
   };
 }

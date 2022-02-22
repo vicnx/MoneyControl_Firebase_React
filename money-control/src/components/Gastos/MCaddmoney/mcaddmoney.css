@@ -1,0 +1,85 @@
+ion-item {
+  --padding-end: 15px;
+  --padding-start: 15px;
+  --inner-padding-end: 0px;
+}
+.boton-guardar {
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+.mc-input {
+  margin-top: 10px;
+}
+.mc-input.value {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.mc-input.value span {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.mc-input.value input {
+  border-radius: 10px;
+}
+
+.input-currency {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  border-radius: 15px;
+  width: 93%;
+}
+
+.input-currency button {
+  outline: none;
+  border: none;
+  font-size: 1.5rem;
+}
+.input-currency input {
+  outline: none;
+  border: none;
+  font-size: 18px;
+}
+
+.input-currency input {
+  width: 100%;
+  text-align: center;
+}
+
+.input-currency button {
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-decrement {
+  background-color: var(--ion-color-danger-tint);
+
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+}
+.button-decrement:active {
+  /* box-shadow: inset 4px 5px 10px rgba(0, 0, 0, 0.5); */
+  background-color: var(--ion-color-danger-shade);
+}
+
+.button-increment {
+  background-color: var(--ion-color-success-tint);
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.button-increment:active {
+  background-color: var(--ion-color-success-shade);
+
+  /* box-shadow: inset -4px 5px 10px rgba(0, 0, 0, 0.5); */
+}
+.checkbox-gprivate {
+  margin-top: 20px;
+}
