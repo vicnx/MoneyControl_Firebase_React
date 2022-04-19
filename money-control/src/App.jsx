@@ -23,6 +23,8 @@ import MCrouter from "router";
 import Login from "./pages/Login/Login";
 /* Theme variables */
 import "./theme/variables.css";
+// import "./theme/variables-dark.css"; //Activar solo en caso de tener completado el modo oscuro
+import "./app.css";
 
 setupIonicReact();
 

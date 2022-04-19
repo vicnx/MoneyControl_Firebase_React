@@ -95,6 +95,7 @@
   margin-bottom: 15px;
 }
 .cuenta-selected {
+  color: var(--ion-text-color);
   align-items: center;
   width: 100%;
   display: flex;
@@ -113,6 +114,9 @@
 .cuenta-selected ion-icon {
   font-size: 30px;
   margin-right: 5px;
+}
+.cuenta-selected {
+  color: white;
 }
 .text-icon {
   width: 100%;

@@ -117,7 +117,7 @@
   top: 44%;
   right: 30%;
   padding: 8px;
-  background-color: white;
+  background-color: var(--ion-background-color);
   border-radius: 5px;
   z-index: 2;
   display: flex;

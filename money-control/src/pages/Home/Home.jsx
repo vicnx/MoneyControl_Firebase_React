@@ -65,7 +65,7 @@ const HomePage = () => {
                       style={
                         cuentaSelected.cantidad < 0
                           ? { color: "var(--ion-color-danger-tint)" }
-                          : { color: "black" }
+                          : { color: "var(--ion-text-color)" }
                       }
                     />
                     {cuentaSelected.cantidad < 0 ? (
