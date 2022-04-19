@@ -28,6 +28,7 @@ const MClistgastosgeneral = ({ gastos, groupuid }) => {
     success,
     setSuccess,
     deleteCategoria,
+    grupoSelected,
   } = useGrupos();
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [selected, setSelected] = useState({});
@@ -57,7 +58,7 @@ const MClistgastosgeneral = ({ gastos, groupuid }) => {
           {gastos ? (
             <div className="listgastos-general-component ">
               <span className="listgastos-general-component-title">
-                Últimos gastos de tus grupos.
+                Últimos gastos de todos tus grupos.
               </span>
               <div className="info-gastos-general-pagin">
                 <span className="mostrando-text">
@@ -85,19 +86,33 @@ const MClistgastosgeneral = ({ gastos, groupuid }) => {
                     <div
                       className="gasto-general-item"
                       key={index}
-                      style={{ borderColor: g.categoria.color }}
+                      style={{
+                        borderColor: g.otherGroup
+                          ? g.otherGroup.color
+                          : grupoSelected.color,
+                      }}
                     >
                       <div className="gasto-general-left">
                         <div className="gasto-general-grupo">
                           <div className="gasto-general-grupo-icono">
                             <DynamicFaIcon
-                              name={g.otherGroup.icono}
+                              name={
+                                g.isOtherGroup
+                                  ? g.otherGroup.icono
+                                  : grupoSelected.icono
+                              }
                               slot="end"
-                              color={g.otherGroup.color}
+                              color={
+                                g.isOtherGroup
+                                  ? g.otherGroup.color
+                                  : grupoSelected.color
+                              }
                             />
                           </div>
                           <div className="gasto-general-grupo-name">
-                            {g.otherGroup.name}
+                            {g.otherGroup
+                              ? g.otherGroup.name
+                              : grupoSelected.name}
                           </div>
                         </div>
                         <div className="gasto-general-desc">{g.desc}</div>
@@ -194,24 +209,28 @@ const MClistgastosgeneral = ({ gastos, groupuid }) => {
                   ))}
               </IonList>
               {gastos ? (
-                gastos.length != gastosview ? (
-                  gastos.length <= gastosViewDefect ? (
-                    <></>
+                gastos.length != gastosViewDefect ? (
+                  gastos.length != gastosview ? (
+                    gastos.length <= gastosViewDefect ? (
+                      <></>
+                    ) : (
+                      <IonRouterLink
+                        onClick={() => viewAll(true)}
+                        className="boton-view"
+                      >
+                        Ver más...
+                      </IonRouterLink>
+                    )
                   ) : (
                     <IonRouterLink
-                      onClick={() => viewAll(true)}
+                      onClick={() => viewAll(false)}
                       className="boton-view"
                     >
-                      Ver más...
+                      Ver menos...
                     </IonRouterLink>
                   )
                 ) : (
-                  <IonRouterLink
-                    onClick={() => viewAll(false)}
-                    className="boton-view"
-                  >
-                    Ver menos...
-                  </IonRouterLink>
+                  <></>
                 )
               ) : (
                 <></>

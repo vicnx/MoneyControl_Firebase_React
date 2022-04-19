@@ -34,7 +34,7 @@ const MCgruposselect = (props) => {
             <></>
           )}
         </div>
-        {props.grupoSelected ? (
+        {/* {props.grupoSelected ? (
           !props.grupoSelected.default ? (
             <small className="msg-gastos-default">
               Los gastos añadidos se copiarán a la cuenta General
@@ -44,7 +44,7 @@ const MCgruposselect = (props) => {
           )
         ) : (
           <></>
-        )}
+        )} */}
         {loadinggrupos ? (
           <ClipLoader
             color={"blue"}
@@ -55,84 +55,86 @@ const MCgruposselect = (props) => {
         ) : grupos ? (
           <div className="gruposselect-list">
             <Swiper slidesPerView={2} loop={false} className="mySwiper">
-              {grupos.map((g, index) => (
-                <SwiperSlide
-                  className={
-                    props.grupoSelected
-                      ? props.grupoSelected.docid == g.docid
-                        ? "gruposelect selected"
+              {grupos
+                .filter((g) => !g.onlyread)
+                .map((g, index) => (
+                  <SwiperSlide
+                    className={
+                      props.grupoSelected
+                        ? props.grupoSelected.docid == g.docid
+                          ? "gruposelect selected"
+                          : "gruposelect"
                         : "gruposelect"
-                      : "gruposelect"
-                  }
-                  style={
-                    props.grupoSelected
-                      ? props.grupoSelected.docid == g.docid
-                        ? {
-                            borderColor: g.color,
-                            borderWidth: "3px",
-                            borderStyle: "solid",
-                          }
-                        : {}
-                      : {}
-                  }
-                  key={index}
-                  onClick={() => {
-                    props.onChange(g);
-                  }}
-                >
-                  <hr
-                    className="separador-grupos"
+                    }
                     style={
                       props.grupoSelected
                         ? props.grupoSelected.docid == g.docid
                           ? {
-                              backgroundColor: g.color,
+                              borderColor: g.color,
+                              borderWidth: "3px",
+                              borderStyle: "solid",
                             }
-                          : { backgroundColor: "var(--color_small)" }
-                        : { backgroundColor: "var(--color_small)" }
+                          : {}
+                        : {}
                     }
-                  />
-                  <div className="grupo-content">
-                    <DynamicFaIcon
-                      name={g.icono}
-                      color={
-                        props.grupoSelected
-                          ? props.grupoSelected.docid == g.docid
-                            ? g.color
-                            : "var(--color_small)"
-                          : "var(--color_small)"
-                      }
-                    />
-
-                    <IonLabel
-                      className="grupo-name"
+                    key={index}
+                    onClick={() => {
+                      props.onChange(g);
+                    }}
+                  >
+                    <hr
+                      className="separador-grupos"
                       style={
                         props.grupoSelected
                           ? props.grupoSelected.docid == g.docid
                             ? {
-                                color: g.color,
+                                backgroundColor: g.color,
                               }
-                            : { color: "var(--color_small)" }
-                          : { color: "var(--color_small)" }
-                      }
-                    >
-                      {g.name}
-                    </IonLabel>
-                  </div>
-                  <hr
-                    className="separador-grupos"
-                    style={
-                      props.grupoSelected
-                        ? props.grupoSelected.docid == g.docid
-                          ? {
-                              backgroundColor: g.color,
-                            }
+                            : { backgroundColor: "var(--color_small)" }
                           : { backgroundColor: "var(--color_small)" }
-                        : { backgroundColor: "var(--color_small)" }
-                    }
-                  />
-                </SwiperSlide>
-              ))}
+                      }
+                    />
+                    <div className="grupo-content">
+                      <DynamicFaIcon
+                        name={g.icono}
+                        color={
+                          props.grupoSelected
+                            ? props.grupoSelected.docid == g.docid
+                              ? g.color
+                              : "var(--color_small)"
+                            : "var(--color_small)"
+                        }
+                      />
+
+                      <IonLabel
+                        className="grupo-name"
+                        style={
+                          props.grupoSelected
+                            ? props.grupoSelected.docid == g.docid
+                              ? {
+                                  color: g.color,
+                                }
+                              : { color: "var(--color_small)" }
+                            : { color: "var(--color_small)" }
+                        }
+                      >
+                        {g.name}
+                      </IonLabel>
+                    </div>
+                    <hr
+                      className="separador-grupos"
+                      style={
+                        props.grupoSelected
+                          ? props.grupoSelected.docid == g.docid
+                            ? {
+                                backgroundColor: g.color,
+                              }
+                            : { backgroundColor: "var(--color_small)" }
+                          : { backgroundColor: "var(--color_small)" }
+                      }
+                    />
+                  </SwiperSlide>
+                ))}
             </Swiper>
           </div>
         ) : (

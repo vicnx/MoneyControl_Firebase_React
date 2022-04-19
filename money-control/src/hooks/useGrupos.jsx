@@ -138,7 +138,24 @@ export default function useGrupos() {
       categories: defaultCategories,
     })
       .then((res) => {
-        console.log(res);
+        addDoc(colRefGrupos, {
+          icono: "listOutline",
+          color: "#ffe278",
+          imagen: null,
+          name: "Gastos Totales",
+          default: false,
+          onlyread: true,
+          codinv: null,
+          desc: "Aquí puedes visualizar los gastos totales.",
+          createdby: user.uid,
+          users: [user.uid],
+        })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);
@@ -410,18 +427,27 @@ export default function useGrupos() {
       gastos: arrayUnion(newGasto),
     }).then((res) => {
       removeSaldo(newGasto.cuenta, newGasto.cantidad);
-      if (!grupo.default) {
-        const defaultGroup = grupos.filter((grupo) => grupo.default);
-        const grupoDefRef = doc(db, "grupos", defaultGroup[0].docid);
-        let gastoDefault = {
-          ...newGasto,
-          isOtherGroup: true,
-          otherGroup: grupo,
-        };
-        updateDoc(grupoDefRef, {
-          gastos: arrayUnion(gastoDefault),
-        });
-      }
+      const gastosTotalesGroup = grupos.filter((grupo) => grupo.onlyread);
+      const grupoDefRef = doc(db, "grupos", gastosTotalesGroup[0].docid);
+      let gastoDefault = {
+        ...newGasto,
+        group: grupo,
+      };
+      updateDoc(grupoDefRef, {
+        gastos: arrayUnion(gastoDefault),
+      });
+      // if (!grupo.default) {
+      //   const defaultGroup = grupos.filter((grupo) => grupo.default);
+      //   const grupoDefRef = doc(db, "grupos", defaultGroup[0].docid);
+      //   let gastoDefault = {
+      //     ...newGasto,
+      //     isOtherGroup: true,
+      //     otherGroup: grupo,
+      //   };
+      //   updateDoc(grupoDefRef, {
+      //     gastos: arrayUnion(gastoDefault),
+      //   });
+      // }
       getGrupos(auth.currentUser.uid);
       getGroup(grupo.docid, true);
       setSuccess({ status: true, msg: "Nuevo gasto añadido!" });

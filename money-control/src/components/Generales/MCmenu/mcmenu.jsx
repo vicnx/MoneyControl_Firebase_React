@@ -16,6 +16,7 @@ import {
   barChartOutline,
   gridOutline,
   homeOutline,
+  listOutline,
   peopleOutline,
   personOutline,
 } from "ionicons/icons";
@@ -142,6 +143,21 @@ export default function MCmenu(props) {
                     icon={peopleOutline}
                   ></IonIcon>
                   <span>Grupos</span>
+                </IonItem>
+                <IonItem
+                  className={
+                    selected == "/totalspendings"
+                      ? "menu-item selected-item"
+                      : "menu-item"
+                  }
+                  routerLink={"/totalspendings"}
+                  routerDirection="forward"
+                >
+                  <IonIcon
+                    className="menu-item-icon"
+                    icon={listOutline}
+                  ></IonIcon>
+                  <span>Gastos Totales</span>
                 </IonItem>
               </IonMenuToggle>
             </div>

@@ -24,31 +24,33 @@ const MCgrupos = (props) => {
       ) : grupos ? (
         <div className="grupos-list">
           <Swiper slidesPerView={2} loop={false} className="mySwiper">
-            {grupos.map((g, index) => (
-              <SwiperSlide
-                className="grupo"
-                key={index}
-                onClick={() => {
-                  console.log("click");
-                }}
-              >
-                <hr
-                  className="separador-grupos"
-                  style={{ backgroundColor: g.color }}
-                />
-                <div className="grupo-content">
-                  <DynamicFaIcon name={g.icono} color={g.color} />
+            {grupos
+              .filter((g) => !g.onlyread)
+              .map((g, index) => (
+                <SwiperSlide
+                  className="grupo"
+                  key={index}
+                  onClick={() => {
+                    console.log("click");
+                  }}
+                >
+                  <hr
+                    className="separador-grupos"
+                    style={{ backgroundColor: g.color }}
+                  />
+                  <div className="grupo-content">
+                    <DynamicFaIcon name={g.icono} color={g.color} />
 
-                  <IonLabel className="grupo-name" style={{ color: g.color }}>
-                    {g.name}
-                  </IonLabel>
-                </div>
-                <hr
-                  className="separador-grupos"
-                  style={{ backgroundColor: g.color }}
-                />
-              </SwiperSlide>
-            ))}
+                    <IonLabel className="grupo-name" style={{ color: g.color }}>
+                      {g.name}
+                    </IonLabel>
+                  </div>
+                  <hr
+                    className="separador-grupos"
+                    style={{ backgroundColor: g.color }}
+                  />
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
       ) : (

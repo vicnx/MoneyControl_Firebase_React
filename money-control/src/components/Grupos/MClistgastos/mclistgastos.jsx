@@ -76,79 +76,87 @@ const MClistgastos = ({ gastos, groupuid }) => {
               </div>
 
               <IonList className="lista-gastos">
-                {gastos
-                  .sort((a, b) => (a.fecha < b.fecha ? 1 : -1))
-                  .slice(0, gastosview)
-                  .map((g, index) => (
-                    <div
-                      className="gasto-item"
-                      key={index}
-                      style={{ borderColor: g.categoria.color }}
-                    >
-                      <div className="gasto-name-username">
-                        {g.profileData.name}
-                      </div>
-                      <div className="gasto-name-info">
-                        <div className="gasto-name-info-image">
+                {gastos.length > 0
+                  ? gastos
+                      .sort((a, b) => (a.fecha < b.fecha ? 1 : -1))
+                      .slice(0, gastosview)
+                      .map((g, index) => (
+                        <div
+                          className="gasto-item"
+                          key={index}
+                          style={{ borderColor: g.categoria.color }}
+                        >
+                          <div className="gasto-name-username">
+                            {g.profileData.name}
+                          </div>
+                          <div className="gasto-name-info">
+                            <div className="gasto-name-info-image">
+                              <div
+                                className="gasto-name-info-image-circle"
+                                style={{
+                                  backgroundImage:
+                                    'url("' +
+                                    (g.profileData
+                                      ? g.profileData.image
+                                      : CONSTANTS.defaultAvatar) +
+                                    '")',
+                                }}
+                              ></div>
+                            </div>
+                          </div>
+                          <div className="gasto-info">
+                            <div className="gasto-info-desc">{g.desc}</div>
+                            <div className="gasto-info-fecha">
+                              {g.fechaConvert}
+                            </div>
+                          </div>
                           <div
-                            className="gasto-name-info-image-circle"
-                            style={{
-                              backgroundImage:
-                                'url("' +
-                                (g.profileData
-                                  ? g.profileData.image
-                                  : CONSTANTS.defaultAvatar) +
-                                '")',
-                            }}
-                          ></div>
+                            className="gasto-cantidad"
+                            style={
+                              g.cantidad.length < 7
+                                ? { fontSize: "16px" }
+                                : { fontSize: "10px" }
+                            }
+                          >
+                            - {g.cantidad} €
+                          </div>
+                          <div className="gasto-category">
+                            <div className="gasto-category-icon">
+                              <DynamicFaIcon
+                                name={g.categoria.icono}
+                                slot="end"
+                                color={g.categoria.color}
+                              />
+                            </div>
+                          </div>
+                          <div className="gasto-options" slot="end"></div>
                         </div>
-                      </div>
-                      <div className="gasto-info">
-                        <div className="gasto-info-desc">{g.desc}</div>
-                        <div className="gasto-info-fecha">{g.fechaConvert}</div>
-                      </div>
-                      <div
-                        className="gasto-cantidad"
-                        style={
-                          g.cantidad.length < 7
-                            ? { fontSize: "16px" }
-                            : { fontSize: "10px" }
-                        }
-                      >
-                        - {g.cantidad} €
-                      </div>
-                      <div className="gasto-category">
-                        <div className="gasto-category-icon">
-                          <DynamicFaIcon
-                            name={g.categoria.icono}
-                            slot="end"
-                            color={g.categoria.color}
-                          />
-                        </div>
-                      </div>
-                      <div className="gasto-options" slot="end"></div>
-                    </div>
-                  ))}
+                      ))
+                  : "Sin gastos"}
               </IonList>
               {gastos ? (
-                gastos.length != gastosview ? (
-                  gastos.length <= gastosViewDefect ? (
-                    <></>
+                gastos.length != gastosViewDefect ? (
+                  gastos.length != gastosview ? (
+                    gastos.length <= gastosViewDefect ? (
+                      <></>
+                    ) : (
+                      <IonRouterLink
+                        onClick={() => viewAll(true)}
+                        className="boton-view"
+                      >
+                        Ver más...
+                      </IonRouterLink>
+                    )
                   ) : (
                     <IonRouterLink
-                      onClick={() => viewAll(true)}
+                      onClick={() => viewAll(false)}
                       className="boton-view"
                     >
-                      Ver más...
+                      Ver menos...
                     </IonRouterLink>
                   )
                 ) : (
-                  <IonRouterLink
-                    onClick={() => viewAll(false)}
-                    className="boton-view"
-                  >
-                    Ver menos...
-                  </IonRouterLink>
+                  <></>
                 )
               ) : (
                 <></>
