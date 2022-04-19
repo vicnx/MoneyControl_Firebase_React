@@ -63,8 +63,7 @@ const MClistgastos = ({ gastos, groupuid }) => {
                   {gastos.length > gastosViewDefect
                     ? gastosview
                     : gastos.length}{" "}
-                  de
-                  {gastos.length} gastos.
+                  de {gastos.length} gastos.
                 </span>
 
                 <IonRouterLink

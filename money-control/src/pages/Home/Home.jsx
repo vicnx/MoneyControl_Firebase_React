@@ -63,9 +63,29 @@ const HomePage = () => {
                       decimal=","
                       decimals={2}
                       style={
-                        cuentaSelected.cantidad < 0
-                          ? { color: "var(--ion-color-danger-tint)" }
-                          : { color: "var(--ion-text-color)" }
+                        cuentaSelected.cantidad.length < 7
+                          ? cuentaSelected.cantidad < 0
+                            ? {
+                                fontSize: "45px",
+                                color: "var(--ion-color-danger-tint)",
+                              }
+                            : {
+                                fontSize: "45px",
+                                color: "var(--ion-text-color)",
+                              }
+                          : cuentaSelected.cantidad < 0
+                          ? {
+                              color: "var(--ion-color-danger-tint)",
+                              fontSize: "26px",
+                            }
+                          : {
+                              color: "var(--ion-text-color)",
+                              fontSize: "26px",
+                            }(
+                              cuentaSelected.cantidad < 0
+                                ? { color: "var(--ion-color-danger-tint)" }
+                                : { color: "var(--ion-text-color)" }
+                            )
                       }
                     />
                     {cuentaSelected.cantidad < 0 ? (

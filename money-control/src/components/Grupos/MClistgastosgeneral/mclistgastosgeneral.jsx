@@ -55,16 +55,17 @@ const MClistgastosgeneral = ({ gastos, groupuid }) => {
       ) : (
         <>
           {gastos ? (
-            <div className="listgastos-component">
-              <span className="listgastos-component-title">Últimos gastos</span>
-              <div className="info-gastos-pagin">
+            <div className="listgastos-general-component ">
+              <span className="listgastos-general-component-title">
+                Últimos gastos de tus grupos.
+              </span>
+              <div className="info-gastos-general-pagin">
                 <span className="mostrando-text">
                   Mostrando{" "}
                   {gastos.length > gastosViewDefect
                     ? gastosview
                     : gastos.length}{" "}
-                  de
-                  {gastos.length} gastos.
+                  de {gastos.length} gastos.
                 </span>
 
                 <IonRouterLink
@@ -76,17 +77,78 @@ const MClistgastosgeneral = ({ gastos, groupuid }) => {
                 </IonRouterLink>
               </div>
 
-              <IonList className="lista-gastos">
+              <IonList className="lista-gastos-general">
                 {gastos
                   .sort((a, b) => (a.fecha < b.fecha ? 1 : -1))
                   .slice(0, gastosview)
                   .map((g, index) => (
                     <div
-                      className="gasto-item"
+                      className="gasto-general-item"
                       key={index}
                       style={{ borderColor: g.categoria.color }}
                     >
-                      <div className="gasto-name-username">
+                      <div className="gasto-general-left">
+                        <div className="gasto-general-grupo">
+                          <div className="gasto-general-grupo-icono">
+                            <DynamicFaIcon
+                              name={g.otherGroup.icono}
+                              slot="end"
+                              color={g.otherGroup.color}
+                            />
+                          </div>
+                          <div className="gasto-general-grupo-name">
+                            {g.otherGroup.name}
+                          </div>
+                        </div>
+                        <div className="gasto-general-desc">{g.desc}</div>
+                        <div className="gasto-general-category">
+                          <div className="gasto-general-category-name">
+                            {g.categoria.name}
+                          </div>
+                          <div className="gasto-general-category-icono">
+                            <DynamicFaIcon
+                              name={g.categoria.icono}
+                              slot="end"
+                              color={g.categoria.color}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div className="gasto-general-right">
+                        <div className="gasto-general-userInfo">
+                          <div className="gasto-general-userInfo-name">
+                            {g.profileData.name}
+                          </div>
+                          <div className="gasto-general-userInfo-avatar">
+                            <div
+                              className="gasto-general-name-info-image-circle"
+                              style={{
+                                backgroundImage:
+                                  'url("' +
+                                  (g.profileData
+                                    ? g.profileData.image
+                                    : CONSTANTS.defaultAvatar) +
+                                  '")',
+                              }}
+                            ></div>
+                          </div>
+                        </div>
+                        <div className="gasto-general-cantidad">
+                          <span
+                            style={
+                              g.cantidad.length < 7
+                                ? { fontSize: "25px" }
+                                : { fontSize: "12px" }
+                            }
+                          >
+                            - {g.cantidad} €
+                          </span>
+                        </div>
+                        <div className="gasto-general-fecha">
+                          {g.fechaConvert}
+                        </div>
+                      </div>
+                      {/* <div className="gasto-name-username">
                         {g.profileData.name}
                       </div>
                       <div className="gasto-name-info">
@@ -127,7 +189,7 @@ const MClistgastosgeneral = ({ gastos, groupuid }) => {
                           />
                         </div>
                       </div>
-                      <div className="gasto-options" slot="end"></div>
+                      <div className="gasto-options" slot="end"></div> */}
                     </div>
                   ))}
               </IonList>

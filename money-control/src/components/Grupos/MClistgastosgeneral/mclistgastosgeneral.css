@@ -1,43 +1,109 @@
-.gasto-item {
+.gasto-general-item {
   padding: 10px;
   color: var(--color_text);
   display: flex;
-  display: flex;
-  align-items: center;
-  height: 200px;
+  flex-direction: row;
+  align-items: flex-start;
+  height: 170px;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   margin-top: 10px;
   border-radius: 10px;
-  justify-content: space-around;
+  justify-content: space-between;
   border: 3px solid black;
   position: relative;
   background-color: white;
 }
-.gasto-name-info {
-  position: relative;
+
+.gasto-general-left {
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  align-items: flex-start;
-  width: 20%;
-  text-transform: capitalize;
+  width: 55%;
+  height: 100%;
+}
+
+.gasto-general-right {
+  display: flex;
+  flex-direction: column;
+  width: 43%;
+  height: 100%;
+}
+
+.gasto-general-grupo {
+  display: flex;
+  height: 20%;
+  min-height: 20%;
+  max-height: 20%;
+  font-size: 20px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.gasto-general-grupo-icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  margin-right: 10px;
+}
+
+.gasto-general-grupo-name {
+  font-size: 20px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
-.gasto-name-info-image {
-  position: relative;
-  background-size: cover;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
+
+.gasto-general-desc {
+  margin-top: 5px;
+  padding: 5px;
+  font-size: 14px;
+  height: 50%;
+  min-height: 50%;
+  max-height: 50%;
+  text-transform: capitalize;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  border-top-right-radius: 5 px;
-  border-top-left-radius: 5 px;
+  text-overflow: ellipsis;
 }
-.gasto-name-info-image-circle {
-  height: 45px;
-  width: 45px;
+
+.gasto-general-category {
+  height: 25%;
+  min-height: 25%;
+  max-height: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.gasto-general-category-icono {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.gasto-general-category-name {
+  font-size: 14px;
+}
+.gasto-general-userInfo {
+  display: flex;
+  flex-direction: row;
+  height: 20%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.gasto-general-userInfo-name {
+  font-size: 12px;
+}
+
+.gasto-general-name-info-image-circle {
+  height: 30px;
+  width: 30px;
   border-radius: 10px;
   /* border: 3px solid var(--ion-color-primary); */
   box-shadow: var(--best_shadow);
@@ -45,68 +111,38 @@
   overflow: hidden;
   background-color: var(--ion-color-primary-tint);
 }
-.gasto-name-username {
-  bottom: 5px;
-  position: absolute;
-  font-size: 11px;
-  right: 10px;
+
+.gasto-general-cantidad {
+  padding: 5px;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-width: 0;
+}
+
+.gasto-general-cantidad span {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-}
-.gasto-info {
-  height: 100%;
-  width: 40%;
-}
-.gasto-info-desc {
-  font-size: 14px;
-  height: 80%;
-  width: 93%;
-  text-transform: capitalize;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.gasto-info-fecha {
-  font-size: 12px;
-  height: 20%;
-}
-.gasto-category {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 10%;
-}
-.gasto-category-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 25px;
-}
-.gasto-cantidad {
-  height: 100%;
-  width: 30%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: var(--ion-color-danger-tint);
 }
-.gasto-content {
+
+.gasto-general-fecha {
+  width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  font-size: 12px;
 }
 
-.lista-gastos {
+.lista-gastos-general {
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 20px;
   width: 100%;
 }
 
-.listgastos-component {
+.listgastos-general-component {
   margin-top: 20px;
   width: 100%;
   display: flex;
@@ -116,14 +152,16 @@
   padding-bottom: 200px;
 }
 
-.listgastos-component-title {
+.listgastos-general-component-title {
   font-size: 20px;
+  margin-bottom: 10px;
 }
-.info-gastos-pagin {
+.info-gastos-general-pagin {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  margin-bottom: 5px;
 }
 .boton-view {
   align-self: flex-end;
