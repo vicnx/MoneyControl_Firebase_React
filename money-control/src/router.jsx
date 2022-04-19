@@ -51,6 +51,7 @@ export default function MCrouter() {
   const NuevoGasto = React.lazy(() => import("pages/Gastos/NuevoGasto"));
   const AddMoney = React.lazy(() => import("pages/Cuentas/AddMoney/AddMoney"));
   const GastosListPage = React.lazy(() => import("pages/Gastos/GastosList"));
+  const GastosTotales = React.lazy(() => import("pages/Gastos/GastosTotales"));
 
   return (
     <>
@@ -76,6 +77,7 @@ export default function MCrouter() {
           ></Route>
           <Route path="/spendings/add" component={NuevoGasto}></Route>
           <Route path="/spendings/:groupUID" component={GastosListPage}></Route>
+          <Route path="/totalspendings" component={GastosTotales}></Route>
           <Route path="/money/add" component={AddMoney}></Route>
           <Route exact path="/" render={() => <Redirect to="/home" />}></Route>
           <Route path="*">

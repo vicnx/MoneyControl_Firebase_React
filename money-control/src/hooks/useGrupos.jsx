@@ -23,6 +23,7 @@ import useCuentas from "./useCuentas";
 export default function useGrupos() {
   const { grupos, setGrupos } = useContext(GruposContext);
   const { grupoSelected, setgrupoSelected } = useContext(GruposContext);
+  const { grupoTotal, setGrupoTotal } = useContext(GruposContext);
   const [loadinggrupos, setLoadingGrupos] = useState(false);
   const [loadinggastos, setLoadingGastos] = useState(false);
   const [state, setState] = useState({
@@ -376,7 +377,6 @@ export default function useGrupos() {
   });
 
   const createCategoria = useCallback(async (grupo, categoria) => {
-    console.log("grupo.categories.length", grupo.categories.length);
     if (grupo.categories.length >= 10) {
       setError({
         status: true,
@@ -458,6 +458,26 @@ export default function useGrupos() {
     });
   };
 
+  const getGrupoGastosTotales = useCallback(async () => {
+    setLoadingGrupos(true);
+    const colRefGrupo = collection(db, "grupos");
+    const q = query(
+      colRefGrupo,
+      where("users", "array-contains", auth.currentUser.uid),
+      where("onlyread", "==", true)
+    );
+    const querySnapshot = await getDocs(q);
+    let grupoGastosTotales = [];
+    console.log(querySnapshot);
+    querySnapshot.forEach((doc) => {
+      grupoGastosTotales.push({ ...doc.data(), docid: doc.id });
+      setLoadingGrupos(false);
+    });
+    if (grupoGastosTotales.length > 0) {
+      setGrupoTotal(grupoGastosTotales[0]);
+    }
+  });
+
   return {
     errors: errorMSG,
     error: error,
@@ -480,5 +500,7 @@ export default function useGrupos() {
     deleteCategoria,
     nuevoGasto,
     loadinggastos,
+    getGrupoGastosTotales,
+    grupoTotal,
   };
 }

@@ -17,17 +17,15 @@ import {
 import { calendar } from "ionicons/icons";
 import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 import useGrupos from "hooks/useGrupos";
-import useUser from "hooks/useUser";
 import { informationCircle } from "ionicons/icons";
 import React, { useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
-import "./mcgastostotales.css";
+import "./mcgastostotalesgrupo.css";
 import { CONSTANTS } from "global/functions";
 import ClipLoader from "react-spinners/ClipLoader";
 
-const MCgastostotales = ({ gastos, grupo }) => {
-  const { profile, updateProfile, loadingprofile } = useUser();
+const MCgastostotalesgrupo = ({ gastos, grupo }) => {
   const {
     grupos,
     loadinggastos,
@@ -113,73 +111,52 @@ const MCgastostotales = ({ gastos, grupo }) => {
                   .filter(filterBuscador)
                   .map((g, index) => (
                     <div
-                      className="gasto-general-item"
+                      className="gasto-item"
                       key={index}
-                      style={{
-                        borderColor: g.group.color,
-                      }}
+                      style={{ borderColor: g.categoria.color }}
                     >
-                      <div className="gasto-general-left">
-                        <div className="gasto-general-grupo">
-                          <div className="gasto-general-grupo-icono">
-                            <DynamicFaIcon
-                              name={g.group.icono}
-                              slot="end"
-                              color={g.group.color}
-                            />
-                          </div>
-                          <div className="gasto-general-grupo-name">
-                            {g.group.name}
-                          </div>
-                        </div>
-                        <div className="gasto-general-desc">{g.desc}</div>
-                        <div className="gasto-general-category">
-                          <div className="gasto-general-category-name">
-                            {g.categoria.name}
-                          </div>
-                          <div className="gasto-general-category-icono">
-                            <DynamicFaIcon
-                              name={g.categoria.icono}
-                              slot="end"
-                              color={g.categoria.color}
-                            />
-                          </div>
+                      <div className="gasto-name-username">
+                        {g.profileData.name}
+                      </div>
+                      <div className="gasto-name-info">
+                        <div className="gasto-name-info-image">
+                          <div
+                            className="gasto-name-info-image-circle"
+                            style={{
+                              backgroundImage:
+                                'url("' +
+                                (g.profileData
+                                  ? g.profileData.image
+                                  : CONSTANTS.defaultAvatar) +
+                                '")',
+                            }}
+                          ></div>
                         </div>
                       </div>
-                      <div className="gasto-general-right">
-                        <div className="gasto-general-userInfo">
-                          <div className="gasto-general-userInfo-name">
-                            {profile.name}
-                          </div>
-                          <div className="gasto-general-userInfo-avatar">
-                            <div
-                              className="gasto-general-name-info-image-circle"
-                              style={{
-                                backgroundImage:
-                                  'url("' +
-                                  (profile
-                                    ? profile.image
-                                    : CONSTANTS.defaultAvatar) +
-                                  '")',
-                              }}
-                            ></div>
-                          </div>
-                        </div>
-                        <div className="gasto-general-cantidad">
-                          <span
-                            style={
-                              g.cantidad.length < 7
-                                ? { fontSize: "25px" }
-                                : { fontSize: "12px" }
-                            }
-                          >
-                            - {g.cantidad} €
-                          </span>
-                        </div>
-                        <div className="gasto-general-fecha">
-                          {g.fechaConvert}
+                      <div className="gasto-info">
+                        <div className="gasto-info-desc">{g.desc}</div>
+                        <div className="gasto-info-fecha">{g.fechaConvert}</div>
+                      </div>
+                      <div
+                        className="gasto-cantidad"
+                        style={
+                          g.cantidad.length < 7
+                            ? { fontSize: "16px" }
+                            : { fontSize: "10px" }
+                        }
+                      >
+                        - {g.cantidad} €{" "}
+                      </div>
+                      <div className="gasto-category">
+                        <div className="gasto-category-icon">
+                          <DynamicFaIcon
+                            name={g.categoria.icono}
+                            slot="end"
+                            color={g.categoria.color}
+                          />
                         </div>
                       </div>
+                      <div className="gasto-options" slot="end"></div>
                     </div>
                   ))}
               </IonList>
@@ -238,4 +215,4 @@ const MCgastostotales = ({ gastos, grupo }) => {
   );
 };
 
-export default MCgastostotales;
+export default MCgastostotalesgrupo;
