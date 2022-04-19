@@ -43,13 +43,6 @@ const MCinfogrupo = ({ grupo }) => {
           }
         >
           {grupo.name}
-          {grupo.default ? (
-            <span className="grupo-default-info">
-              En este grupo puedes ver los gastos totales de tus grupos.
-            </span>
-          ) : (
-            ""
-          )}
         </span>
         {grupo.isAdmin ? (
           <IonFab className="grupo-info-fab">

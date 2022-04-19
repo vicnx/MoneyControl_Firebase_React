@@ -79,7 +79,7 @@ const HomePage = () => {
                   <div className="gastos-beneficios">
                     <div className="gastos-beneficios-div">
                       <IonLabel className="gastos-beneficios-label">
-                        Ganancias
+                        Ingresos
                       </IonLabel>
                       <IonLabel className="beneficios-cuenta">
                         <IonIcon icon={Icons.caretUpOutline}></IonIcon>
