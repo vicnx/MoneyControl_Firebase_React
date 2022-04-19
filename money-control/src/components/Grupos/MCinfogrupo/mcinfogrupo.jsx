@@ -11,6 +11,7 @@ import React, { useEffect } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import MClistgastos from "../MClistgastos/mclistgastos";
+import MClistgastosgeneral from "../MClistgastosgeneral/mclistgastosgeneral";
 import "./mcinfogrupo.css";
 
 const MCinfogrupo = ({ grupo }) => {
@@ -42,6 +43,13 @@ const MCinfogrupo = ({ grupo }) => {
           }
         >
           {grupo.name}
+          {grupo.default ? (
+            <span className="grupo-default-info">
+              En este grupo puedes ver los gastos totales de tus grupos.
+            </span>
+          ) : (
+            ""
+          )}
         </span>
         {grupo.isAdmin ? (
           <IonFab className="grupo-info-fab">
@@ -71,7 +79,11 @@ const MCinfogrupo = ({ grupo }) => {
       </div>
       {/* <MClistgrupos /> */}
       {grupo.gastos ? (
-        <MClistgastos gastos={grupo.gastos} groupuid={grupo.docid} />
+        grupo.default ? (
+          <MClistgastosgeneral gastos={grupo.gastos} groupuid={grupo.docid} />
+        ) : (
+          <MClistgastos gastos={grupo.gastos} groupuid={grupo.docid} />
+        )
       ) : (
         <></>
       )}

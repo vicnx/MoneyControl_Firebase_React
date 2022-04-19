@@ -28,3 +28,12 @@
   width: 40px;
   height: 40px;
 }
+.grupo-default-info {
+  font-size: 11px;
+}
+.header-info-grupo span {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
