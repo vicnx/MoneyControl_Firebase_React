@@ -17,6 +17,8 @@
   height: 382px;
 }
 .gastos-filters-fechas {
+  background-color: red;
+  padding: 5px;
   display: flex;
   flex-direction: column;
 }
@@ -26,4 +28,7 @@
 }
 .gastos-filters-fechas-fecha span {
   margin-left: 10px;
+}
+.button-date {
+  min-width: 105px;
 }
