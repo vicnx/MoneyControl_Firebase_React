@@ -20,7 +20,6 @@ const MCfilters = ({ filters }) => {
   const [showDesdeModal, setShowDesdeModal] = useState(false);
   const [showHastaModal, setShowHastaModal] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
-
   const formatDate = (value) => {
     var date = new Date(parseInt(value));
     var year = date.getFullYear();
@@ -81,6 +80,8 @@ const MCfilters = ({ filters }) => {
                         );
                       }}
                       presentation="date"
+                      showDefaultButtons="true"
+                      max={isoDate(Date.now())}
                     ></IonDatetime>
                   </IonContent>
                 </IonModal>
@@ -109,6 +110,7 @@ const MCfilters = ({ filters }) => {
                       }}
                       presentation="date"
                       showDefaultButtons="true"
+                      max={isoDate(Date.now())}
                     ></IonDatetime>
                   </IonContent>
                 </IonModal>

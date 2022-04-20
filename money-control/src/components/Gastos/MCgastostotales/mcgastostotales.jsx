@@ -15,11 +15,12 @@ import {
   IonButtons,
 } from "@ionic/react";
 import { calendar } from "ionicons/icons";
+
 import DynamicFaIcon from "components/Generales/DynamicIcons/DynamicIcons";
 import useGrupos from "hooks/useGrupos";
 import useUser from "hooks/useUser";
 import { informationCircle } from "ionicons/icons";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./mcgastostotales.css";
@@ -37,9 +38,8 @@ const MCgastostotales = ({ gastos, grupo }) => {
     setSuccess,
     deleteCategoria,
   } = useGrupos();
-  const [desdeDate, setDesdeDate] = useState("1650375933403");
-  const [hastaDate, setHastaDate] = useState("1650375933403");
-
+  const [desdeDate, setDesdeDate] = useState();
+  const [hastaDate, setHastaDate] = useState();
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [selected, setSelected] = useState({});
   const [searchText, setSearchText] = useState("");
@@ -47,6 +47,12 @@ const MCgastostotales = ({ gastos, grupo }) => {
   function filterBuscador(elemento) {
     return elemento.desc.toLowerCase().includes(searchText.toLowerCase());
   }
+
+  useEffect(() => {
+    let fechas = gastos.map((a) => parseInt(a.fecha));
+    setDesdeDate(Math.min.apply(Math, fechas));
+    setHastaDate(Math.max.apply(Math, fechas));
+  }, [gastos]);
 
   return (
     <>
