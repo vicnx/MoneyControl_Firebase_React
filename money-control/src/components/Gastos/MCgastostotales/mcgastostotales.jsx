@@ -37,8 +37,8 @@ const MCgastostotales = ({ gastos, grupo }) => {
     setSuccess,
     deleteCategoria,
   } = useGrupos();
-  const [desdeDate, setDesdeDate] = useState("01/02/2003");
-  const [hastaDate, setHastaDate] = useState("02/02/2003");
+  const [desdeDate, setDesdeDate] = useState("1650375933403");
+  const [hastaDate, setHastaDate] = useState("1650375933403");
 
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [selected, setSelected] = useState({});
