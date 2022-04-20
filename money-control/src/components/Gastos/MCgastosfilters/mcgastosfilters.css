@@ -1,0 +1,29 @@
+.gastos-filters {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.dateTimeModal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.calendarModal {
+  --width: 290px;
+  --height: 382px;
+  --border-radius: 8px;
+}
+
+.calendarModal ion-datetime {
+  height: 382px;
+}
+.gastos-filters-fechas {
+  display: flex;
+  flex-direction: column;
+}
+.gastos-filters-fechas-fecha {
+  display: flex;
+  align-items: center;
+}
+.gastos-filters-fechas-fecha span {
+  margin-left: 10px;
+}

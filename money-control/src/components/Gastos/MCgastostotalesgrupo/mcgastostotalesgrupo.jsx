@@ -24,6 +24,7 @@ import "swiper/css/navigation";
 import "./mcgastostotalesgrupo.css";
 import { CONSTANTS } from "global/functions";
 import ClipLoader from "react-spinners/ClipLoader";
+import MCgastosfilters from "../MCgastosfilters/mcgastosfilters";
 
 const MCgastostotalesgrupo = ({ gastos, grupo }) => {
   const {
@@ -36,12 +37,12 @@ const MCgastostotalesgrupo = ({ gastos, grupo }) => {
     setSuccess,
     deleteCategoria,
   } = useGrupos();
-  const [desdeDate, setDesdeDate] = useState("");
+  const [desdeDate, setDesdeDate] = useState("01/02/2003");
+  const [hastaDate, setHastaDate] = useState("02/02/2003");
+
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
   const [selected, setSelected] = useState({});
   const [searchText, setSearchText] = useState("");
-  const [showDesdeModal, setShowDesdeModal] = useState(false);
-  const [showHastaModal, setShowHastaModal] = useState(false);
 
   function filterBuscador(elemento) {
     return elemento.desc.toLowerCase().includes(searchText.toLowerCase());
@@ -63,46 +64,16 @@ const MCgastostotalesgrupo = ({ gastos, grupo }) => {
               <span className="gastostotales-component-title">
                 {grupo.name}
               </span>
-              <div className="gastostotales-filters">
-                <IonSearchbar
-                  value={searchText}
-                  onIonChange={(e) => setSearchText(e.detail.value)}
-                  showCancelButton="focus"
-                ></IonSearchbar>
-                <div className="gastostotales-filters-fechas">
-                  <div className="gastostotales-filters-fechas-fecha">
-                    <IonButton onClick={() => setShowDesdeModal(true)}>
-                      Desde
-                    </IonButton>
-                    <span>0/8/2002</span>
-                    <IonModal
-                      isOpen={showDesdeModal}
-                      onDidDismiss={() => setShowDesdeModal(false)}
-                      className="calendarModal"
-                    >
-                      <IonContent forceOverscroll={false} color="transparent">
-                        <IonDatetime></IonDatetime>
-                      </IonContent>
-                    </IonModal>
-                  </div>
-                  <div className="gastostotales-filters-fechas-fecha">
-                    <IonButton onClick={() => setShowHastaModal(true)}>
-                      Hasta
-                    </IonButton>
-                    <span>0/8/2002</span>
-
-                    <IonModal
-                      isOpen={showHastaModal}
-                      onDidDismiss={() => setShowHastaModal(false)}
-                      className="calendarModal"
-                    >
-                      <IonContent forceOverscroll={false} color="transparent">
-                        <IonDatetime></IonDatetime>
-                      </IonContent>
-                    </IonModal>
-                  </div>
-                </div>
-              </div>
+              <MCgastosfilters
+                filters={{
+                  searchText,
+                  setSearchText,
+                  desdeDate,
+                  setDesdeDate,
+                  hastaDate,
+                  setHastaDate,
+                }}
+              />
               <div className="info-gastos-pagin"></div>
 
               <IonList className="lista-gastostotales">
