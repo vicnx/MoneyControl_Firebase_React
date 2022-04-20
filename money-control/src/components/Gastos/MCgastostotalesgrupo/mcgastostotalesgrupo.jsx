@@ -24,13 +24,11 @@ import "swiper/css/navigation";
 import "./mcgastostotalesgrupo.css";
 import { CONSTANTS } from "global/functions";
 import ClipLoader from "react-spinners/ClipLoader";
-import MCgastosfilters from "../MCgastosfilters/mcgastosfilters";
+import MCfilters from "../../Generales/MCfilters/mcfilters";
 
 const MCgastostotalesgrupo = ({ gastos, grupo }) => {
   const {
-    grupos,
     loadinggastos,
-    loadinggrupos,
     setError,
     error,
     success,
@@ -64,7 +62,7 @@ const MCgastostotalesgrupo = ({ gastos, grupo }) => {
               <span className="gastostotales-component-title">
                 {grupo.name}
               </span>
-              <MCgastosfilters
+              <MCfilters
                 filters={{
                   searchText,
                   setSearchText,

@@ -22,11 +22,11 @@ import { informationCircle } from "ionicons/icons";
 import React, { useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
-import "./mcgastosfilters.css";
+import "./mcfilters.css";
 import { CONSTANTS } from "global/functions";
 import ClipLoader from "react-spinners/ClipLoader";
 
-const MCgastosfilters = ({ filters }) => {
+const MCfilters = ({ filters }) => {
   console.log(filters);
   const [showDesdeModal, setShowDesdeModal] = useState(false);
   const [showHastaModal, setShowHastaModal] = useState(false);
@@ -73,4 +73,4 @@ const MCgastosfilters = ({ filters }) => {
   );
 };
 
-export default MCgastosfilters;
+export default MCfilters;
