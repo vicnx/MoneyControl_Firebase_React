@@ -6,9 +6,11 @@
   <img alt="Firebase" src="https://img.shields.io/badge/-Firebase-333333?style=flat&logo=firebase" />
 </p>
 
-This project is still in development.
+> This project is still in development.
 
 > It is a website based on the [Monefy](https://monefy.me) mobile application in which you can have control of your expenses/income.
+
+> The project is currently best viewed on mobile devices.
 
 ### ✨ [Demo](https://vicnx.github.io/MoneyControl_Firebase_React/)
 
