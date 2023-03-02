@@ -4,8 +4,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@dicebear/avatars": "^4.10.2",
-    "@dicebear/avatars-identicon-sprites": "^4.10.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@ionic/react": "^6.0.0",
     "@ionic/react-router": "^6.0.0",
