@@ -107,3 +107,20 @@ export const iconosCategorias = [
   "homeOutline",
   "carSportOutline",
 ];
+
+export const offlineCuenta = {
+  icono: "cloudOfflineOutline",
+  color: "#7895ff",
+  cantidad: 0,
+  name: "Offline",
+  docid: 'offline'
+}
+
+export const offlineProfile = {
+  uid: 'userOffline',
+  admin: false,
+  email: '',
+  image: '',
+  name: 'Offline user',
+  docid:'offlineProfile'
+}

@@ -28,7 +28,6 @@ import MCmenu from "components/Generales/MCmenu/mcmenu";
 import MCheader from "components/Generales/MCheader/mcheader";
 
 export default function MCrouter() {
-  const { auth } = useUser();
   const Profile = React.lazy(() => import("pages/Profile/Profile"));
   const Home = React.lazy(() => import("pages/Home/Home"));
   const Cuentas = React.lazy(() => import("pages/Cuentas/Cuentas"));

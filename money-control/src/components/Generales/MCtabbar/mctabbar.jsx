@@ -14,7 +14,6 @@ import { Redirect, Route } from "react-router-dom";
 import "./mctabbar.css";
 
 export default function MCtabbar() {
-  const { auth } = useUser();
   const Profile = React.lazy(() => import("../../pages/Profile/Profile"));
   const Login = React.lazy(() => import("../../pages/Login/Login"));
 

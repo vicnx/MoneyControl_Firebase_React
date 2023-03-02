@@ -5,8 +5,7 @@ const dixieDB = new Dexie('moneyControlDB');
 
 // Define las tablas necesarias
 dixieDB.version(1).stores({
-  profile: '++id,admin,documentId,email,image,name,uid',
-  // accounts: '++id, userId, name, balance, earnings, losses',
+  profile: 'docid,admin,documentId,email,image,name,uid',
+  cuentas: 'docid,cantidad,color,icono,name,uid,totalganancias,totalgastos,ingresos',
 });
-
 export default dixieDB;

@@ -110,8 +110,7 @@ export default function useUser() {
       email: user.email,
       image: user.photoURL,
       name: user.displayName,
-    })
-      .then((res) => {
+    }).then((res) => {
         getDoc(res).then((snapshot) => {
           if (isSubscribed) {
             setProfile(snapshot.data());
