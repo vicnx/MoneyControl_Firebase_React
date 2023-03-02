@@ -32,6 +32,12 @@ export default function MCprofile() {
     "adventurer-neutral",
     "avataaars",
     "big-ears",
+    "fun-emoji",
+    "bottts",
+    "bottts-neutral",
+    "personas",
+    "pixel-art",
+    "pixel-art-neutral",
   ];
 
   useEffect(() => {
@@ -41,13 +47,8 @@ export default function MCprofile() {
 
   const genAvatar = () => {
     var style = tiposavatar[Math.floor(Math.random() * tiposavatar.length)];
-    setImageURL(
-      "https://avatars.dicebear.com/api/" +
-        style +
-        "/" +
-        randomString(8) +
-        ".svg"
-    );
+    let url = `https://api.dicebear.com/5.x/${style}/svg?seed=${randomString(8)}`
+    setImageURL(url);
   };
 
   return (
