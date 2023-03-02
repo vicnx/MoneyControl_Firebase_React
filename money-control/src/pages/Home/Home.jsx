@@ -22,7 +22,6 @@ const HomePage = () => {
 
   function changeCuenta(newValue) {
     setCuentaSelected(newValue);
-    console.log(cuentaSelected.cantidad);
   }
 
   return (

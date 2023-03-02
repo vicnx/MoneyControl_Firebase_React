@@ -22,6 +22,7 @@ import { useCallback, useContext, useEffect, useState } from "react"; //evita qu
 import useCuentas from "./useCuentas";
 import useGrupos from "./useGrupos";
 
+
 export default function useUser() {
   const { profile, setProfile } = useContext(UserContext);
   const { createDefaultCuenta } = useCuentas();
@@ -80,7 +81,6 @@ export default function useUser() {
           createDefaultGrupo(result.user);
           setState({ loading: false, error: false, loadingUser: false });
         } else {
-          console.log("ESTE USUARIO YA EXISITIA");
           setState({ loading: false, error: false, loadingUser: false });
         }
       })
@@ -94,7 +94,6 @@ export default function useUser() {
       .then(() => {
         setState({ loading: false, error: false, loadingUser: false });
         setProfile({});
-
         window.location.reload();
       })
       .catch((error) => {

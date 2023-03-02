@@ -8,9 +8,11 @@ import {
   IonMenu,
   IonMenuButton,
   IonMenuToggle,
+  IonToggle
 } from "@ionic/react";
 import logo from "assets/logo/logorounded.png";
 import { CONSTANTS } from "global/functions";
+import useOffline from "hooks/useOffline";
 import useUser from "hooks/useUser";
 import {
   barChartOutline,
@@ -26,6 +28,7 @@ import "./mcmenu.css";
 
 export default function MCmenu(props) {
   const { profile } = useUser();
+  const { offlineMode, setOfflineMode} = useOffline();
   const [selected, setSelected] = useState("");
 
   const location = useLocation();
@@ -36,9 +39,19 @@ export default function MCmenu(props) {
       (profile.image ? profile.image : CONSTANTS.defaultAvatar) +
       '")',
   };
+  
   useEffect(() => {
     setSelected(location.pathname);
   }, [location]);
+
+  function toggleOfflineMode() {
+    if(offlineMode === true){
+      setOfflineMode(false)
+    }else{
+      setOfflineMode(true)
+    }
+  }
+
 
   return (
     <>
@@ -162,6 +175,10 @@ export default function MCmenu(props) {
               </IonMenuToggle>
             </div>
           </div>
+          <IonItem className="menu-item">
+            <IonLabel color="primary">Modo offline</IonLabel>
+            <IonToggle color="primary" checked={offlineMode} slot="end" onIonChange={toggleOfflineMode}></IonToggle>
+          </IonItem>
         </IonContent>
       </IonMenu>
     </>

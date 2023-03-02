@@ -17,9 +17,6 @@ import MCloading from "components/Generales/MCloading/MCloading";
 import useUser from "hooks/useUser";
 import React, { Suspense } from "react";
 import MCrouter from "router";
-// import Tab1 from "./pages/Tab1";
-// import Tab2 from "./pages/Tab2";
-// import Tab3 from "./pages/Tab3";
 import Login from "./pages/Login/Login";
 /* Theme variables */
 import "./theme/variables.css";
