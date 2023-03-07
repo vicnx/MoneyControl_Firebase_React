@@ -5,7 +5,7 @@ const Context = React.createContext({});
 export function UserContextProvider({ children }) {
   const [profile, setProfile] = useState({});
   const [authFB, setAuthFB] = useState({});
-  const [offlineMode, setOfflineMode] = useState(true);
+  const [offlineMode, setOfflineMode] = useState(false);
   const [admin, setAdmin] = useState(localStorage.getItem("admin"));
 
   return (
