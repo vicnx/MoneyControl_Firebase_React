@@ -24,12 +24,14 @@ import {
 } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import MCConfirmAlert from "../MCconfirmalert/mcconfirmalert";
 import "./mcmenu.css";
 
 export default function MCmenu(props) {
   const { profile } = useUser();
   const { offlineMode, setOfflineMode} = useOffline();
   const [selected, setSelected] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
 
   const location = useLocation();
 
@@ -50,6 +52,19 @@ export default function MCmenu(props) {
     }else{
       setOfflineMode(true)
     }
+  }
+
+  const handleAlertYes = () => {
+    toggleOfflineMode();
+    handleAlertDismiss();
+  }
+
+  const handleAlertDismiss = () => {
+    setShowAlert(false);
+  }
+
+  const openAlert = () =>{
+    setShowAlert(!showAlert);
   }
 
 
@@ -177,10 +192,21 @@ export default function MCmenu(props) {
           </div>
           <IonItem className="menu-item">
             <IonLabel color="primary">Modo offline</IonLabel>
-            <IonToggle color="primary" checked={offlineMode} slot="end" onIonChange={toggleOfflineMode}></IonToggle>
+            <IonToggle color="primary" checked={offlineMode} slot="end" onIonChange={openAlert}></IonToggle>
           </IonItem>
         </IonContent>
       </IonMenu>
+      <MCConfirmAlert         
+        showAlert={showAlert}
+        onDismiss={handleAlertYes}
+        header="Cambiar a modo offline"
+        message="Estás a punto de cambiar al modo offline en la aplicación. Al hacerlo, se cerrará tu sesión actual y se utilizarán los datos de tu cuenta local en lugar de los datos en línea.
+
+        Si decides continuar, podrás seguir utilizando la aplicación en modo offline, pero no podrás acceder a los datos en línea. Si deseas clonar tus datos de la cuenta en línea a la cuenta local, puedes hacerlo en el apartado del perfil.
+        
+        ¿Deseas continuar y cambiar al modo offline?"
+        onYesClick={handleAlertDismiss}
+      />
     </>
   );
 }

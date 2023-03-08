@@ -25,6 +25,8 @@ import useGrupos from "./useGrupos";
 
 export default function useUser() {
   const { profile, setProfile } = useContext(UserContext);
+	const { offlineMode, setOfflineMode } = useContext(UserContext);
+
   const { createDefaultCuenta } = useCuentas();
   const { createDefaultGrupo } = useGrupos();
   const [loadingprofile, setLoadingProfile] = useState(false);
@@ -83,6 +85,7 @@ export default function useUser() {
         } else {
           setState({ loading: false, error: false, loadingUser: false });
         }
+        setOfflineMode(false);
       })
       .catch((error) => {
         console.log(error);

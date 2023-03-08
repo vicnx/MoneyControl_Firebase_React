@@ -1,0 +1,5 @@
+.bigAlert {
+  --width: 80%;
+  --height: auto;
+  min-width: 450px !important;
+}
