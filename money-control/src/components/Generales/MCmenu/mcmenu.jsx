@@ -26,6 +26,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import MCConfirmAlert from "../MCconfirmalert/mcconfirmalert";
 import "./mcmenu.css";
+import { constants } from "global/constants";
 
 export default function MCmenu(props) {
   const { profile } = useUser();
@@ -66,6 +67,7 @@ export default function MCmenu(props) {
   const openAlert = () =>{
     setShowAlert(!showAlert);
   }
+
 
 
   return (
@@ -198,14 +200,10 @@ export default function MCmenu(props) {
       </IonMenu>
       <MCConfirmAlert         
         showAlert={showAlert}
-        onDismiss={handleAlertYes}
-        header="Cambiar a modo offline"
-        message="Estás a punto de cambiar al modo offline en la aplicación. Al hacerlo, se cerrará tu sesión actual y se utilizarán los datos de tu cuenta local en lugar de los datos en línea.
-
-        Si decides continuar, podrás seguir utilizando la aplicación en modo offline, pero no podrás acceder a los datos en línea. Si deseas clonar tus datos de la cuenta en línea a la cuenta local, puedes hacerlo en el apartado del perfil.
-        
-        ¿Deseas continuar y cambiar al modo offline?"
-        onYesClick={handleAlertDismiss}
+        onDismiss={handleAlertDismiss}
+        header={offlineMode ? constants.confirModal.online.header : constants.confirModal.offline.header}
+        message={offlineMode ? constants.confirModal.online.msg : constants.confirModal.offline.msg}
+        onYesClick={handleAlertYes}
       />
     </>
   );

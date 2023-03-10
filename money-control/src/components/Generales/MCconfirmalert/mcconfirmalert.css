@@ -1,5 +1,4 @@
-.bigAlert {
-  --width: 80%;
-  --height: auto;
-  min-width: 450px !important;
+.alert-wrapper.sc-ion-alert-ios{
+  width: 80% !important;
+  max-width: 500px !important;
 }
