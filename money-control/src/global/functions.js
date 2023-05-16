@@ -110,7 +110,7 @@ export const iconosCategorias = [
 
 export const offlineCuenta = {
   icono: "cloudOfflineOutline",
-  color: "#7895ff",
+  color: "#ffb578",
   cantidad: 0,
   name: "Offline",
   docid: 'offline'

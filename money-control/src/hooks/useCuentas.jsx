@@ -4,7 +4,6 @@ import { useHistory } from "react-router-dom";
 //Firebase
 import { app, db } from "firebase.jsx";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { Router } from "react-router";
 
 import {
   arrayRemove,
@@ -45,6 +44,7 @@ export default function useCuentas() {
         });
         getCuentas(auth.currentUser.uid);
       } else {
+        setLoadingCuentas(false);
         setState({
           loading: false,
           error: false,

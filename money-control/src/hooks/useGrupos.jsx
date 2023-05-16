@@ -55,6 +55,7 @@ export default function useGrupos() {
         getGrupos(auth.currentUser.uid);
         // getCuentas(auth.currentUser.uid);
       } else {
+        setLoadingGrupos(false);
         setState({
           loading: false,
           error: false,

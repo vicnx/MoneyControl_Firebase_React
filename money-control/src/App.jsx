@@ -22,17 +22,19 @@ import Login from "./pages/Login/Login";
 import "./theme/variables.css";
 // import "./theme/variables-dark.css"; //Activar solo en caso de tener completado el modo oscuro
 import "./app.css";
+import useOffline from "hooks/useOffline";
 
 setupIonicReact();
 
 function App() {
   const { isLogged } = useUser();
+  const { offlineMode } = useOffline();
 
   return (
     <Suspense fallback={<MCloading loading={true} />}>
       <IonApp>
         <IonReactHashRouter>
-          {isLogged ? <MCrouter /> : <Login />}
+          {offlineMode ? <MCrouter /> :  (isLogged ? <MCrouter /> : <Login />)}
         </IonReactHashRouter>
       </IonApp>
     </Suspense>

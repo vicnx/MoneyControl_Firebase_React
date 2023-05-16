@@ -23,6 +23,7 @@
   flex-direction: column;
   transition: 0.4s;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .swiper {

@@ -27,6 +27,7 @@ import { useLocation } from "react-router-dom";
 import MCConfirmAlert from "../MCconfirmalert/mcconfirmalert";
 import "./mcmenu.css";
 import { constants } from "global/constants";
+import MCOfflineButton from "../MCOfflineButton/mcofflinebutton";
 
 export default function MCmenu(props) {
   const { profile } = useUser();
@@ -192,19 +193,9 @@ export default function MCmenu(props) {
               </IonMenuToggle>
             </div>
           </div>
-          <IonItem className="menu-item">
-            <IonLabel color="primary">Modo offline</IonLabel>
-            <IonToggle color="primary" checked={offlineMode} slot="end" onIonChange={openAlert}></IonToggle>
-          </IonItem>
+          <MCOfflineButton/>
         </IonContent>
       </IonMenu>
-      <MCConfirmAlert         
-        showAlert={showAlert}
-        onDismiss={handleAlertDismiss}
-        header={offlineMode ? constants.confirModal.online.header : constants.confirModal.offline.header}
-        message={offlineMode ? constants.confirModal.online.msg : constants.confirModal.offline.msg}
-        onYesClick={handleAlertYes}
-      />
     </>
   );
 }

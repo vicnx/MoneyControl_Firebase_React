@@ -13,6 +13,7 @@ export default function useOffline() {
 	useEffect(() => {
 		//TODO Vicente: Si el offline mode se activa, se usa el usuario offline por defecto (comprobar si tiene en dexieDB ya creado uno)
 		if (offlineMode) {
+			document.querySelector('body').classList.add('offline');
 			dexieDB.profile.get('offlineProfile').then((res) => {
 				if (profile) {
 					//comprobamos si hay perfil en la sesión, si hay se añade a la bd offline cambiado el id del doc por el de offline.
@@ -42,6 +43,9 @@ export default function useOffline() {
           console.log(error);
         });
       }
+		}else{
+			document.querySelector('body').classList.remove('offline');
+
 		}
 
 	}, [offlineMode]);

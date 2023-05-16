@@ -1,0 +1,23 @@
+.header-avatar {
+  padding: 4px;
+  margin-top: 3px;
+  margin-left: 5px;
+}
+.header-avatar img {
+  width: 100%;
+  box-shadow: var(--best_shadow);
+  background-color: var(--ion-color-primary-tint);
+  /* border: solid 2.5px var(--ion-color-primary); */
+}
+
+.backButtonHeader {
+  margin-left: 10px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.header-menu-avatar {
+  height: 100%;
+}

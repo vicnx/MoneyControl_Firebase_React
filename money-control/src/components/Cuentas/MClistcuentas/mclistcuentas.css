@@ -4,6 +4,7 @@
   padding-bottom: 10px;
   color: var(--color_text);
   display: flex;
+  cursor: pointer;
 }
 .cuenta-name-info {
   display: flex;

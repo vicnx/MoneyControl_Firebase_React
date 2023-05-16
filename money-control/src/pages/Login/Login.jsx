@@ -4,6 +4,7 @@ import MCloading from "components/Generales/MCloading/MCloading";
 import useUser from "hooks/useUser";
 import GoogleButton from "../../components/auth/googleButton";
 import "./Login.css";
+import MCOfflineButton from "components/Generales/MCOfflineButton/mcofflinebutton";
 
 const LoginPage = () => {
   const { loadingUser, auth } = useUser();
@@ -25,6 +26,7 @@ const LoginPage = () => {
               <br />
 
               <GoogleButton className="googleButton" />
+              <MCOfflineButton/>
             </div>
           </div>
         )}
