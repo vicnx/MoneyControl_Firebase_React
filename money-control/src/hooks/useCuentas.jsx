@@ -12,7 +12,7 @@ import { addDoc, arrayUnion, collection, deleteDoc, doc, getDoc, getDocs, query,
 export default function useCuentas() {
     const { cuentas, setCuentas } = useContext(CuentasContext);
     const [loadingcuentas, setLoadingCuentas] = useState(false);
-    const [setState] = useState({
+    const [state,setState] = useState({
         loading: false,
         error: false
     });

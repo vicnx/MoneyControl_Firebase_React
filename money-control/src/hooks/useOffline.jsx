@@ -26,59 +26,11 @@ export default function useOffline() {
                     setProfile(offlineProfile);
                 }
             });
-            dexieDB
-                .table('cuentas')
-                .count()
-                .then((result) => {
-                    // Si no hay cuentas en la base de datos de dexie (modo offline) se añaden. SI hay se utilizan las que ya hay creadas
-                    // TODO: Preguntar al usuario si se detectan cuentas si quiere mantenerlas.
-                    if (!(result > 0)) {
-                        dexieDB
-                            .table('cuentas')
-                            .add(offlineCuenta)
-                            .then(
-                                dexieDB
-                                    .table('cuentas')
-                                    .toArray()
-                                    .then((cuentasDexieDB) => {
-                                        setCuentas(cuentasDexieDB);
-                                    })
-                            );
-                    } else {
-                        dexieDB
-                            .table('cuentas')
-                            .toArray()
-                            .then((cuentasDexieDB) => {
-                                setCuentas(cuentasDexieDB);
-                            });
-                    }
-                });
 
-            dexieDB
-                .table('grupos')
-                .count()
-                .then((result) => {
-                    if (!(result > 0)) {
-                        dexieDB
-                            .table('grupos')
-                            .add(offlineGrupo)
-                            .then(
-                                dexieDB
-                                    .table('grupos')
-                                    .toArray()
-                                    .then((gruposDexie) => {
-                                        setGrupos(gruposDexie);
-                                    })
-                            );
-                    } else {
-                        dexieDB
-                            .table('grupos')
-                            .toArray()
-                            .then((gruposDexie) => {
-                                setGrupos(gruposDexie);
-                            });
-                    }
-                });
+            prepareCuentas();
+            prepareGrupos();
+
+
 
             //TODO Vicente: Cerrar sesión en firebase.
             const auth = getAuth();
@@ -95,6 +47,64 @@ export default function useOffline() {
             document.querySelector('body').classList.remove('offline');
         }
     }, [offlineMode]);
+
+    const prepareCuentas = () => {
+        dexieDB
+        .table('cuentas')
+        .count()
+        .then((result) => {
+            // Si no hay cuentas en la base de datos de dexie (modo offline) se añaden. SI hay se utilizan las que ya hay creadas
+            // TODO: Preguntar al usuario si se detectan cuentas si quiere mantenerlas.
+            if (!(result > 0)) {
+                dexieDB
+                    .table('cuentas')
+                    .add(offlineCuenta)
+                    .then(
+                        dexieDB
+                            .table('cuentas')
+                            .toArray()
+                            .then((cuentasDexieDB) => {
+                                setCuentas(cuentasDexieDB);
+                            })
+                    );
+            } else {
+                dexieDB
+                    .table('cuentas')
+                    .toArray()
+                    .then((cuentasDexieDB) => {
+                        setCuentas(cuentasDexieDB);
+                    });
+            }
+        });
+    }
+
+    const prepareGrupos = () => {
+        dexieDB
+        .table('grupos')
+        .count()
+        .then((result) => {
+            if (!(result > 0)) {
+                dexieDB
+                    .table('grupos')
+                    .add(offlineGrupo)
+                    .then(
+                        dexieDB
+                            .table('grupos')
+                            .toArray()
+                            .then((gruposDexie) => {
+                                setGrupos(gruposDexie);
+                            })
+                    );
+            } else {
+                dexieDB
+                    .table('grupos')
+                    .toArray()
+                    .then((gruposDexie) => {
+                        setGrupos(gruposDexie);
+                    });
+            }
+        });
+    }
 
     return {
         offlineMode,

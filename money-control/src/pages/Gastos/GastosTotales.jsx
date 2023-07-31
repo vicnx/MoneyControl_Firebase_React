@@ -1,5 +1,4 @@
 import { IonContent, IonPage } from "@ionic/react";
-import MCinfogrupo from "components/Grupos/MCinfogrupo/mcinfogrupo";
 import useGrupos from "hooks/useGrupos";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -7,7 +6,7 @@ import ClipLoader from "react-spinners/ClipLoader";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./GastosTotales.css";
-import MCgastostotales from "components/Gastos/MCgastosTotales/mcgastostotales";
+import MCgastostotales from "components/Gastos/MCgastostotales/mcgastostotales";
 
 const GastosTotales = () => {
   const { getGrupoGastosTotales, grupoTotal, loadinggrupos } = useGrupos();
